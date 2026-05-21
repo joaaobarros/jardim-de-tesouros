@@ -305,6 +305,84 @@
   }
   .toc-link:hover { color: var(--terra-deep); text-decoration: underline; }
 
+  /* ── SCROLL CUE (fundo da capa) ── */
+  .scroll-cue {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 38px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    opacity: 0;
+    animation: cue-appear 0.8s ease 1.8s forwards;
+  }
+  .scroll-cue-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    white-space: nowrap;
+  }
+  .scroll-cue-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--rule), transparent);
+  }
+  .scroll-cue-arrow {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terra);
+    font-size: 13px;
+    flex-shrink: 0;
+    animation: arrow-bob 2s ease-in-out 2.8s infinite;
+  }
+
+  @keyframes cue-appear {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes arrow-bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(4px); }
+  }
+
+  /* ── NAV GUIDE (cabeçalho do sumário) ── */
+  .nav-guide {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--rule-soft);
+    opacity: 0;
+    animation: cue-appear 0.6s ease 0.4s forwards;
+  }
+  .nav-guide::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 1px;
+    background: var(--terra);
+    flex-shrink: 0;
+  }
+  .nav-guide span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ── LINHA INTEIRA CLICÁVEL ── */
+  .toc-list li:not(.part) { cursor: pointer; }
+  .toc-list li:not(.part):hover { background: rgba(168,64,30,0.045); }
+
   /* ── FOOTER ── */
   footer {
     background: #1d1815;
@@ -387,6 +465,12 @@
   <div class="cover-logobar">
     <img src="image/logos-institucionais.png" alt="Instituto Dragão do Mar · CCBJ · Secult Ceará · Governo do Estado do Ceará">
   </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="scroll-cue-label">Clique no Sumário para navegar</span>
+    <span class="scroll-cue-rule"></span>
+    <span class="scroll-cue-arrow">↓</span>
+  </div>
 </div>
 
 <!-- ── SUMÁRIO ── -->
@@ -399,6 +483,9 @@
     <div class="toc-intro">
       <p>Um catálogo das vidas, dos ofícios, dos terreiros e dos territórios que sustentam a cultura tradicional no Grande Bom Jardim. Esta edição ampliada aprofunda a publicação original em camadas de cronologia, oralidade, cartografia afetiva e museologia social.</p>
       <span class="toc-meta">25 páginas · 6 seções · 4 mestres &amp; mestras · 1 cartografia afetiva · 1 ponto de memória</span>
+      <div class="nav-guide" aria-label="Instrução de navegação">
+        <span>Clique em qualquer entrada para abrir a seção</span>
+      </div>
     </div>
   </div>
 
@@ -561,6 +648,19 @@
     Centro Cultural Bom Jardim · Instituto Dragão do Mar · Secult CE
   </div>
 </footer>
+
+
+<script>
+  /* Torna toda a linha do sumário clicável, não só o texto do título */
+  document.querySelectorAll('.toc-list li:not(.part)').forEach(function(li) {
+    li.addEventListener('click', function(e) {
+      if (!e.target.closest('a')) {
+        var a = li.querySelector('a');
+        if (a) a.click();
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
