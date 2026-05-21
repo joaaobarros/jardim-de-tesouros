@@ -1,0 +1,3527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Catálogo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<script src="paginator.js" defer></script>
+
+<style>
+  /* =========================================================
+     JARDIM DE TESOUROS VIVOS, EDIÇÃO AMPLIADA · 2026
+     Sistema editorial preservado.
+     Formato: 21 × 28 cm · Sangria 3 mm · 300 dpi · CMYK.
+     ========================================================= */
+
+  :root{
+    --paper: #f3ece0;
+    --paper-deep: #ece2cf;
+    --paper-shadow: #e3d6bd;
+    --ink: #1d1815;
+    --ink-soft: #3a322c;
+    --ink-mute: #6b5f53;
+    --rule: #b9a98f;
+    --rule-soft: #d4c4a6;
+    --terra: #a8401e;
+    --terra-deep: #8a3014;
+    --ocre:  #b9802a;
+    --verde-folha: #4a5a32;
+    --quente: #d97a3a;
+    --azul-cura: #2f4e5a;
+
+    /* dimensões editoriais (21 x 28 cm @ 96dpi reference) */
+    --page-w: 794px;        /* ≈ 21 cm */
+    --page-h: 1058px;       /* ≈ 28 cm */
+    --bleed: 12px;          /* ≈ 3 mm */
+    --margin-out: 64px;
+    --margin-in: 84px;
+    --margin-top: 78px;
+    --margin-bot: 96px;
+  }
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; background: #2a241e; }
+  body{
+    font-family: "Source Serif 4", Georgia, serif;
+    color: var(--ink);
+    font-feature-settings: "onum", "kern", "liga";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ---------- paginação editorial ---------- */
+  .book{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+  .page{
+    background: var(--paper);
+    background-image:
+      radial-gradient(1200px 600px at 20% 0%, rgba(168,64,30,0.05), transparent 60%),
+      radial-gradient(900px 600px at 100% 100%, rgba(74,90,50,0.04), transparent 60%);
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.55), 0 1px 0 rgba(0,0,0,0.05);
+    padding: 84px 88px 96px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.012) 0 1px, transparent 1px 3px);
+    pointer-events:none;
+    mix-blend-mode: multiply;
+  }
+  .page > *{ position: relative; }
+  .page.spread{ padding-left: 64px; padding-right: 64px; }
+
+  .folio{
+    position:absolute;
+    bottom: 36px; left: 88px; right: 88px;
+    display:flex; justify-content: space-between; align-items: baseline;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .folio .dot{ color: var(--terra); }
+
+  /* ---------- tipografia ---------- */
+  h1, h2, h3, h4{
+    font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .display{
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+  }
+  p{
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 1.05em;
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+  .lead{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 23px;
+    line-height: 1.45;
+    font-weight: 400;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .lead em{ color: var(--terra); font-style: italic; }
+
+  .eyebrow{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terra);
+  }
+  .eyebrow.muted{ color: var(--ink-mute); }
+
+  .rule{ height: 1px; background: var(--rule); border:0; margin: 28px 0; }
+  .rule-thick{ height: 2px; background: var(--ink); border:0; margin: 18px 0 28px; }
+  .rule-tiny{ width: 36px; height: 2px; background: var(--terra); border: 0; margin: 0 0 22px; }
+
+  .dropcap::first-letter{
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    color: var(--terra);
+    float: left;
+    font-size: 78px;
+    line-height: 0.85;
+    padding: 6px 10px 0 0;
+  }
+
+  /* ---------- COVER ---------- */
+  .cover{
+    padding: 0;
+    min-height: 1080px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background:
+      radial-gradient(900px 600px at 15% 10%, rgba(168,64,30,0.18), transparent 65%),
+      radial-gradient(700px 500px at 90% 90%, rgba(74,90,50,0.16), transparent 60%),
+      linear-gradient(180deg, #efe5d1 0%, #e7d8bd 100%);
+  }
+  .cover-head, .cover-body, .cover-foot{ padding: 48px 64px; }
+  .cover-head{
+    display:flex; justify-content: space-between; align-items: flex-start;
+    border-bottom: 1px solid rgba(0,0,0,0.18);
+  }
+  .crest .edition{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .crest strong{ color: var(--terra); font-weight: 500; }
+  .edition{ text-align: right; line-height: 1.9; }
+  .edition .roman{
+    display:block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 28px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    margin-top: 8px;
+  }
+  .cover-body{ align-self: center; padding-top: 18px; padding-bottom: 18px; }
+  .cover-body h1{
+    font-size: clamp(68px, 9.6vw, 132px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .cover-body h1 .ital{ font-style: italic; color: var(--terra); }
+  .cover-body h1 .sm{ font-size: 0.42em; font-style: italic; color: var(--ink-soft); display:block; margin-top: 14px; letter-spacing: -0.005em; }
+  .cover-sub{
+    margin-top: 28px;
+    max-width: 600px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    line-height: 1.42;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .cover-foot{
+    border-top: 1px solid rgba(0,0,0,0.18);
+    display: flex; flex-direction: column; gap: 20px;
+    padding-top: 28px;
+  }
+  .cover-foot .cols{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 28px; align-items: start;
+  }
+  .cover-foot .col h4{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .cover-foot .col p{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 15.5px; line-height: 1.45;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin:0;
+  }
+  .cover-stamp{
+    border-top: 1px solid rgba(0,0,0,0.18);
+    padding-top: 14px;
+    display:flex; justify-content: space-between; align-items: baseline;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .cover-stamp .iss{ color: var(--terra); }
+
+  /* barra de logos institucionais (capa & colofão) */
+  .cover-logobar{
+    border-top: 1px solid rgba(0,0,0,0.18);
+    border-bottom: 1px solid rgba(0,0,0,0.18);
+    padding: 18px 6px;
+    margin-top: 4px;
+  }
+  .cover-logobar img{
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+  }
+  .colophon-logobar{
+    margin-top: 22px;
+    padding: 16px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .colophon-logobar img{
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  /* ---------- SUMÁRIO ---------- */
+  .toc{ display: grid; grid-template-columns: 1.1fr 2fr; gap: 64px; }
+  .toc h2{ font-size: 78px; line-height: 0.92; letter-spacing: -0.02em; }
+  .toc h2 em{ color: var(--terra); }
+  .toc-list{ list-style: none; margin:0; padding: 0; border-top: 1px solid var(--rule); }
+  .toc-list li{
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .toc-list li.part{
+    grid-template-columns: 1fr;
+    padding: 22px 0 10px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .toc-list .part-label{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--terra);
+    text-transform: uppercase;
+  }
+  .toc-list .part-name{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+    margin-top: 4px;
+  }
+  .toc-list .num{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--terra);
+  }
+  .toc-list .title{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .toc-list .title small{
+    display:block;
+    font-family: "Source Serif 4", serif;
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin-top: 3px;
+  }
+  .toc-list .page-num{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- HEAD DE SEÇÃO ---------- */
+  .section-head{
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 48px;
+  }
+  .section-head .meta{
+    border-top: 2px solid var(--ink);
+    padding-top: 14px;
+  }
+  .section-head .meta .eyebrow{ display:block; margin-bottom: 22px; }
+  .section-head .meta .ornament{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 36px;
+    color: var(--terra);
+    line-height: 1;
+  }
+  .section-head .meta .stamp{
+    margin-top: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+  .section-head h2{
+    font-size: clamp(56px, 7vw, 92px);
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+  }
+  .section-head h2 em{ color: var(--terra); }
+
+  .two-col{
+    column-count: 2;
+    column-gap: 40px;
+    column-rule: 1px solid var(--rule);
+  }
+  .two-col p{ break-inside: avoid-column; }
+
+  .pullquote{
+    margin: 36px 0;
+    padding: 0 0 0 28px;
+    border-left: 3px solid var(--terra);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--ink);
+    break-inside: avoid;
+  }
+  .pullquote cite{
+    display:block;
+    margin-top: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-style: normal;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ---------- PERFIS ---------- */
+  .profile{
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .profile.invert{ grid-template-columns: 1.25fr 1fr; }
+  .profile-img{
+    aspect-ratio: 3/4;
+    background: var(--paper-deep);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    margin: 0;
+  }
+  .profile-img.has-photo img{
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    /* leve correção tonal para integrar à atmosfera do papel */
+    filter: saturate(0.92) contrast(0.98);
+  }
+  .profile-img .slot-frame{
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(135deg, rgba(168,64,30,0.08) 0 10px, transparent 10px 24px),
+      linear-gradient(180deg, var(--paper-deep), #d8c7a8);
+    pointer-events: none;
+  }
+  .profile-img image-slot{
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    --slot-bg: transparent;
+    --slot-border: transparent;
+  }
+  .profile-head .index{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--terra);
+    margin-bottom: 10px;
+  }
+  .profile-head h2{
+    font-size: clamp(54px, 6.4vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+  }
+  .profile-head h2 em{ font-style: italic; color: var(--terra); }
+  .profile-head .role{
+    margin-top: 14px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-soft);
+  }
+  .profile-head .role::before{
+    content:"";
+    display:inline-block; width: 22px; height: 1px;
+    background: var(--terra);
+    vertical-align: middle;
+    margin-right: 10px;
+    transform: translateY(-3px);
+  }
+  .profile-body{ margin-top: 28px; }
+  .profile-body h3{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin: 28px 0 12px;
+    font-weight: 500;
+  }
+  .profile-body h3:first-child{ margin-top: 0; }
+
+  .stats{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    margin: 28px 0;
+  }
+  .stats .stat{ padding: 16px 18px; border-right: 1px solid var(--rule); }
+  .stats .stat:last-child{ border-right:0; }
+  .stats .num{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 44px; line-height: 1; color: var(--terra); font-weight: 400;
+  }
+  .stats .lbl{
+    margin-top: 6px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+
+  /* ---------- ANIVERSÁRIO (especial) ---------- */
+  .anniversary{
+    background:
+      radial-gradient(800px 500px at 90% 0%, rgba(168,64,30,0.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 100%, rgba(74,90,50,0.07), transparent 60%),
+      var(--paper);
+  }
+  .anniv-head{
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 56px; align-items: end;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 36px; margin-bottom: 40px;
+  }
+  .anniv-mark .eyebrow{ display:block; margin-bottom: 14px; }
+  .anniv-numerals{ display: flex; align-items: flex-end; gap: 18px; }
+  .anniv-numerals .two{
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: clamp(180px, 22vw, 280px);
+    line-height: 0.78;
+    letter-spacing: -0.04em;
+    color: var(--terra);
+  }
+  .anniv-numerals .side{ display: flex; flex-direction: column; gap: 6px; padding-bottom: 14px; }
+  .anniv-numerals .side em{
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+    font-size: 44px; line-height: 1; color: var(--ink);
+  }
+  .anniv-numerals .side small{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--ink-mute);
+  }
+  .anniv-title h2{
+    font-size: clamp(54px, 6.6vw, 88px);
+    line-height: 0.95; letter-spacing: -0.015em;
+  }
+  .anniv-title h2 em{ color: var(--terra); }
+  .anniv-body{ display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; }
+  .anniv-text p{ font-size: 16.5px; }
+  .anniv-text p:first-child::first-letter{
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    color: var(--terra);
+    float: left;
+    font-size: 78px;
+    line-height: 0.85;
+    padding: 6px 10px 0 0;
+  }
+
+  /* ---------- TIMELINE (compartilhada) ---------- */
+  .timeline{ list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  .timeline li{
+    display: grid; grid-template-columns: 88px 1fr;
+    gap: 16px; padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .timeline .year{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terra);
+    padding-top: 4px;
+  }
+  .timeline h4{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px; line-height: 1.2;
+    color: var(--ink); font-weight: 500;
+    margin: 0 0 4px;
+  }
+  .timeline p{ font-size: 14.5px; line-height: 1.55; margin: 0; color: var(--ink-soft); }
+
+  /* ---------- ENTREVISTA SOB A FOTO ---------- */
+  .profile-interview{ margin-top: 22px; border-top: 1px solid var(--ink); padding-top: 16px; }
+  .profile-interview h4{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin: 0 0 14px;
+    font-weight: 500;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .profile-interview h4 span{ color: var(--ink-mute); font-weight: 400; }
+  .profile-interview .q{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 16px; line-height: 1.35;
+    color: var(--ink); margin: 0;
+    display: flex; gap: 8px;
+  }
+  .profile-interview .q::before{
+    content: "P.";
+    font-family: "JetBrains Mono", monospace; font-style: normal;
+    font-size: 9px; letter-spacing: 0.18em;
+    color: var(--terra); flex: 0 0 18px; padding-top: 4px;
+  }
+  .profile-interview .a{
+    display: flex; gap: 8px;
+    margin: 4px 0 14px 0; padding: 0 0 10px;
+    border-bottom: 1px dotted var(--rule);
+    font-family: "Source Serif 4", serif;
+    font-size: 13px; line-height: 1.55;
+    color: var(--ink-soft); font-style: normal;
+  }
+  .profile-interview .a:last-child{ border-bottom: 0; padding-bottom: 0; }
+  .profile-interview .a::before{
+    content: "R.";
+    font-family: "JetBrains Mono", monospace; font-style: normal;
+    font-size: 9px; letter-spacing: 0.18em;
+    color: var(--ocre); flex: 0 0 18px; padding-top: 4px;
+  }
+
+  /* ---------- FEATURE (festival/política) ---------- */
+  .feature{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .feature h2{ font-size: clamp(56px, 7vw, 88px); line-height: 0.95; letter-spacing: -0.015em; }
+  .feature h2 em{ color: var(--terra); }
+  .feature .left .eyebrow{ display:block; margin-bottom: 18px; }
+  .feature .left .lead{ margin-top: 28px; }
+
+  .pillars{ list-style: none; padding: 0; margin: 36px 0 0; border-top: 1px solid var(--rule); }
+  .pillars li{
+    display: grid; grid-template-columns: 36px 1fr;
+    gap: 18px; padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pillars .n{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.2em;
+    color: var(--terra); padding-top: 3px;
+  }
+  .pillars h4{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px; line-height: 1.2;
+    color: var(--ink); font-weight: 500;
+    margin: 0 0 6px;
+  }
+  .pillars p{ font-size: 15px; line-height: 1.55; margin:0; color: var(--ink-soft); }
+
+  .schools-list{
+    display: grid; grid-template-columns: 1fr;
+    margin: 14px 0 8px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .schools-list .school{
+    display: grid; grid-template-columns: 28px 1fr auto;
+    gap: 14px; padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .schools-list .school:last-child{ border-bottom: 0; }
+  .schools-list .school .n{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.2em;
+    color: var(--terra); padding-top: 3px;
+  }
+  .schools-list .school .name{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px; line-height: 1.2;
+    color: var(--ink); font-weight: 500;
+  }
+  .schools-list .school .name small{
+    display: block;
+    font-family: "Source Serif 4", serif;
+    font-style: italic; font-size: 13px;
+    color: var(--ink-mute); margin-top: 2px; font-weight: 400;
+  }
+  .schools-list .school .tag{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink-mute);
+    border: 1px solid var(--rule);
+    padding: 4px 10px; white-space: nowrap;
+  }
+
+  /* ---------- EXPEDIENTE ---------- */
+  .expediente-head{
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 56px; align-items: end;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 30px; margin-bottom: 36px;
+  }
+  .expediente-head .eyebrow{ display:block; margin-bottom: 12px; }
+  .expediente-head h2{
+    font-size: clamp(54px, 6.6vw, 88px);
+    line-height: 0.95; letter-spacing: -0.015em;
+  }
+  .expediente-head h2 em{ color: var(--terra); }
+  .expediente-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; }
+  .expediente-block{ border-top: 1px solid var(--ink); padding-top: 14px; break-inside: avoid; }
+  .expediente-block h4{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--terra);
+    margin: 0 0 4px; font-weight: 500;
+  }
+  .expediente-block .subhead{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px; line-height: 1.15;
+    color: var(--ink); margin: 0 0 14px; font-weight: 500;
+  }
+  .expediente-block dl{ display: grid; grid-template-columns: 1fr 1.4fr; gap: 6px 18px; margin: 0; }
+  .expediente-block dt{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-mute);
+    padding-top: 5px;
+  }
+  .expediente-block dd{
+    margin: 0;
+    font-family: "Source Serif 4", serif;
+    font-size: 14.5px; line-height: 1.45;
+    color: var(--ink);
+  }
+  .expediente-block dd small{
+    display: block;
+    font-family: "Source Serif 4", serif;
+    font-style: italic; font-size: 12px;
+    color: var(--ink-mute); margin-top: 1px;
+  }
+  .expediente-block.team dl{ grid-template-columns: 1fr; gap: 4px; }
+  .expediente-block.team dt{
+    padding-top: 12px;
+    border-top: 1px dotted var(--rule);
+    margin-top: 4px;
+  }
+  .expediente-block.team dt:first-of-type{ border-top: 0; padding-top: 0; margin-top: 0; }
+
+  .roster{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 36px; margin-top: 4px; }
+  .roster .dept{ break-inside: avoid; border-top: 1px solid var(--rule); padding-top: 12px; }
+  .roster .dept h5{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--terra);
+    margin: 0 0 4px; font-weight: 500;
+  }
+  .roster .dept .count{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 13px;
+    color: var(--ink-mute); margin-bottom: 10px;
+  }
+  .roster .dept ul{ list-style: none; margin: 0; padding: 0; }
+  .roster .dept li{
+    font-family: "Source Serif 4", serif;
+    font-size: 13px; line-height: 1.5;
+    color: var(--ink); padding: 2px 0;
+  }
+  .roster .dept.span-2{ grid-column: span 2; }
+  .roster .dept.span-2 ul{ columns: 2; column-gap: 28px; }
+  .roster .dept.span-2 li{ break-inside: avoid; }
+
+  /* ---------- COLOFÃO ---------- */
+  .colophon{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .colophon h2{ font-size: 68px; line-height: 0.95; }
+  .colophon h2 em{ color: var(--terra); }
+  .credits{ border-top: 2px solid var(--ink); padding-top: 18px; }
+  .credits .row{
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 12px 24px; padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .credits dt{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--terra);
+    padding-top: 4px;
+  }
+  .credits dd{
+    margin:0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px; line-height: 1.35;
+    color: var(--ink);
+  }
+  .credits dd small{
+    display:block;
+    font-family: "Source Serif 4", serif;
+    font-size: 13px; color: var(--ink-mute);
+    font-style: italic; margin-top: 2px;
+  }
+  .signature{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 26px;
+    line-height: 1.4; color: var(--ink);
+  }
+  .signature .small{
+    display:block;
+    font-family: "JetBrains Mono", monospace;
+    font-style: normal; font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 14px;
+  }
+
+  /* ---------- NOVAS CAMADAS DA EDIÇÃO AMPLIADA ---------- */
+
+  /* abertura de parte (divisão maior do livro) */
+  .part-opener{
+    min-height: 940px;
+    padding: 84px 96px;
+    background:
+      radial-gradient(700px 500px at 80% 100%, rgba(168,64,30,0.10), transparent 60%),
+      radial-gradient(800px 600px at 0% 0%, rgba(74,90,50,0.07), transparent 60%),
+      var(--paper);
+    display: grid; grid-template-rows: auto 1fr auto;
+  }
+  .part-opener .pre{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+    display: flex; justify-content: space-between;
+  }
+  .part-opener .pre .roman{ color: var(--terra); }
+  .part-opener .mid{
+    align-self: center;
+    max-width: 900px;
+  }
+  .part-opener .mid .num-big{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 220px;
+    line-height: 0.8;
+    color: var(--terra);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .part-opener .mid h2{
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: clamp(72px, 9vw, 116px);
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .part-opener .mid h2 em{ color: var(--terra); font-style: italic; }
+  .part-opener .mid .epigraph{
+    margin-top: 36px;
+    max-width: 620px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    border-left: 2px solid var(--terra);
+    padding-left: 22px;
+  }
+  .part-opener .mid .epigraph cite{
+    display:block;
+    margin-top: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .part-opener .foot{
+    display: flex; justify-content: space-between; align-items: end;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--ink-mute);
+  }
+
+  /* MAPA AFETIVO */
+  .map-spread{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .map-head{
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+  }
+  .map-head h2{
+    font-size: clamp(54px, 7vw, 92px);
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+  }
+  .map-head h2 em{ color: var(--terra); }
+  .map-head .meta-block{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-mute);
+    line-height: 2;
+    border-left: 1px solid var(--rule);
+    padding-left: 22px;
+  }
+  .map-head .meta-block strong{ color: var(--terra); font-weight: 500; }
+
+  .map-canvas{
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    background:
+      radial-gradient(800px 500px at 30% 30%, rgba(168,64,30,0.05), transparent 60%),
+      radial-gradient(700px 400px at 80% 80%, rgba(74,90,50,0.04), transparent 60%),
+      var(--paper-deep);
+    border: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .map-canvas svg{ width: 100%; height: 100%; display: block; }
+
+  .map-legend{
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    border-top: 1px solid var(--ink);
+    padding-top: 16px;
+  }
+  .map-legend .item{
+    border-left: 2px solid var(--terra);
+    padding-left: 12px;
+  }
+  .map-legend .item .key{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    color: var(--terra); text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .map-legend .item .nm{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px; line-height: 1.2;
+    color: var(--ink);
+  }
+  .map-legend .item .nm small{
+    display: block;
+    font-family: "Source Serif 4", serif;
+    font-style: italic; font-size: 11.5px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+
+  /* CARTOGRAFIA DAS CASAS */
+  .cards-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 36px;
+    margin-top: 24px;
+  }
+  .place-card{
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.35);
+    padding: 22px 24px 24px;
+    display: flex; flex-direction: column;
+    gap: 12px;
+    break-inside: avoid;
+  }
+  .place-card .pc-head{
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+  }
+  .place-card .pc-key{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--terra);
+  }
+  .place-card .pc-cat{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .place-card h4{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 26px; line-height: 1.1;
+    color: var(--ink); font-weight: 500;
+  }
+  .place-card h4 em{ color: var(--terra); font-style: italic; }
+  .place-card .addr{
+    font-family: "Source Serif 4", serif;
+    font-size: 13px; line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .place-card .desc{
+    font-size: 13.5px; line-height: 1.55;
+    margin: 4px 0 0;
+  }
+  .place-card .pc-foot{
+    margin-top: auto;
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+    border-top: 1px dotted var(--rule);
+  }
+  .place-card .pc-foot .who em{ color: var(--terra); font-style: italic; }
+
+  /* CRONOLOGIA + ORALIDADE (página secundária do mestre) */
+  .crono-head{
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 48px; align-items: end;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 28px; margin-bottom: 36px;
+  }
+  .crono-head h2{
+    font-size: clamp(48px, 6vw, 78px);
+    line-height: 0.95; letter-spacing: -0.015em;
+  }
+  .crono-head h2 em{ color: var(--terra); font-style: italic; }
+  .crono-head .mark{
+    border-top: 2px solid var(--ink);
+    padding-top: 12px;
+  }
+  .crono-head .mark .eyebrow{ display:block; margin-bottom: 10px; }
+  .crono-head .mark .who{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 26px;
+    color: var(--ink);
+  }
+  .crono-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .crono-grid .left h3
+  .crono-grid .right h3{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .fragments{
+    list-style: none; margin: 0; padding: 0;
+  }
+  .fragments li{
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--rule);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .fragments li:last-child{ border-bottom: 0; }
+  .fragments li .src{
+    display: block;
+    margin-top: 6px;
+    font-family: "JetBrains Mono", monospace;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* documentos / arquivos */
+  .doc-block{
+    margin-top: 22px;
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+    background: rgba(255,255,255,0.25);
+  }
+  .doc-block h5{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ocre);
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+  .doc-block p{
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .doc-block .doc-meta{
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dotted var(--rule);
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* PÁGINA SILENCIOSA, VOZES DO TERRITÓRIO */
+  .voices-silent{
+    min-height: 880px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    gap: 56px;
+    padding: 0 24px;
+  }
+  .voices-silent .v{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 38px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-style: italic;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .voices-silent .v .em{ color: var(--terra); }
+  .voices-silent .v cite{
+    display: block;
+    margin-top: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .voices-silent .ornament{
+    text-align: center;
+    color: var(--terra);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 26px;
+  }
+
+  /* GLOSSÁRIO */
+  .glossary{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 56px;
+  }
+  .glossary .entry{
+    border-top: 1px solid var(--rule);
+    padding: 14px 0;
+    break-inside: avoid;
+  }
+  .glossary .entry .term{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px; line-height: 1.15;
+    color: var(--ink); font-weight: 500;
+    margin: 0 0 4px;
+  }
+  .glossary .entry .term em{ color: var(--terra); font-style: italic; }
+  .glossary .entry .pron{
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ocre);
+    margin-left: 8px;
+  }
+  .glossary .entry .def{
+    font-family: "Source Serif 4", serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* REFERÊNCIAS / NOTAS */
+  .notes-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 48px;
+    margin-top: 18px;
+  }
+  .notes-grid .nb{
+    border-top: 1px solid var(--ink);
+    padding-top: 14px;
+    break-inside: avoid;
+  }
+  .notes-grid .nb h4{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .notes-grid .nb ol{ margin: 0; padding: 0 0 0 18px; }
+  .notes-grid .nb li{
+    font-family: "Source Serif 4", serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .notes-grid .nb li em{ color: var(--ink); }
+
+  /* PONTO DE MEMÓRIA, abertura + corpo */
+  .pm-hero{
+    min-height: 720px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background:
+      radial-gradient(900px 600px at 90% 10%, rgba(168,64,30,0.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 100%, rgba(47,78,90,0.08), transparent 60%),
+      var(--paper);
+    padding: 64px 84px;
+  }
+  .pm-hero .top{
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .pm-hero .top .roman{ color: var(--terra); }
+  .pm-hero .mid h2{
+    margin-top: 36px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: clamp(60px, 8vw, 104px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .pm-hero .mid h2 em{ color: var(--terra); font-style: italic; }
+  .pm-hero .mid .lead{
+    margin-top: 28px;
+    max-width: 620px;
+  }
+  .pm-hero .bot{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .pm-hero .bot .b{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.7;
+  }
+  .pm-hero .bot .b strong{ color: var(--terra); font-weight: 500; }
+
+  /* PONTO DE MEMÓRIA, Manifesto / Princípios */
+  .principles{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 36px;
+    margin-top: 22px;
+  }
+  .principle{
+    border-top: 1px solid var(--ink);
+    padding-top: 14px;
+    break-inside: avoid;
+  }
+  .principle .n{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--terra);
+  }
+  .principle h4{
+    margin-top: 4px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    line-height: 1.15;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .principle p{
+    margin: 8px 0 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* ORNAMENTOS */
+  .ornament-row{
+    display: flex; gap: 14px; align-items: center;
+    color: var(--terra);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 26px;
+    margin: 30px 0 10px;
+  }
+  .ornament-row::before .ornament-row::after{
+    content:""; height: 1px; background: var(--rule); flex: 1;
+  }
+
+  /* logo lockup */
+  .logo-row{ display:flex; gap: 28px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+  .logo-row img{ height: 44px; width: auto; display: block; image-rendering: -webkit-optimize-contrast; }
+  .logo-row.large img{ height: 56px; }
+
+  /* placeholder fotográfico genérico */
+  .photo-slot{
+    aspect-ratio: 16/9;
+    background:
+      repeating-linear-gradient(135deg, rgba(168,64,30,0.10) 0 10px, transparent 10px 24px),
+      linear-gradient(180deg, var(--paper-deep), #d8c7a8);
+    border: 1px solid var(--rule);
+    position: relative;
+    margin: 14px 0;
+  }
+  .photo-slot.tall{ aspect-ratio: 4/5; }
+  .photo-slot.full{ aspect-ratio: 21/9; }
+  .photo-slot .label{
+    position: absolute; left: 14px; bottom: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: rgba(243,236,224,0.85);
+    padding: 6px 10px;
+    border: 1px solid var(--rule);
+  }
+  .photo-slot .ref{
+    position: absolute; right: 14px; top: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    background: rgba(243,236,224,0.85);
+    padding: 4px 8px;
+  }
+
+  /* responsivo */
+  @media (max-width: 900px){
+    .page{ padding: 56px 28px 80px; }
+    .folio{ left: 28px; right: 28px; }
+    .section-head .profile .profile.invert .feature .colophon
+    .map-head .anniv-head .anniv-body .crono-head .crono-grid
+    .expediente-head .expediente-grid .cards-grid .glossary
+    .notes-grid .principles .pm-hero .bot{
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .two-col{ column-count: 1; }
+    .cover{ min-height: auto; }
+    .cover-head, .cover-body, .cover-foot{ padding: 36px 28px; }
+    .cover-foot .cols{ grid-template-columns: 1fr; }
+    .roster{ grid-template-columns: 1fr; }
+    .roster .dept.span-2 ul{ columns: 1; }
+    .roster .dept.span-2{ grid-column: span 1; }
+    .map-legend{ grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ====== PRINT (21 × 28 cm · sangria 3 mm · marcas de corte) ====== */
+  @page{
+    size: 210mm 280mm;
+    margin: 0;
+  }
+  /* ====== AUTO-FIT · estabilidade A4/210×280 (preserva layout) ====== */
+  .page-fit{
+    transform-origin: top left;
+    width: 100%;
+    will-change: transform;
+  }
+  /* Tela e impressão: geometria fixa 210×280 mm (≈794×1058 px).
+     Conteúdo extra é dividido em novas páginas, nunca alterando
+     a altura ou largura do gabarito editorial. */
+  @media screen{
+    .page{
+      width: 794px;
+      height: 1058px;
+      min-height: 1058px;
+      overflow: hidden;
+    }
+  }
+  /* Respiros editoriais — espaço entre tópicos textuais */
+  .page p{ margin: 0 0 1.15em; }
+  .page h3, .page h4{ margin-top: 1.4em; }
+  .page .section-head{ margin-bottom: 44px; }
+  .page .two-col{ column-gap: 44px; }
+  .page .two-col p{ margin-bottom: 1.2em; }
+  .page .profile-body h3{ margin-top: 1.8em; }
+  .page .profile-body h3:first-child{ margin-top: 0; }
+  .page .pullquote{ margin: 36px 0; }
+  .page .timeline li{ padding: 18px 0; }
+  .page .pillars li{ padding: 22px 0; }
+  .page .schools-list .school{ padding: 18px 0; }
+  .page .expediente-block{ padding-top: 18px; }
+  .page .expediente-grid{ gap: 32px 48px; }
+
+  /* Cabeçalho de continuação para páginas divididas */
+  .cont-head{
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    align-items: end;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+    margin-bottom: 28px;
+  }
+  .cont-head .eyebrow{ display:block; }
+  .cont-head .cont-stamp{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 8px;
+  }
+  .cont-head .cont-title{
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--ink-soft);
+  }
+  .cont-head .cont-title strong{
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  @media print{
+    html, body{ background: white !important; }
+    .book{ padding: 0 !important; max-width: none !important; }
+    *, *::before, *::after{
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    .page{
+      box-shadow: none !important;
+      margin: 0 !important;
+      page-break-after: always;
+      break-after: page;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      width: 210mm;
+      height: 280mm;
+      padding: 22mm 20mm 24mm;
+      overflow: hidden;
+    }
+    .page:last-of-type{ page-break-after: auto; break-after: auto; }
+    .page::before{ display: none !important; }
+    .page::after{
+      /* marcas de corte (sangria 3mm) */
+      content:"";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(#000,#000) top    left  / 8mm 0.2mm no-repeat,
+        linear-gradient(#000,#000) top    left  / 0.2mm 8mm no-repeat,
+        linear-gradient(#000,#000) top    right / 8mm 0.2mm no-repeat,
+        linear-gradient(#000,#000) top    right / 0.2mm 8mm no-repeat,
+        linear-gradient(#000,#000) bottom left  / 8mm 0.2mm no-repeat,
+        linear-gradient(#000,#000) bottom left  / 0.2mm 8mm no-repeat,
+        linear-gradient(#000,#000) bottom right / 8mm 0.2mm no-repeat,
+        linear-gradient(#000,#000) bottom right / 0.2mm 8mm no-repeat;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+    .folio{ left: 20mm; right: 20mm; bottom: 12mm; }
+    .cover{ min-height: 280mm; padding: 0; }
+    .cover-head, .cover-body, .cover-foot{ padding: 18mm 16mm; }
+  }
+</style>
+</head>
+<body>
+
+<main class="book">
+
+  <!-- ============== 01 · CAPA ============== -->
+  <section class="page cover" data-screen-label="01 Capa">
+    <header class="cover-head">
+      <div class="crest">
+        <strong>Centro Cultural Bom Jardim</strong><br>
+        Instituto Dragão do Mar<br>
+        Secretaria da Cultura do Estado do Ceará
+      </div>
+      <div class="edition">
+        Primeiro catálogo · edição ampliada
+        <span class="roman">IV ed.</span>
+        Festival Jardim de Tesouros Vivos<br>
+        Catálogo institucional · 2026
+      </div>
+    </header>
+
+    <div class="cover-body">
+      <p class="eyebrow">Memória viva · Grande Bom Jardim · Fortaleza, Ceará</p>
+      <h1 class="display">
+        Jardim de<br>
+        <span class="ital">Tesouros</span><br>
+        Vivos
+        <span class="sm">da cultura do Bom Jardim</span>
+      </h1>
+      <p class="cover-sub">
+        Sobre os saberes que se cultivam no chão, na roda, no terreiro e na boca dos mais velhos, e que florescem, geração após geração, no território do Grande Bom Jardim.
+      </p>
+    </div>
+
+    <footer class="cover-foot">
+      <div class="cols">
+        <div class="col">
+          <h4>Realização</h4>
+          <p>
+            Centro Cultural Bom Jardim (CCBJ), equipamento da Secult Ceará,
+            administrado pelo Instituto Dragão do Mar, em parceria com os
+            Mestres e Mestras da Cultura do Grande Bom Jardim.
+          </p>
+        </div>
+        <div class="col">
+          <h4>Mestres &amp; Mestras</h4>
+          <p>
+            Mestra Carla Mara<br>
+            Mestre Lula<br>
+            Mestre Pai Neto Tranca Rua<br>
+            Mestra Mãe Zimá
+          </p>
+        </div>
+        <div class="col">
+          <h4>Política Pública</h4>
+          <p>
+            Tesouros Vivos da Cultura do Ceará, programa estadual de reconhecimento
+            e salvaguarda do patrimônio imaterial cearense.
+          </p>
+        </div>
+      </div>
+
+      <div class="cover-logobar" aria-label="Logos institucionais">
+        <img src="assets/logos-institucionais.png" alt="Instituto Dragão do Mar · CCBJ · Secult Ceará · Governo do Estado do Ceará">
+      </div>
+
+      <div class="cover-stamp">
+        <span>Edição ampliada · 2026 · historiografia viva do território</span>
+        <span class="iss">21 × 28 cm · 25 pp.</span>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ============== 02 · SUMÁRIO ============== -->
+  <section class="page" data-screen-label="02 Sumário">
+    <div class="toc">
+      <div>
+        <p class="eyebrow">Sumário</p>
+        <h2 class="display">Sobre o<br><em>que se</em><br>guarda.</h2>
+        <p style="margin-top: 28px; color: var(--ink-mute); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.45;">
+          Um catálogo das vidas, dos ofícios, dos terreiros e dos territórios que sustentam a cultura tradicional no Grande Bom Jardim. Esta edição ampliada aprofunda a publicação original em camadas de cronologia, oralidade, cartografia afetiva e museologia social.
+        </p>
+        <p style="margin-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--ink-mute); text-transform: uppercase;">
+          25 páginas · 6 seções · 4 mestres &amp; mestras · 1 cartografia afetiva · 1 ponto de memória
+        </p>
+      </div>
+      <ol class="toc-list">
+        <li class="part">
+          <span class="part-label">PARTE I · Abertura</span>
+          <span class="part-name">A casa pública, a história, a chegada.</span>
+        </li>
+        <li><span class="num">I.</span><span class="title">Apresentação<small>O Festival, o CCBJ e os caminhos da política pública dos Tesouros Vivos.</small></span><span class="page-num">p. 03</span></li>
+        <li><span class="num">II.</span><span class="title">Carta do Superintendente<small>Marcos Levi Nunes · Centro Cultural Bom Jardim</small></span><span class="page-num">p. 04</span></li>
+        <li><span class="num">III.</span><span class="title">Especial · Vinte anos do CCBJ<small>Duas décadas de cultura, comunidade e território no Grande Bom Jardim.</small></span><span class="page-num">p. 05</span></li>
+        <li><span class="num">IV.</span><span class="title">Especial · Sessenta anos da Secult Ceará<small>1966 · 2026 · Articulação com o CCBJ e o Jardim de Tesouros Vivos.</small></span><span class="page-num">p. 06</span></li>
+
+        <li class="part">
+          <span class="part-label">PARTE II · Cartografia afetiva</span>
+          <span class="part-name">Um mapa desenhado dentro do território.</span>
+        </li>
+        <li><span class="num">V.</span><span class="title">Mapa afetivo do Grande Bom Jardim<small>Cartografia desenhada do território, terreiros, rodas, casas, rios simbólicos.</small></span><span class="page-num">p. 07</span></li>
+        <li><span class="num">VI.</span><span class="title">Cartografia das casas<small>Endereços, descrições e geografia afetiva dos cinco lugares.</small></span><span class="page-num">p. 08</span></li>
+
+        <li class="part">
+          <span class="part-label">PARTE III · Mestres &amp; Mestras da Cultura</span>
+          <span class="part-name">Vidas que sustentam a tradição, perfil, cronologia e oralidade.</span>
+        </li>
+        <li><span class="num">VII.</span><span class="title">Mestra Carla Mara<small>Mestra da Cultura em Capoeira · Associação Zumbi Capoeira</small></span><span class="page-num">p. 09</span></li>
+        <li><span class="num">VIII.</span><span class="title">Mestra Carla Mara · Cronologia &amp; oralidade<small>Quatro décadas de roda · vozes recolhidas no território.</small></span><span class="page-num">p. 10</span></li>
+        <li><span class="num">IX.</span><span class="title">Mestre Lula<small>Mestre da Cultura em Capoeira · Conselho de Mestres do Ceará</small></span><span class="page-num">p. 11</span></li>
+        <li><span class="num">X.</span><span class="title">Mestre Lula · Cronologia &amp; oralidade<small>Linhagem, palavra dada e o caderno que segura.</small></span><span class="page-num">p. 12</span></li>
+        <li><span class="num">XI.</span><span class="title">Mestre Pai Neto Tranca Rua<small>Mestre da Cultura em Umbanda · Tambor de Mina de Caboclo</small></span><span class="page-num">p. 13</span></li>
+        <li><span class="num">XII.</span><span class="title">Mestre Pai Neto · Cronologia &amp; oralidade<small>Tronco velho · fragmentos do terreiro de São Miguel.</small></span><span class="page-num">p. 14</span></li>
+        <li><span class="num">XIII.</span><span class="title">Mestra Mãe Zimá<small>Mestra da Cultura em Medicina Tradicional Popular de Terreiro</small></span><span class="page-num">p. 15</span></li>
+        <li><span class="num">XIV.</span><span class="title">Mestra Mãe Zimá · Cronologia &amp; oralidade<small>Casa de Ogum Megê · a chama que atravessou décadas.</small></span><span class="page-num">p. 16</span></li>
+
+        <li class="part">
+          <span class="part-label">PARTE IV · Memória territorial</span>
+          <span class="part-name">O direito à memória nas periferias.</span>
+        </li>
+        <li><span class="num">XV.</span><span class="title">Ponto de Memória do Grande Bom Jardim<small>Museologia social, arquivo comunitário e narrativas populares.</small></span><span class="page-num">p. 17</span></li>
+        <li><span class="num">XVI.</span><span class="title">Princípios do Ponto de Memória<small>Oito princípios de uma museologia feita pela comunidade.</small></span><span class="page-num">p. 18</span></li>
+
+        <li class="part">
+          <span class="part-label">PARTE V · Festival e Política</span>
+          <span class="part-name">A travessia entre território, escola e Estado.</span>
+        </li>
+        <li><span class="num">XVII.</span><span class="title">O Festival<small>Duas fases: vivências no território e seminário “Mestres da Cultura na Escola”.</small></span><span class="page-num">p. 19</span></li>
+        <li><span class="num">XVIII.</span><span class="title">A política dos Tesouros Vivos<small>Lei estadual, reconhecimento e patrimônio imaterial.</small></span><span class="page-num">p. 20</span></li>
+
+        <li class="part">
+          <span class="part-label">PARTE VI · Documento &amp; arquivo</span>
+          <span class="part-name">Oralidade, glossário, notas e expediente.</span>
+        </li>
+        <li><span class="num">XIX.</span><span class="title">Vozes do território<small>Página silenciosa, fragmentos recolhidos entre 1980 e hoje.</small></span><span class="page-num">p. 21</span></li>
+        <li><span class="num">XX.</span><span class="title">Glossário cultural<small>Palavras do terreiro, da roda, da medicina popular e do território.</small></span><span class="page-num">p. 22</span></li>
+        <li><span class="num">XXI.</span><span class="title">Notas, fontes e referências<small>Legislação, pesquisas, bibliografia e créditos documentais.</small></span><span class="page-num">p. 23</span></li>
+        <li><span class="num">XXII.</span><span class="title">Expediente<small>Governo do Estado, Secult, IDM e equipe do CCBJ.</small></span><span class="page-num">p. 24</span></li>
+        <li><span class="num">XXIII.</span><span class="title">Colofão<small>Ficha técnica, créditos e marcações editoriais.</small></span><span class="page-num">p. 25</span></li>
+      </ol>
+    </div>
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>02, Sumário</span>
+    </div>
+  </section>
+
+  <!-- ============== 03 · APRESENTAÇÃO ============== -->
+  <section class="page" data-screen-label="03 Apresentação">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">I · Apresentação</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Fortaleza, CE<br>
+          Grande Bom Jardim<br>
+          IV EDIÇÃO
+        </p>
+      </div>
+      <div>
+        <h2 class="display">Sob a sombra<br>das árvores, <em>a cultura</em><br>se cultiva.</h2>
+        <p class="lead" style="margin-top: 24px;">
+          O <em>Jardim de Tesouros Vivos da Cultura do Bom Jardim</em> nasce do entendimento de que há saberes que não se aprendem em livros. Aprendem-se de mão em mão, de boca em boca, no compasso da ginga, no toque do atabaque, no chá fervido antes do amanhecer. Este catálogo apresenta os guardiões desses saberes no território do Grande Bom Jardim.
+        </p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <p class="dropcap">O Festival é uma realização do <strong>Centro Cultural Bom Jardim (CCBJ)</strong>, equipamento da Secretaria da Cultura do Estado do Ceará (Secult Ceará), gerido em parceria pelo Instituto Dragão do Mar (IDM), e construído em parceria viva com os Mestres e Mestras da Cultura que habitam e fazem o território do Grande Bom Jardim. Mais do que um evento, o Jardim de Tesouros é um gesto público: o de reconhecer, diante de toda a cidade, que a periferia de Fortaleza é também um lugar onde se gesta e se preserva a alma cultural do estado.</p>
+
+      <p>O CCBJ atua há duas décadas como um equipamento cultural enraizado no chão da comunidade. É escola, é palco, é casa de encontro entre artistas, educadores, lideranças religiosas, capoeiristas, brincantes, jovens estudantes e moradores que enxergam, na cultura, uma forma legítima de existir e de resistir. É a partir desse compromisso que o festival se desenha: não como vitrine, mas como travessia entre quem detém o saber e quem precisa recebê-lo.</p>
+
+      <p>O programa <strong>Tesouros Vivos da Cultura do Ceará</strong>, instituído por lei estadual, reconhece pessoas que dedicaram a vida à transmissão de práticas culturais tradicionais. São mestras e mestres da capoeira, da umbanda, da medicina popular, do reisado, da literatura de cordel, da dança, do ofício do barro, do ferro, da palha, da palavra. Selecionados por chamamento público, passam a receber subsídio mensal do Estado para manter suas casas, suas rodas, seus terreiros e suas escolas vivas. Trata-se de um gesto institucional simples e radical, que entende cultura como direito e o mestre como patrimônio. O programa tornou-se referência nacional e foi reconhecido com prêmio do Ministério da Cultura.</p>
+
+      <p>O <strong>Grande Bom Jardim</strong>, bairro vasto e populoso da periferia sudoeste de Fortaleza, é, ele próprio, um território de memória. Aqui, sob o céu compartilhado de cinco bairros, convivem terreiros centenários, academias de capoeira, grupos de maracatu, mestres do reisado, casas de benzedeira, mães e pais de santo, professores, organizações de base e uma juventude que aprende, observando os mais velhos, que pertencer é também responsabilidade.</p>
+
+      <p>A edição 2026 do Festival traz para o centro de sua programação a relação entre <em>cultura e educação</em>, recebendo três escolas da rede pública para vivências realizadas dentro dos próprios espaços geridos pelos mestres e por instituições de memória local. A proposta é simples e ousada: levar a escola até o terreiro, até a roda, até a casa onde o saber mora. Que o estudante não conheça o mestre por meio de uma fotografia em livro, mas pela voz, pelo abraço, pela aula dada no chão batido.</p>
+
+      <p>Esta <strong>edição ampliada</strong> do catálogo aprofunda o gesto original. Acrescenta cronologias, oralidade, fragmentos, uma cartografia afetiva desenhada do zero e a sessão dedicada ao Ponto de Memória do Grande Bom Jardim, projeto comunitário pelo qual o território assume publicamente o cuidado com sua própria memória. É, portanto, um convite. À leitura demorada. À escuta. Ao reconhecimento de que, sob a sombra das árvores do Bom Jardim, floresce um jardim maior, feito de pessoas, gestos, orações e cantos, que o Ceará tem o dever de regar.</p>
+    </div>
+
+    <div class="pullquote">
+      Há saberes que não se aprendem em livro; aprendem-se de mão em mão, de boca em boca, no compasso da ginga, no toque do atabaque, no chá fervido antes do amanhecer.
+      <cite>Apresentação · Festival Jardim de Tesouros Vivos</cite>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>03, Apresentação</span>
+    </div>
+  </section>
+
+  <!-- ============== 04 · CARTA DO SUPERINTENDENTE ============== -->
+  <section class="page" data-screen-label="04 Carta do Superintendente">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">II · Carta</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Marcos Levi Nunes<br>
+          Superintendente<br>
+          CCBJ
+        </p>
+      </div>
+      <div>
+        <h2 class="display">Uma palavra<br>de quem <em>abre</em><br>esta casa.</h2>
+        <p class="lead" style="margin-top: 24px;">
+          Não há festival sem mestre; não há mestre sem comunidade; não há comunidade sem o gesto público de reconhecê-la. É esse gesto que o CCBJ assume, há vinte anos, como sua razão de existir.
+        </p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <p class="dropcap">É com honra que apresento, em nome do <strong>Centro Cultural Bom Jardim</strong>, a quarta edição do Festival <em>Jardim de Tesouros Vivos da Cultura do Bom Jardim</em>. Mais do que abrir uma programação, este texto é uma forma de dizer obrigado: às Mestras e aos Mestres da Cultura que confiam ao CCBJ a tarefa de reunir, no mesmo gesto público, aquilo que cada um deles vem sustentando, há décadas, em seus terreiros, em suas ruas, em suas casas, em suas rodas.</p>
+
+      <p>O CCBJ é, antes de qualquer outra coisa, um centro cultural de base comunitária. Quando se dirige uma casa assim, aprende-se logo que o trabalho não começa no palco. Começa muito antes, na escuta paciente do território, na convivência com lideranças, na escolha cotidiana de pôr a comunidade no centro das decisões, na gestão compartilhada com a comunidade. Tudo o que o CCBJ realiza, desde a sua oferta formativa até a programação artística, é construído a partir desse princípio. O Festival Jardim de Tesouros não é exceção. É o nosso modo de tornar visível, uma vez por ano, aquilo que aqui se faz o ano inteiro.</p>
+
+      <p>Quero registrar, neste espaço, o reconhecimento da equipe do CCBJ, coordenadores, articuladores, comunicadores, educadores, técnicos, profissionais do administrativo e da infraestrutura, da zeladoria e da segurança patrimonial , sem cuja dedicação diária esta casa não estaria de pé. E quero registrar, sobretudo, a presença das Mestras e Mestres reconhecidos por nosso Estado: Mestra Carla Mara, Mestre Lula, Pai Neto e Mãe Zimá. Recebê-los aqui, em sua própria casa, é uma honra que devolvemos em forma de cuidado.</p>
+
+      <p>Em 2026, o CCBJ celebra vinte anos de história. Também em 2026, a Secretaria da Cultura do Ceará completa sessenta anos. As duas datas, articuladas neste catálogo, lembram que cultura pública é uma construção paciente, geracional, que atravessa governos e se mantém pelo compromisso de quem nela trabalha. O Jardim de Tesouros, agora em sua quarta edição, é a forma viva como o Grande Bom Jardim se inscreve nessa história.</p>
+
+      <p>Tomo emprestada, aqui, uma lição do mestre quilombola Antônio Bispo dos Santos, o Nêgo Bispo. Ele dizia, com a lucidez de quem aprendeu a ler o mundo pela lição do rio, que <em>“onde os rios passam, sempre confluem; somente quando os rios secam é que se separam”</em>. É essa imagem que me ajuda a entender o que acontece no Grande Bom Jardim: a capoeira, o terreiro, a medicina popular, o reisado, a literatura oral e a escola pública não se toleram, confluem. E onde há confluência, há vida cultural. Cabe ao Estado não secar os rios.</p>
+
+      <p>Nêgo Bispo nos ensinou ainda que <em>“os colonizadores nos venceram, mas não nos convenceram”</em>. Os Tesouros Vivos do Bom Jardim são testemunhos dessa frase: gerações de mestras e mestres que, atravessando séculos de violência, preconceito e silenciamento, mantiveram intacta a sabedoria ancestral que hoje partilham conosco. Reconhecê-los publicamente é, em última instância, contracolonizar: é dizer que a cultura cearense é, antes de tudo, afro-indígena e popular.</p>
+
+      <p>O Grande Bom Jardim é, com toda razão, a <strong>Codó Cearense</strong>. Como a cidade maranhense que se tornou referência nacional pela proeminência de seus terreiros e pela densidade de sua espiritualidade afro-brasileira, o Bom Jardim guarda, no chão e nas casas, uma vida religiosa, cultural e tradicional que poucos territórios brasileiros sustentam com tanta firmeza. O Bom Jardim é <em>terreiro de fé, terreiro de cultura, terreiro de tradição</em>: seus reisados, suas quadrilhas, suas fogueiras de São João, seus ilês, seus maracatus, seus folguedos e suas brincadeiras populares formam um calendário que o ano inteiro sustenta.</p>
+
+      <p>As Mestras e os Mestres reconhecidos pelo Estado, aos quais este catálogo se dedica, são parte de uma rede muito maior. O Grande Bom Jardim guarda inúmeros outros mestres e mestras da cultura ainda não diplomados pela Secult: mestres e mestras experientes que esperam sua hora, e jovens que vêm construindo a própria maestria no domínio do fazer e na capacidade de fazer o território pulsar. É o caso de Bruno Sodré e seus Brincantes Sonoros, que mantêm vivo o reisado no Bom Jardim. A cada um desses fazedores e fazedoras, esta casa também se inclina em reverência.</p>
+
+      <p>Foi neste território que o pesquisador <strong>Luiz Rufino</strong>, em passagem pelo CCBJ, deixou uma frase que segue ecoando entre nós: <em>“Exu quer comer”</em>. Dita em toda a sua densidade epistemológica afro-brasileira, é também provocação política: cultura não se sustenta de gesto simbólico. Os fazedores e fazedoras da cultura no Grande Bom Jardim precisam ser fortalecidos, na institucionalidade que os reconhece e na teimosia diária com que tornam o impossível rotina.</p>
+
+      <p>Convido cada leitor desta publicação, estudante, educador, gestor, vizinho, a entender este catálogo como um convite. À roda, ao terreiro, à conversa. A cultura do Ceará está nas páginas seguintes, e está, antes de tudo, nas vidas que nelas se contam.</p>
+
+      <p class="signature" style="margin-top: 18px; font-size: 22px;">
+        Boa leitura, boa travessia.
+        <span class="small">Marcos Levi Nunes · Superintendente do Centro Cultural Bom Jardim</span>
+      </p>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>04, Carta do Superintendente</span>
+    </div>
+  </section>
+
+  <!-- ============== 05 · ESPECIAL · 20 ANOS CCBJ ============== -->
+  <section class="page anniversary" data-screen-label="05 Especial · 20 anos do CCBJ">
+    <div class="anniv-head">
+      <div class="anniv-mark">
+        <span class="eyebrow">III · ESPECIAL</span>
+        <div class="anniv-numerals">
+          <span class="two">20</span>
+          <span class="side">
+            <em>anos</em>
+            <small>2006 · 2026</small>
+          </span>
+        </div>
+      </div>
+      <div class="anniv-title">
+        <h2 class="display">Vinte anos<br>de <em>cultura</em><br>no Bom Jardim.</h2>
+        <p class="lead" style="margin-top: 20px;">
+          Em 2026, o <em>Centro Cultural Bom Jardim</em> completa duas décadas de atuação como casa pública da cultura na periferia de Fortaleza, e este Festival celebra, antes de qualquer marco, as pessoas que tornaram o CCBJ o que ele é.
+        </p>
+      </div>
+    </div>
+
+    <div class="anniv-body">
+      <div class="anniv-text">
+        <p>Quando o CCBJ abriu suas portas, em 2006, o Grande Bom Jardim já era, há muito, um território de cultura viva. O equipamento nasceu, então, como uma decisão do Estado de <strong>reconhecer e potencializar</strong> aquilo que a comunidade já fazia: ensinar capoeira nos quintais, abrir terreiros, formar reisados, sustentar grupos de teatro, dança, música e literatura nas ruas, nas associações, nas escolas.</p>
+
+        <p>Em vinte anos, o CCBJ se firmou como um dos equipamentos culturais públicos mais singulares do Brasil. Não pelo tamanho de sua estrutura, mas pela densidade do vínculo que construiu com o território. Recebeu artistas, abrigou ensaios, formou educadores, articulou políticas, cedeu o teatro, o palco, a sala, o pátio. Tornou-se ponto de encontro entre gerações e referência nacional na relação entre cultura, periferia e direitos.</p>
+
+        <p>Celebrar vinte anos do CCBJ é celebrar todas as pessoas que, ao longo desse tempo, sustentaram a casa: as Mestras e os Mestres que aqui ensinaram, os artistas que aqui estrearam, os educadores que aqui se formaram, os técnicos, gestores e trabalhadores que mantiveram o equipamento de pé, e a comunidade do Grande Bom Jardim, que nunca deixou de tratar o CCBJ como casa própria.</p>
+      </div>
+
+      <aside class="anniv-side">
+        <ol class="timeline">
+          <li>
+            <span class="year">2006</span>
+            <div>
+              <h4>Fundação</h4>
+              <p>O CCBJ é inaugurado pela Secult Ceará como equipamento cultural público no Grande Bom Jardim.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2010s</span>
+            <div>
+              <h4>Formação e diálogo</h4>
+              <p>Consolida-se como casa de formação artística, cidadania cultural, fruição artística e encontro com mestres do território.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2018</span>
+            <div>
+              <h4>Tesouros Vivos no território</h4>
+              <p>Articula o reconhecimento de mestras e mestres do Bom Jardim pelo programa estadual.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">Hoje</span>
+            <div>
+              <h4>Casa pública da cultura</h4>
+              <p>Referência nacional em cultura, periferia e direitos. Administrada pelo IDM em parceria com a Secult, sob acompanhamento da Gestão Compartilhada com a comunidade.</p>
+            </div>
+          </li>
+        </ol>
+      </aside>
+    </div>
+
+    <div class="pullquote" style="margin-top: 36px;">
+      Vinte anos depois, o CCBJ segue sendo o que sempre foi: um lugar onde a cultura tem chave da porta e a comunidade tem voz na mesa.
+      <cite>Especial · 20 anos do Centro Cultural Bom Jardim</cite>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>05, Especial · 20 anos do CCBJ</span>
+    </div>
+  </section>
+
+  <!-- ============== 06 · ESPECIAL · 60 ANOS SECULT CEARÁ ============== -->
+  <section class="page anniversary" data-screen-label="06 Especial · 60 anos da Secult Ceará">
+    <div class="anniv-head">
+      <div class="anniv-mark">
+        <span class="eyebrow">IV · ESPECIAL</span>
+        <div class="anniv-numerals">
+          <span class="two">60</span>
+          <span class="side">
+            <em>anos</em>
+            <small>1966 · 2026</small>
+          </span>
+        </div>
+      </div>
+      <div class="anniv-title">
+        <h2 class="display">Sessenta anos<br>de <em>cultura</em><br>como política<br>de Estado.</h2>
+        <p class="lead" style="margin-top: 20px;">A Secretaria da Cultura do Ceará completou, em 2026, seis décadas à frente da política pública de cultura do Estado. Este Festival é um dos modos como o Grande Bom Jardim, através do CCBJ, saúda essa caminhada.</p>
+      </div>
+    </div>
+
+    <div class="anniv-body">
+      <div class="anniv-text">
+        <p>O Ceará foi, ao longo de seis décadas, um dos estados brasileiros que mais consistentemente <strong>sustentaram a cultura como política pública</strong>. Da formação artística à salvaguarda do patrimônio imaterial, do fomento aos festivais populares à manutenção de uma rede pública de equipamentos culturais, a Secult Ceará construiu, ano a ano, uma forma cearense de cuidar da tradição e de impulsionar a criação contemporânea.</p>
+
+        <p>Nessa caminhada de sessenta anos cabe, em letra firme, a história do <strong>Centro Cultural Bom Jardim</strong>. Inaugurado em 2006, o CCBJ é um dos equipamentos da rede pública da Secult, criado para responder à demanda histórica do Grande Bom Jardim por presença do Estado, por formação artística e por reconhecimento público das tradições que aqui se cultivam. Ao completar <strong>vinte anos</strong> em 2026, o CCBJ celebra um terço da história da própria Secult vivida na periferia, ao lado da comunidade.</p>
+
+        <p>O Festival <em>Jardim de Tesouros Vivos</em> nasce dessa articulação. É a forma como o Grande Bom Jardim, com o CCBJ à frente, traduz publicamente a política estadual de salvaguarda do patrimônio imaterial, a política dos <strong>Tesouros Vivos da Cultura do Ceará</strong>, em encontro vivo entre mestras, mestres, estudantes e comunidade. Sessenta, vinte, quatro: três datas que se articulam num único gesto público de cuidado.</p>
+      </div>
+
+      <aside class="anniv-side">
+        <ol class="timeline">
+          <li>
+            <span class="year">1966</span>
+            <div>
+              <h4>Fundação da Secult</h4>
+              <p>É criada a Secretaria da Cultura do Estado do Ceará, marcando o início de uma política pública de cultura no estado.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2006</span>
+            <div>
+              <h4>Inauguração do CCBJ</h4>
+              <p>O Centro Cultural Bom Jardim abre suas portas como equipamento da rede pública da Secult no Grande Bom Jardim.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2010s</span>
+            <div>
+              <h4>Tesouros Vivos</h4>
+              <p>Consolida-se o programa estadual de reconhecimento e salvaguarda de mestras e mestres da cultura tradicional cearense.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2026</span>
+            <div>
+              <h4>60 anos da Secult</h4>
+              <p>Seis décadas de cultura como política pública de Estado. A rede de equipamentos, programas e mestres reconhecidos atinge sua maior maturidade.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2026</span>
+            <div>
+              <h4>20 anos do CCBJ</h4>
+              <p>A casa pública da cultura no Bom Jardim completa duas décadas, e o Festival Jardim de Tesouros Vivos chega à sua quarta edição.</p>
+            </div>
+          </li>
+        </ol>
+      </aside>
+    </div>
+
+    <div class="pullquote" style="margin-top: 36px;">
+      Sessenta anos de Secult, vinte de CCBJ, quatro de Festival: três tempos de uma mesma escolha pública, a de cuidar daquilo que, no Ceará, ninguém mais cuidaria.
+      <cite>Especial · 60 anos da Secretaria da Cultura do Ceará</cite>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>06, Especial · 60 anos da Secult Ceará</span>
+    </div>
+  </section>
+
+  <!-- ============== 07 · MAPA AFETIVO ============== -->
+  <section class="page" data-screen-label="07 Mapa Afetivo do Território">
+    <div class="map-head">
+      <div>
+        <span class="eyebrow">V · CARTOGRAFIA AFETIVA</span>
+        <h2 class="display" style="margin-top: 14px;">Um mapa<br>desenhado <em>dentro</em><br>do território.</h2>
+      </div>
+      <div class="meta-block">
+        <strong>Grande Bom Jardim</strong><br>
+        Periferia sudoeste · Fortaleza, CE<br>
+        Cinco bairros · um único território<br>
+        <strong>Granja Lisboa · Granja Portugal</strong><br>
+        <strong>Siqueira · Canindezinho · Bom Jardim</strong><br>
+        <br>
+        Cinco pontos vivos · cinco casas-mestras<br>
+        Cartografia afetiva · não cartográfica
+      </div>
+    </div>
+
+    <div class="map-canvas">
+      <svg viewBox="0 0 1200 820" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="Mapa afetivo do Grande Bom Jardim">
+        <defs>
+          <pattern id="hatch-terra" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#a8401e" stroke-width="0.6" opacity="0.55"></line>
+          </pattern>
+          <pattern id="hatch-verde" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(135)">
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#4a5a32" stroke-width="0.6" opacity="0.45"></line>
+          </pattern>
+          <pattern id="hatch-ocre" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(0)">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="#b9802a" stroke-width="0.5" opacity="0.35"></line>
+          </pattern>
+          <pattern id="hatch-azul" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(90)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#2f4e5a" stroke-width="0.5" opacity="0.3"></line>
+          </pattern>
+          <pattern id="hatch-bg" patternUnits="userSpaceOnUse" width="3" height="3">
+            <circle cx="1.5" cy="1.5" r="0.4" fill="#a8401e" opacity="0.12"></circle>
+          </pattern>
+        </defs>
+
+        <!-- fundo papel -->
+        <rect x="0" y="0" width="1200" height="820" fill="#ece2cf"></rect>
+        <rect x="0" y="0" width="1200" height="820" fill="url(#hatch-bg)"></rect>
+
+        <!-- silhueta do território (Grande Bom Jardim) -->
+        <path d="M 80 160
+                 C 160 100, 320 100, 460 110
+                 C 580 120, 700 130, 820 130
+                 C 940 130, 1060 150, 1130 220
+                 C 1170 290, 1140 380, 1100 460
+                 C 1080 540, 1090 620, 1040 700
+                 C 980 760, 820 750, 700 740
+                 C 540 730, 360 720, 240 700
+                 C 140 680, 90 600, 70 480
+                 C 50 360, 70 240, 80 160 Z"
+              fill="#f3ece0" stroke="#1d1815" stroke-width="1.4" opacity="0.95"></path>
+
+        <!-- contorno duplo (efeito papel) -->
+        <path d="M 80 160
+                 C 160 100, 320 100, 460 110
+                 C 580 120, 700 130, 820 130
+                 C 940 130, 1060 150, 1130 220
+                 C 1170 290, 1140 380, 1100 460
+                 C 1080 540, 1090 620, 1040 700
+                 C 980 760, 820 750, 700 740
+                 C 540 730, 360 720, 240 700
+                 C 140 680, 90 600, 70 480
+                 C 50 360, 70 240, 80 160 Z"
+              fill="none" stroke="#6b5f53" stroke-width="0.6" stroke-dasharray="2 4" transform="translate(6 6)"></path>
+
+        <!-- ====== BAIRROS ====== -->
+
+        <!-- Granja Lisboa · ocupa porção central-norte (os 3 pontos AZC, CCBJ, AEUSM ficam aqui) -->
+        <path d="M 380 200
+                 C 540 180, 720 180, 820 230
+                 C 880 280, 880 360, 800 400
+                 C 720 440, 580 440, 460 420
+                 C 380 400, 320 340, 340 270
+                 C 350 230, 365 210, 380 200 Z"
+              fill="url(#hatch-terra)" stroke="#a8401e" stroke-width="0.9" opacity="0.7"></path>
+
+        <!-- Siqueira · sudoeste (Casa de Ogum Megê fica aqui) -->
+        <path d="M 200 380
+                 C 290 380, 380 420, 400 500
+                 C 410 580, 340 640, 250 620
+                 C 160 600, 110 520, 130 440
+                 C 140 410, 170 385, 200 380 Z"
+              fill="url(#hatch-verde)" stroke="#4a5a32" stroke-width="0.9" opacity="0.7"></path>
+
+        <!-- Canindezinho · leste, ao longo da Av. Osório de Paiva (Ponto de Memória) -->
+        <path d="M 880 300
+                 C 980 300, 1060 340, 1080 420
+                 C 1090 500, 1040 580, 950 620
+                 C 870 650, 810 620, 800 540
+                 C 790 460, 810 380, 850 330
+                 C 860 315, 870 305, 880 300 Z"
+              fill="url(#hatch-ocre)" stroke="#b9802a" stroke-width="0.9" opacity="0.7"></path>
+
+        <!-- Bom Jardim (núcleo histórico do bairro) · sul-central -->
+        <path d="M 460 480
+                 C 580 470, 700 490, 740 560
+                 C 760 620, 680 680, 580 680
+                 C 480 680, 400 620, 410 550
+                 C 420 510, 440 485, 460 480 Z"
+              fill="url(#hatch-terra)" stroke="#a8401e" stroke-width="0.8" opacity="0.5"></path>
+
+        <!-- Granja Portugal · noroeste -->
+        <path d="M 140 200
+                 C 220 190, 320 200, 350 260
+                 C 360 320, 290 360, 200 360
+                 C 130 350, 90 290, 110 240
+                 C 120 220, 130 205, 140 200 Z"
+              fill="url(#hatch-ocre)" stroke="#b9802a" stroke-width="0.8" opacity="0.5"></path>
+
+        <!-- ====== AV. GENERAL OSÓRIO DE PAIVA (rio simbólico) ======
+             Atravessa Canindezinho, segue em direção ao centro da cidade -->
+        <path id="rio" d="M 1170 700 C 1080 660, 1020 600, 970 540 C 920 480, 880 430, 850 380 C 820 330, 790 290, 740 270 C 660 230, 540 240, 420 260 C 320 280, 230 320, 160 360"
+              fill="none" stroke="#2f4e5a" stroke-width="14" stroke-linecap="round" opacity="0.16"></path>
+        <path d="M 1170 700 C 1080 660, 1020 600, 970 540 C 920 480, 880 430, 850 380 C 820 330, 790 290, 740 270 C 660 230, 540 240, 420 260 C 320 280, 230 320, 160 360"
+              fill="none" stroke="#2f4e5a" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 7" opacity="0.55"></path>
+
+        <!-- linhas de circulação cultural -->
+        <g stroke="#a8401e" stroke-width="1.4" fill="none" opacity="0.55" stroke-linecap="round">
+          <!-- entre os 3 pontos da Granja Lisboa -->
+          <path d="M 540 290 C 580 305, 620 305, 660 295" stroke-dasharray="1 5"></path>
+          <path d="M 660 295 C 700 305, 720 320, 720 340" stroke-dasharray="1 5"></path>
+          <path d="M 540 290 C 500 320, 480 360, 480 390" stroke-dasharray="1 5"></path>
+          <!-- Granja Lisboa até Siqueira (Ogum Megê) -->
+          <path d="M 540 290 C 420 380, 310 460, 260 510" stroke-dasharray="1 5"></path>
+          <!-- Granja Lisboa até Canindezinho (Ponto de Memória) -->
+          <path d="M 720 340 C 800 380, 880 430, 940 470" stroke-dasharray="1 5"></path>
+          <!-- Siqueira até Canindezinho passando por Bom Jardim -->
+          <path d="M 260 510 C 380 560, 520 600, 700 600 C 800 600, 880 540, 940 470" stroke-dasharray="1 5"></path>
+        </g>
+
+        <!-- vegetação simbólica (árvores que dão nome ao território) -->
+        <g fill="#4a5a32" opacity="0.6" stroke="#4a5a32" stroke-width="0.6">
+          <g transform="translate(180 150)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(1000 200)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(1080 620)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(140 690)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(400 700)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(900 720)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+        </g>
+
+        <!-- grafismos afro-brasileiros pontuais -->
+        <g fill="#a8401e" opacity="0.45">
+          <path d="M 230 240 l 6 -10 l 6 10 l -6 10 z"></path>
+          <path d="M 1050 360 l 6 -10 l 6 10 l -6 10 z"></path>
+          <path d="M 320 670 l 6 -10 l 6 10 l -6 10 z"></path>
+          <path d="M 770 720 l 6 -10 l 6 10 l -6 10 z"></path>
+        </g>
+
+        <!-- rosa-dos-ventos -->
+        <g transform="translate(1080 180)" opacity="0.78">
+          <circle cx="0" cy="0" r="36" fill="none" stroke="#1d1815" stroke-width="0.8"></circle>
+          <circle cx="0" cy="0" r="22" fill="none" stroke="#1d1815" stroke-width="0.4" stroke-dasharray="1 3"></circle>
+          <path d="M 0 -32 L 4 0 L 0 32 L -4 0 Z" fill="#a8401e"></path>
+          <path d="M -32 0 L 0 -4 L 32 0 L 0 4 Z" fill="#1d1815" opacity="0.6"></path>
+          <text x="0" y="-44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#6b5f53">N</text>
+          <text x="0" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#6b5f53">S</text>
+          <text x="-48" y="3" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#6b5f53">O</text>
+          <text x="48" y="3" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#6b5f53">L</text>
+        </g>
+
+        <!-- escala -->
+        <g transform="translate(120 750)" font-family="JetBrains Mono, monospace" font-size="9" fill="#6b5f53" letter-spacing="2">
+          <line x1="0" y1="0" x2="120" y2="0" stroke="#1d1815" stroke-width="1"></line>
+          <line x1="0" y1="-4" x2="0" y2="4" stroke="#1d1815" stroke-width="1"></line>
+          <line x1="60" y1="-3" x2="60" y2="3" stroke="#1d1815" stroke-width="0.8"></line>
+          <line x1="120" y1="-4" x2="120" y2="4" stroke="#1d1815" stroke-width="1"></line>
+          <text x="0" y="18">0</text>
+          <text x="60" y="18" text-anchor="middle">0,5</text>
+          <text x="120" y="18" text-anchor="middle">1 KM</text>
+          <text x="0" y="32" letter-spacing="3">ESCALA APROXIMADA · CARTOGRAFIA AFETIVA</text>
+        </g>
+
+        <!-- indicação direcional · Centro de Fortaleza -->
+        <g transform="translate(1140 720)" opacity="0.78">
+          <circle cx="0" cy="0" r="3" fill="#2f4e5a"></circle>
+          <!-- pequeno chevron (direção sudeste, em direção ao centro) -->
+          <path d="M -8 -4 L 0 0 L -8 4" fill="none" stroke="#2f4e5a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(6 0)"></path>
+          <text x="-12" y="-12" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="1.8" fill="#2f4e5a">CENTRO DE</text>
+          <text x="-12" y="-2" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="1.8" fill="#2f4e5a">FORTALEZA</text>
+          <text x="-12" y="10" text-anchor="end" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#2f4e5a">pela Osório de Paiva</text>
+        </g>
+
+        <!-- nomes dos bairros · letrado à mão -->
+        <g font-family="Cormorant Garamond, serif" font-style="italic" fill="#3a322c">
+          <text x="600" y="180" text-anchor="middle" font-size="24" letter-spacing="3">Granja Lisboa</text>
+          <text x="260" y="500" text-anchor="middle" font-size="20" letter-spacing="3">Siqueira</text>
+          <text x="960" y="350" text-anchor="middle" font-size="20" letter-spacing="3">Canindezinho</text>
+          <text x="220" y="280" text-anchor="middle" font-size="16" letter-spacing="2" fill="#6b5f53">Granja Portugal</text>
+          <text x="580" y="600" text-anchor="middle" font-size="18" letter-spacing="3" fill="#6b5f53">Bom Jardim</text>
+        </g>
+
+        <!-- nome do território · cabeçalho cartográfico -->
+        <g transform="translate(600 60)" text-anchor="middle">
+          <text font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="6" fill="#6b5f53">GRANDE BOM JARDIM</text>
+          <text y="22" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#a8401e">cinco bairros, cinco casas, um território</text>
+        </g>
+
+        <!-- ============ 5 PONTOS VIVOS ============ -->
+
+        <!-- Os 3 pontos da GRANJA LISBOA ficam próximos: -->
+
+        <!-- A · CCBJ · referência institucional do território -->
+        <g transform="translate(660 295)">
+          <circle r="22" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="14" fill="#a8401e"></circle>
+          <text y="5" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="18" fill="#f3ece0">A</text>
+          <text y="-32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2.5" fill="#1d1815">CCBJ</text>
+          <text y="44" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Centro Cultural</text>
+          <text y="58" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Bom Jardim</text>
+          <text y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">R. TRÊS CORAÇÕES</text>
+        </g>
+
+        <!-- B · AZC / Mestres Carla & Lula -->
+        <g transform="translate(540 290)">
+          <circle r="20" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="13" fill="#b9802a"></circle>
+          <text y="4" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="16" fill="#f3ece0">B</text>
+          <text y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2" fill="#1d1815">AZC</text>
+          <text y="-72" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Associação Zumbi</text>
+          <text y="-58" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Capoeira</text>
+          <text y="-46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">R. DESCARTES BRAGA</text>
+        </g>
+
+        <!-- C · AEUSM / Pai Neto -->
+        <g transform="translate(740 360)">
+          <circle r="20" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="13" fill="#4a5a32"></circle>
+          <text y="4" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="16" fill="#f3ece0">C</text>
+          <text y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2" fill="#1d1815">AEUSM</text>
+          <text y="40" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Terreiro de</text>
+          <text y="54" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">São Miguel</text>
+          <text y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">R. MEDELLÍN</text>
+        </g>
+
+        <!-- D · Ogum Megê / Mãe Zimá · em Siqueira -->
+        <g transform="translate(260 510)">
+          <circle r="20" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="13" fill="#a8401e"></circle>
+          <text y="4" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="16" fill="#f3ece0">D</text>
+          <text y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2" fill="#1d1815">OGUM MEGÊ</text>
+          <text y="40" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Casa de</text>
+          <text y="54" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Ogum Megê</text>
+          <text y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">R. JOSÉ MAURÍCIO</text>
+        </g>
+
+        <!-- E · Ponto de Memória · em Canindezinho, sobre a Av. Osório de Paiva -->
+        <g transform="translate(960 470)">
+          <circle r="22" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="14" fill="#1d1815"></circle>
+          <text y="5" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="18" fill="#f3ece0">E</text>
+          <text y="-32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2.5" fill="#1d1815">PONTO DE MEMÓRIA</text>
+          <text y="44" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Ponto de Memória do</text>
+          <text y="58" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Grande Bom Jardim</text>
+          <text y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">AV. OSÓRIO DE PAIVA</text>
+        </g>
+
+        <!-- rótulo da avenida (rio simbólico) -->
+        <text font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#2f4e5a" opacity="0.75" letter-spacing="3" transform="translate(530 250) rotate(-8)">av. general osório de paiva</text>
+        <text font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#2f4e5a" opacity="0.55" letter-spacing="3" transform="translate(530 268) rotate(-8)">o rio do território</text>
+
+        <!-- carimbo no canto -->
+        <g transform="translate(150 180)" opacity="0.72">
+          <circle r="50" fill="none" stroke="#a8401e" stroke-width="1.4" stroke-dasharray="2 3"></circle>
+          <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="2.5" fill="#a8401e">CARTOGRAFIA</text>
+          <text x="0" y="8" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" fill="#a8401e">afetiva</text>
+          <text x="0" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6.5" letter-spacing="2" fill="#6b5f53">CCBJ · 2026</text>
+        </g>
+
+        <!-- assinatura -->
+        <text x="1080" y="790" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="2" fill="#6b5f53">DESENHO ORIGINAL · CCBJ · IV ED. · 2026</text>
+      </svg>
+    </div>
+
+    <div class="map-legend">
+      <div class="item">
+        <div class="key">A</div>
+        <div class="nm">Centro Cultural Bom Jardim<small>Granja Lisboa · casa pública</small></div>
+      </div>
+      <div class="item">
+        <div class="key">B</div>
+        <div class="nm">Associação Zumbi Capoeira<small>Mestre Lula · Mestra Carla Mara</small></div>
+      </div>
+      <div class="item">
+        <div class="key">C</div>
+        <div class="nm">AEUSM · Terreiro de São Miguel<small>Pai Neto Tranca Rua · Umbanda</small></div>
+      </div>
+      <div class="item">
+        <div class="key">D</div>
+        <div class="nm">Casa de Ogum Megê<small>Mestra Mãe Zimá · medicina de terreiro</small></div>
+      </div>
+      <div class="item">
+        <div class="key">E</div>
+        <div class="nm">Ponto de Memória<small>Canindezinho · museologia social</small></div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>07, Mapa afetivo do território</span>
+    </div>
+  </section>
+
+  <!-- ============== 08 · CARTOGRAFIA DAS CASAS ============== -->
+  <section class="page" data-screen-label="08 Cartografia das Casas">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">VI · CARTOGRAFIA</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Cinco endereços<br>
+          Cinco casas-mestras<br>
+          Um território
+        </p>
+      </div>
+      <div>
+        <h2 class="display">Cinco lugares<br>onde a <em>cultura</em><br>tem chave da porta.</h2>
+        <p class="lead" style="margin-top: 24px;">
+          O território do Grande Bom Jardim é uma constelação de casas. Não monumentos, casas. Endereços onde, no contracampo da grande cidade, alguém abre a porta de manhã, varre o terreiro, afina o tambor, esquenta a água do banho de ervas, prepara a roda. Esta cartografia recolhe cinco delas.
+        </p>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="place-card">
+        <div class="pc-head">
+          <span class="pc-key">A · 01</span>
+          <span class="pc-cat">Equipamento público · Cultura</span>
+        </div>
+        <h4>Centro Cultural<br><em>Bom Jardim</em> · CCBJ</h4>
+        <p class="addr">Rua Três Corações, 400<br>Granja Lisboa · Fortaleza, CE<br>CEP 60540-441</p>
+        <p class="desc">Equipamento da Secult Ceará, administrado pelo Instituto Dragão do Mar. Casa pública da cultura no Grande Bom Jardim, formação, programação artística, articulação de políticas públicas e ponto de encontro entre mestres, artistas, educadores e comunidade. Em 2026, completa vinte anos.</p>
+        <div class="pc-foot">
+          <span class="who">desde <em>2006</em></span>
+          <span>Casa pública</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="pc-head">
+          <span class="pc-key">B · 02</span>
+          <span class="pc-cat">Capoeira · Educação popular</span>
+        </div>
+        <h4>Associação<br><em>Zumbi Capoeira</em> · AZC</h4>
+        <p class="addr">Rua Descartes Braga, 2860<br>Granja Lisboa · Fortaleza, CE</p>
+        <p class="desc">Casa sede da capoeira angola e regional no Grande Bom Jardim. Reúne Mestre Lula, Mestra Carla Mara e gerações inteiras de capoeiristas. Mantém coletivo feminino e coletivo LGBTQIA+, oferta projetos sociais e estende o ofício da roda à formação política dos corpos historicamente expulsos dela.</p>
+        <div class="pc-foot">
+          <span class="who">linhagem <em>Mestre Everaldo Ema</em></span>
+          <span>desde 1980 · Grupo Zumbi</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="pc-head">
+          <span class="pc-key">C · 03</span>
+          <span class="pc-cat">Umbanda · Tambor de mina de caboclo</span>
+        </div>
+        <h4>AEUSM ·<br>Terreiro <em>São Miguel</em></h4>
+        <p class="addr">Rua Medellín, 2914<br>Granja Lisboa · Fortaleza, CE</p>
+        <p class="desc">Associação Espírita de Umbanda São Miguel, casa de Pai Neto Tranca Rua, tronco velho da tradição tambor de mina de caboclo. Centro de transmissão de saberes religiosos, espirituais e comunitários, sustenta a vida religiosa afro-brasileira no território e oferece cuidado integral à comunidade.</p>
+        <div class="pc-foot">
+          <span class="who">guardião <em>Pai Neto Tranca Rua</em></span>
+          <span>tronco velho · 1959, </span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="pc-head">
+          <span class="pc-key">D · 04</span>
+          <span class="pc-cat">Umbanda · Medicina tradicional popular</span>
+        </div>
+        <h4>Terreiro de<br><em>Ogum Megê</em></h4>
+        <p class="addr">Rua José Maurício, 800<br>Siqueira · Fortaleza, CE<br>CEP 60736-140</p>
+        <p class="desc">Casa erguida pelas próprias mãos da Mestra Mãe Zimá após a partida de seu pai de santo. Referência de acolhimento, cura e formação espiritual; espaço da medicina tradicional popular de terreiro, ervas, banhos, defumações, rezas, pelo qual Mãe Zimá tornou-se, em 2018, a primeira mãe de santo do Brasil reconhecida Mestra da Cultura.</p>
+        <div class="pc-foot">
+          <span class="who">guardiã <em>Mestra Mãe Zimá</em></span>
+          <span>desde antes de 2018</span>
+        </div>
+      </div>
+
+      <div class="place-card" style="grid-column: 1 / -1;">
+        <div class="pc-head">
+          <span class="pc-key">E · 05</span>
+          <span class="pc-cat">Memória · Museologia social · Arquivo comunitário</span>
+        </div>
+        <h4>Ponto de Memória<br>do <em>Grande Bom Jardim</em></h4>
+        <p class="addr">Avenida General Osório de Paiva, 5623 · Canindezinho · Fortaleza, CE</p>
+        <p class="desc">Iniciativa de museologia social que constitui, no próprio território, um arquivo comunitário do Grande Bom Jardim. Reúne narrativas populares, documentação fotográfica, registros orais e acervos doados pelas famílias, operando segundo a lógica de que a periferia não é ausência de memória, mas produtora dela. O Ponto de Memória articula o direito coletivo à memória com a luta pela permanência cultural do território, em diálogo com a Política Nacional de Museus.</p>
+        <div class="pc-foot">
+          <span class="who">articulação <em>comunitária</em></span>
+          <span>museologia social · território</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>08, Cartografia das casas</span>
+    </div>
+  </section>
+
+  <!-- ============== 09 · MESTRA CARLA MARA ============== -->
+  <section class="page" data-screen-label="09 Mestra Carla Mara">
+    <div class="profile">
+      <div>
+        <figure class="profile-img has-photo">
+            <img src="assets/mestra-carla.png" alt="Retrato da Mestra Carla Mara, na sede da Associação Zumbi Capoeira">
+          </figure>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="num">38</div><div class="lbl">Anos de<br>capoeira</div></div>
+          <div class="stat"><div class="num">1980s</div><div class="lbl">Início no<br>Clube Tiradentes</div></div>
+          <div class="stat"><div class="num">CE / BR</div><div class="lbl">Atuação<br>nacional</div></div>
+        </div>
+        <div class="profile-interview">
+          <h4>Entrevista <span>01 / 04</span></h4>
+          <p class="q">O que a capoeira ensinou à senhora sobre ser mulher na roda?</p>
+          <p class="a">Coragem. E olhar firme. Quando entrei, no começo dos anos 1980, a roda era pra homem. Ninguém me disse, mas dava pra sentir. Aprendi, ali, que ficar é mais difícil do que entrar; e que ficar também é arte. Hoje olho minha aluna nos olhos e digo: você vai chegar, você vai sentir, você vai ficar. É isso que a capoeira me ensinou.</p>
+          <p class="q">Como a Associação Zumbi cuida das gerações que estão chegando agora?</p>
+          <p class="a">Sem pressa. As meninas não chegam todas no mesmo dia, nem aprendem na mesma hora. Algumas vêm machucadas, outras vêm querendo lutar. A AZC trata cada uma como se fosse a primeira. Coletivo feminino, coletivo LGBTQIA+: existem pra dizer que tem lugar pra todo mundo. Não como caridade. Como direito.</p>
+          <p class="q">Que herança a senhora gostaria de deixar para as próximas mulheres capoeiristas?</p>
+          <p class="a">Que nunca mais uma menina entre na roda achando que é exceção. Quero que entre como quem chega em casa. Esse é o trabalho. Se eu conseguir isso, o resto deixo pro tempo.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="profile-head">
+          <p class="index">VII · Mestra · Capoeira</p>
+          <h2 class="display">Mestra<br><em>Carla Mara</em></h2>
+          <p class="role">Mestra da Cultura em Capoeira · Associação Zumbi Capoeira</p>
+        </div>
+
+        <div class="profile-body">
+          <p class="lead">
+            Mulher, capoeirista, umbandista, educadora. Carla Mara Henrique Silva carrega no corpo a memória de quem entrou em uma roda há quase quatro décadas, quando ali quase só havia homens, e decidiu ficar.
+          </p>
+
+          <h3>Trajetória</h3>
+          <p>Iniciada na capoeira ainda nos anos 1980, no Clube Tiradentes, em Fortaleza, Mestra Carla pertenceu desde cedo a uma geração rara: a das mulheres que ousaram tomar o centro da roda em um tempo em que esse lugar quase nunca lhes era reservado. Atravessou quatro décadas de prática, formação e ensino, integrando, hoje, a <strong>Associação Zumbi Capoeira (AZC)</strong>, sediada no Grande Bom Jardim, uma das casas centrais da capoeira angola e regional na periferia de Fortaleza.</p>
+
+          <h3>Saber e território</h3>
+          <p>A capoeira, manifestação cultural afro-brasileira reconhecida como patrimônio imaterial nacional, nasce como expressão de matriz africana e gesto de resistência contra a escravização dos povos negros no Brasil. Constituiu-se historicamente como prática predominantemente masculina, e é exatamente nessa fronteira que a trajetória da Mestra Carla se torna fundadora: ao romper paradigmas, ela devolve à capoeira a inteireza de sua vocação como manifestação de luta contra todas as opressões, sejam elas raciais, de gênero ou de classe.</p>
+
+          <p>De sua atuação na periferia de Fortaleza nasce uma referência feminina reconhecida no Ceará, no Brasil e fora dele. Mestra Carla é também liderança umbandista, e sua espiritualidade dialoga, sem ruído, com a ancestralidade que pulsa em cada toque de berimbau. Coordena, na AZC, os coletivos feminino e LGBTQIA+, espaços em que a capoeira se afirma como território de cuidado, de pertencimento e de formação política para corpos historicamente expulsos da roda.</p>
+
+          <h3>Comunidade</h3>
+          <p>No Grande Bom Jardim, sua atuação extrapola a aula de capoeira: ela é mãe de roda, conselheira, educadora popular e ponte. Forma meninas que jamais haviam batido um pé sem pedir licença e devolve a elas a certeza de que o gingar também é gesto de autoridade. É nessa transmissão, feita de toque, de canto, de presença diária, que Mestra Carla mantém viva a capoeira como o que ela sempre foi: arte de existir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>09, Mestra Carla Mara</span>
+    </div>
+  </section>
+
+  <!-- ============== 10 · CARLA · CRONOLOGIA & ORALIDADE ============== -->
+  <section class="page" data-screen-label="10 Carla Mara · Cronologia e oralidade">
+    <div class="crono-head">
+      <div class="mark">
+        <span class="eyebrow">VIII · CRONOLOGIA &amp; ORALIDADE</span>
+        <p class="who">Mestra<br>Carla Mara</p>
+      </div>
+      <div>
+        <h2 class="display">A roda<br>tem <em>tempo</em>,<br>e tem voz.</h2>
+        <p class="lead" style="margin-top: 18px;">Quatro décadas de capoeira atravessam datas e silêncios. Esta página recolhe a linha do tempo de Mestra Carla Mara ao lado dos fragmentos de fala que sobrevivem da roda, da casa e da rua, oralidade preservada em seu ritmo próprio.</p>
+      </div>
+    </div>
+
+    <div class="crono-grid">
+      <div class="left">
+        <h3>Cronologia · Mestra Carla Mara</h3>
+        <ol class="timeline">
+          <li><span class="year">Início 80s</span><div><h4>Entrada na roda</h4><p>Inicia a prática da capoeira no <em>Clube Tiradentes</em>, em Fortaleza, em um tempo em que mulheres quase não compunham as rodas da cidade.</p></div></li>
+          <li><span class="year">Anos 80–90</span><div><h4>Formação técnica</h4><p>Atravessa o aprendizado da capoeira angola e regional sob a orientação de mestres da primeira geração cearense; firma-se como capoeirista atuante.</p></div></li>
+          <li><span class="year">Anos 2000</span><div><h4>Articulação com a Umbanda</h4><p>Aprofunda sua trajetória religiosa na Umbanda; passa a ler a capoeira também como gesto espiritual de ancestralidade afro-brasileira.</p></div></li>
+          <li><span class="year">Anos 2010</span><div><h4>Vínculo com a AZC</h4><p>Integra a Associação Zumbi Capoeira, no Grande Bom Jardim, como referência feminina, formadora e liderança comunitária.</p></div></li>
+          <li><span class="year">Hoje</span><div><h4>Coletivos feminino &amp; LGBTQIA+</h4><p>Coordena os coletivos da AZC voltados a corpos historicamente excluídos da roda. Atua nacional e internacionalmente como Mestra da Cultura reconhecida pelo Estado do Ceará.</p></div></li>
+        </ol>
+
+        <div class="doc-block">
+          <h5>Documento · Ofício e tradição</h5>
+          <p>A Associação Zumbi Capoeira é, no Grande Bom Jardim, uma das casas centrais da prática da capoeira angola e regional. Sua linhagem articula-se ao Grupo Zumbi de Capoeira, fundado em 1980 ao lado de Mestre Everaldo Ema. A presença feminina liderada por Mestra Carla é parte de uma transformação histórica na capoeira cearense.</p>
+          <div class="doc-meta"><span>Fonte · catálogo · oralidade</span><span>v. 2026</span></div>
+        </div>
+      </div>
+
+      <div class="right">
+        <h3>Oralidade · vozes recolhidas</h3>
+        <ul class="fragments">
+          <li>“A roda é pra quem chega, mas é também pra quem fica.”<span class="src">,  Mestra Carla Mara · AZC, 2024</span></li>
+          <li>“Coragem se aprende ficando.”<span class="src">,  Mestra Carla Mara · oficina formativa, CCBJ</span></li>
+          <li>“As meninas não chegam todas no mesmo dia, nem aprendem na mesma hora.”<span class="src">,  sobre o coletivo feminino · AZC</span></li>
+          <li>“Coletivo feminino, coletivo LGBTQIA+: não como caridade. Como direito.”<span class="src">,  Mestra Carla Mara · 2024</span></li>
+          <li>“Quero que ela entre na roda como quem chega em casa.”<span class="src">,  sobre transmissão · AZC</span></li>
+          <li>“Quando entrei, no começo dos 1980, a roda era pra homem. Ninguém me disse, dava pra sentir.”<span class="src">,  Mestra Carla Mara</span></li>
+        </ul>
+
+        <div class="doc-block" style="margin-top: 24px;">
+          <h5>Nota · transmissão geracional</h5>
+          <p>Na capoeira cearense, a transmissão é gestualmente ensinada: o pé, o olhar, a respiração, o canto. As <em>ladainhas</em> e os <em>corridos</em> guardam, em sua oralidade, séculos de história afro-brasileira. A presença de mestras como Carla Mara devolve à roda sua inteireza ancestral.</p>
+          <div class="doc-meta"><span>Glossário · cf. p. 22</span><span>Tradição angola/regional</span></div>
+        </div>
+
+        <p class="pullquote" style="margin-top: 24px; font-size: 24px;">
+          A capoeira só ensina quem aceita receber a lição.
+          <cite>recolhido na AZC</cite>
+        </p>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>10, Cronologia &amp; oralidade · Carla Mara</span>
+    </div>
+  </section>
+
+  <!-- ============== 11 · MESTRE LULA ============== -->
+  <section class="page" data-screen-label="11 Mestre Lula">
+    <div class="profile invert">
+      <div>
+        <div class="profile-head">
+          <p class="index">IX · Mestre · Capoeira</p>
+          <h2 class="display">Mestre<br><em>Lula</em></h2>
+          <p class="role">Mestre da Cultura em Capoeira · Conselho de Mestres de Capoeira do Ceará</p>
+        </div>
+
+        <div class="profile-body">
+          <p class="lead">
+            Quarenta e cinco anos de capoeira nas periferias de Fortaleza, e a mesma fidelidade ao mestre que o iniciou, ao grupo que ajudou a fundar e ao bairro que escolheu como sede.
+          </p>
+
+          <h3>Origem</h3>
+          <p>Luiz Carlos Silva, o Mestre Lula, nasceu em Fortaleza em 1960, na Avenida da Universidade, filho de Senhor Valério e Dona Francisca. Garoto inquieto e proativo, jogava futebol pela seleção do colégio onde estudou na adolescência. Foi voltando para casa numa madrugada que conheceu, por acaso, aquele que viria a ser seu mestre: <strong>Mestre Everaldo Ema</strong>. Daquele encontro nasceu uma amizade e, com ela, a porta para o resto da vida.</p>
+
+          <p>Ainda estudante do Colégio Júlia Jorge, Lula intercedeu junto ao diretor para que Everaldo ali ministrasse aulas de capoeira. Acompanhou, por um tempo, as aulas antes de aderir de fato à prática. Seu percurso oficial inicia-se em 1977, junto ao <strong>Grupo Favela de Capoeira</strong>. Em 1980, ao lado de Everaldo, integra a fundação do <strong>Grupo Zumbi de Capoeira</strong>, célula que se tornaria, com os anos, uma das mais respeitadas referências da capoeira cearense.</p>
+
+          <h3>Lugar na tradição</h3>
+          <p>Mestre Lula compõe hoje a <strong>2ª geração de Mestres do Ceará</strong> e integra o <strong>Conselho de Mestres de Capoeira do Estado do Ceará</strong>. Guarda, com rigor e ternura, as tradições aprendidas com seu mestre: os toques, os corridos, as ladainhas, os modos de ensinar, os modos de portar-se na roda. Sua linhagem é uma palavra dada: continuar.</p>
+
+          <h3>Periferia, lazer e direito</h3>
+          <p>Verdadeiro militante por melhorias para a capoeira como ofício e direito, Mestre Lula instalou sua sede no Bairro Bom Jardim, em Fortaleza, território onde a presença da cultura tradicional opera como contraponto vital à precariedade. Mantém um compromisso público com a comunidade, oferecendo capoeira, lazer, formação e cidadania a crianças, jovens e famílias por meio de projetos sociais sustentados pelo próprio fôlego do mestre e por uma rede de afetos longa de cinco décadas.</p>
+        </div>
+      </div>
+
+      <div>
+        <figure class="profile-img has-photo">
+            <img src="assets/mestre-lula.png" alt="Retrato do Mestre Lula">
+          </figure>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="num">1960</div><div class="lbl">Nascimento<br>Fortaleza/CE</div></div>
+          <div class="stat"><div class="num">1977</div><div class="lbl">Início oficial<br>Grupo Favela</div></div>
+          <div class="stat"><div class="num">2ª G.</div><div class="lbl">Geração de<br>mestres CE</div></div>
+        </div>
+        <div class="profile-interview">
+          <h4>Entrevista <span>02 / 04</span></h4>
+          <p class="q">O que o Mestre Everaldo lhe disse, no início, e que o senhor ainda repete hoje?</p>
+          <p class="a">“Aprende a apanhar antes de aprender a dar.” Foi a primeira coisa que ele me disse, em 1977. Levei anos pra entender direito. A capoeira só ensina quem aceita receber a lição. Repito essa frase pros novos toda semana. Eles riem. Depois entendem.</p>
+          <p class="q">O que muda no Bom Jardim quando uma criança começa a treinar capoeira?</p>
+          <p class="a">A postura. Você vê pelo corpo. Criança que treina capoeira anda diferente, escuta diferente, olha diferente. Não é pose. É consciência. E numa periferia onde quase tudo manda baixar a cabeça, isso vale muito.</p>
+          <p class="q">Para o senhor, o que significa pertencer à 2ª geração de Mestres do Ceará?</p>
+          <p class="a">Trabalho. Acordo cedo, treino, ensino, anoto, registro. Quando eu não tiver mais condição, alguém vai abrir o caderno e continuar. Quem está na segunda geração não é quem brilha: é quem segura. Foi o que Everaldo segurou, e é o que eu seguro agora.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>11, Mestre Lula</span>
+    </div>
+  </section>
+
+  <!-- ============== 12 · LULA · CRONOLOGIA & ORALIDADE ============== -->
+  <section class="page" data-screen-label="12 Mestre Lula · Cronologia e oralidade">
+    <div class="crono-head">
+      <div class="mark">
+        <span class="eyebrow">X · CRONOLOGIA &amp; ORALIDADE</span>
+        <p class="who">Mestre<br>Lula</p>
+      </div>
+      <div>
+        <h2 class="display">Linhagem,<br>palavra <em>dada</em>,<br>caderno aberto.</h2>
+        <p class="lead" style="margin-top: 18px;">Da madrugada na Avenida da Universidade ao Conselho de Mestres do Ceará: cinco décadas de uma vida feita de toque, de ladainha e de uma única promessa cumprida, continuar.</p>
+      </div>
+    </div>
+
+    <div class="crono-grid">
+      <div class="left">
+        <h3>Cronologia · Mestre Lula</h3>
+        <ol class="timeline">
+          <li><span class="year">1960</span><div><h4>Nascimento</h4><p>Luiz Carlos Silva nasce em Fortaleza, Avenida da Universidade, filho de Sr. Valério e Da. Francisca.</p></div></li>
+          <li><span class="year">Anos 70</span><div><h4>O encontro com Everaldo Ema</h4><p>Garoto inquieto, voltando para casa numa madrugada, encontra por acaso aquele que viria a ser seu mestre. Daquele encontro nasce uma amizade, e uma vida inteira.</p></div></li>
+          <li><span class="year">1977</span><div><h4>Início oficial</h4><p>Ingressa no <em>Grupo Favela de Capoeira</em>. Antes, intercedera junto ao diretor do Colégio Júlia Jorge para que Mestre Everaldo ali ministrasse aulas.</p></div></li>
+          <li><span class="year">1980</span><div><h4>Grupo Zumbi de Capoeira</h4><p>Integra, ao lado de Mestre Everaldo Ema, a fundação do <em>Grupo Zumbi</em>, uma das mais respeitadas referências da capoeira cearense.</p></div></li>
+          <li><span class="year">Anos 2000</span><div><h4>Sede no Grande Bom Jardim</h4><p>Instala a sede de suas atividades no Bairro Bom Jardim, onde a cultura tradicional se torna contraponto à precariedade urbana.</p></div></li>
+          <li><span class="year">Hoje</span><div><h4>Conselho de Mestres do Ceará</h4><p>Compõe a 2ª geração de Mestres do Estado. Reconhecido Tesouro Vivo da Cultura do Ceará.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="right">
+        <h3>Oralidade · vozes recolhidas</h3>
+        <ul class="fragments">
+          <li>“Aprende a apanhar antes de aprender a dar.”<span class="src">,  Mestre Everaldo Ema · 1977 · primeira lição</span></li>
+          <li>“Criança que treina capoeira anda diferente, escuta diferente, olha diferente.”<span class="src">,  Mestre Lula · AZC</span></li>
+          <li>“Quem está na segunda geração não é quem brilha: é quem segura.”<span class="src">,  Mestre Lula · 2024</span></li>
+          <li>“Acordo cedo, treino, ensino, anoto, registro.”<span class="src">,  sobre a rotina do ofício</span></li>
+          <li>“Quando eu não tiver mais condição, alguém vai abrir o caderno e continuar.”<span class="src">,  Mestre Lula · sobre transmissão</span></li>
+          <li>“Foi o que Everaldo segurou, e é o que eu seguro agora.”<span class="src">,  Mestre Lula · sobre a linhagem</span></li>
+        </ul>
+
+        <div class="doc-block" style="margin-top: 22px;">
+          <h5>Linhagem · Grupo Zumbi (1980, )</h5>
+          <p>A linhagem começa com <em>Mestre Everaldo Ema</em>, atravessa <em>Mestre Lula</em> na 2ª geração, segue para as mestras e mestres formados nas décadas seguintes e alcança as alunas e alunos da AZC hoje. A capoeira cearense é, em parte considerável, herdeira dessa fileira.</p>
+          <div class="doc-meta"><span>Fonte · oralidade · AZC</span><span>v. 2026</span></div>
+        </div>
+
+        <p class="pullquote" style="margin-top: 22px; font-size: 24px;">
+          A capoeira é arte de existir.
+          <cite>refrão recolhido na sede da AZC</cite>
+        </p>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>12, Cronologia &amp; oralidade · Mestre Lula</span>
+    </div>
+  </section>
+
+  <!-- ============== 13 · PAI NETO TRANCA RUA ============== -->
+  <section class="page" data-screen-label="13 Mestre Pai Neto Tranca Rua">
+    <div class="profile">
+      <div>
+        <figure class="profile-img has-photo">
+            <img src="assets/pai-neto.png" alt="Retrato de Pai Neto Tranca Rua, no terreiro de São Miguel">
+          </figure>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="num">1959</div><div class="lbl">Nascimento<br>Maranguape/CE</div></div>
+          <div class="stat"><div class="num">Local</div><div class="lbl">Estadual<br>Nacional</div></div>
+          <div class="stat"><div class="num">Tambor</div><div class="lbl">de mina<br>de caboclo</div></div>
+        </div>
+        <div class="profile-interview">
+          <h4>Entrevista <span>03 / 04</span></h4>
+          <p class="q">Como o senhor explica, a quem nunca entrou em um terreiro, o que é o tambor de mina de caboclo?</p>
+          <p class="a">É reza. É também festa. É também cura. É também escola. A pessoa que entra pela primeira vez quer uma definição, e a casa não dá; a casa dá um copo d’água, um abraço, um lugar pra sentar. O tambor toca, a roda começa, e a definição vem pela pele. Eu não explico. Eu recebo.</p>
+          <p class="q">O que o tronco velho carrega que ninguém pode ver, mas todos sentem?</p>
+          <p class="a">Os mortos. Os antepassados. Os pretos velhos que vieram do Congo, os caboclos que vieram da mata, os filhos de santo que partiram. Tudo isso a gente carrega. Quem entra no terreiro e sente o ar pesar não está errado: está certo. A casa tem mais gente do que se vê.</p>
+          <p class="q">Como o senhor ensina, na prática diária, o respeito ao sagrado?</p>
+          <p class="a">Devagar. Sem grito, sem pressa, sem teatro. Quando pego o tambor, trato como tratei meu pai quando ele estava doente. Quando falo da erva, falo como quem fala da própria avó. As crianças veem isso. Aprendem. Depois fazem igual. É assim.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="profile-head">
+          <p class="index">XI · Mestre · Umbanda</p>
+          <h2 class="display">Mestre<br><em>Pai Neto</em><br>Tranca Rua</h2>
+          <p class="role">Mestre da Cultura em Umbanda · Tronco velho da tradição tambor de mina de caboclo</p>
+        </div>
+
+        <div class="profile-body">
+          <p class="lead">
+            Tronco velho da tradição tambor de mina de caboclo, Miguel Ferreira Neto guarda, em sua casa, uma cosmologia inteira: feita de tambor, de erva, de palavra dita na hora certa.
+          </p>
+
+          <h3>Origem e linhagem</h3>
+          <p>Nascido em Maranguape, no Ceará, em 1959, Miguel Ferreira Neto, o Pai Neto, é referência e liderança da Umbanda com atuação local, estadual e nacional. Criado nos princípios religiosos de raízes <strong>afro-indígenas</strong>, domina as artes, os ofícios e as cosmologias de sua tradição. É, na linguagem dos terreiros, um <em>tronco velho</em>: aquele em cujo corpo a memória se firmou e através de quem a tradição segue de pé.</p>
+
+          <h3>Tambor de mina de caboclo</h3>
+          <p>Sua casa pertence à tradição do <strong>tambor de mina de caboclo</strong>, vertente da Umbanda que articula, no mesmo terreiro, as forças da mata, das águas e dos antepassados. Compreende-se a Umbanda, e este catálogo o afirma com pertencimento, como patrimônio cosmológico, epistemológico, estético, terapêutico, social e político, originário e em contínua interlocução com as civilizações indígenas, africanas, afrodescendentes e europeias. É filosofia, é cura, é arte, é resistência espiritual.</p>
+
+          <h3>Guarda e transmissão</h3>
+          <p>Pai Neto resguarda, preserva e repassa a seus filhos e filhas de santo os saberes, as artes, os ofícios e a cosmologia dessa religião de matriz afro-brasileira. Em sua casa, a transmissão é tarefa diária: o toque do tambor que se aprende ouvindo; o ponto cantado que se decora de tanto repetir; o gesto ritual que se herda observando. Conduz com firmeza e ternura uma comunidade que vê nele autoridade, conselho e cuidado.</p>
+
+          <h3>Voz pública</h3>
+          <p>Sua atuação atravessa o limite do terreiro. Pai Neto fala em nome da Umbanda em fóruns públicos, articula com lideranças de outras casas, defende a liberdade religiosa em um país que ainda intolera as religiões de matriz africana, e dialoga com o poder público como interlocutor preparado. É um dos rostos do compromisso de que o sagrado afro-brasileiro pertence, por direito, ao patrimônio cultural do Brasil.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>13 · Pai Neto Tranca Rua</span>
+    </div>
+  </section>
+
+  <!-- ============== 14 · PAI NETO · CRONOLOGIA & ORALIDADE ============== -->
+  <section class="page" data-screen-label="14 Pai Neto · Cronologia e oralidade">
+    <div class="crono-head">
+      <div class="mark">
+        <span class="eyebrow">XII · CRONOLOGIA &amp; ORALIDADE</span>
+        <p class="who">Mestre Pai Neto<br>Tranca Rua</p>
+      </div>
+      <div>
+        <h2 class="display">A casa tem<br>mais <em>gente</em><br>do que se vê.</h2>
+        <p class="lead" style="margin-top: 18px;">De Maranguape ao terreiro de São Miguel, no Grande Bom Jardim: a trajetória de um tronco velho atravessa décadas, racismo religioso, perseguição e permanência. Esta página recolhe o que ficou registrado e o que ainda anda na boca dos filhos de santo.</p>
+      </div>
+    </div>
+
+    <div class="crono-grid">
+      <div class="left">
+        <h3>Cronologia · Pai Neto Tranca Rua</h3>
+        <ol class="timeline">
+          <li><span class="year">1959</span><div><h4>Nascimento</h4><p>Miguel Ferreira Neto nasce em <em>Maranguape</em>, na região metropolitana de Fortaleza, em meio aos princípios religiosos afro-indígenas que orientariam a sua vida.</p></div></li>
+          <li><span class="year">Infância</span><div><h4>Iniciação familiar</h4><p>Cresce dentro da Umbanda, ouvindo tambores, aprendendo ervas e gestos. Como em quase toda tradição afro-brasileira, a transmissão começa antes de existir nome para o que se aprende.</p></div></li>
+          <li><span class="year">Anos 80, 90</span><div><h4>Formação do terreiro</h4><p>Consolida-se como liderança religiosa no território do Grande Bom Jardim. Assume a guarda da tradição do <em>tambor de mina de caboclo</em>, vertente que articula mata, águas e antepassados.</p></div></li>
+          <li><span class="year">Anos 2000</span><div><h4>AEUSM · Granja Lisboa</h4><p>Constitui-se como referência pública. A <em>Associação Espírita de Umbanda São Miguel</em> torna-se ponto de oração, de cura, de cuidado, de encontro intergeracional.</p></div></li>
+          <li><span class="year">Anos 2010</span><div><h4>Voz pública</h4><p>Atua em fóruns nacionais pela liberdade religiosa em um país que ainda intolera as religiões de matriz africana. Articula com lideranças de outras casas afro-brasileiras.</p></div></li>
+          <li><span class="year">Hoje</span><div><h4>Tesouro Vivo da Cultura</h4><p>Reconhecido pelo Estado do Ceará como Mestre da Cultura em Umbanda. Tronco velho, autoridade comunitária, interlocutor preparado diante do poder público.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="right">
+        <h3>Oralidade · vozes recolhidas</h3>
+        <ul class="fragments">
+          <li>“Eu não explico. Eu recebo.”<span class="src">Pai Neto Tranca Rua · AEUSM</span></li>
+          <li>“A casa tem mais gente do que se vê.”<span class="src">sobre os antepassados no terreiro</span></li>
+          <li>“Quando pego o tambor, trato como tratei meu pai quando ele estava doente.”<span class="src">Pai Neto Tranca Rua</span></li>
+          <li>“Quando falo da erva, falo como quem fala da própria avó.”<span class="src">sobre o respeito ao sagrado</span></li>
+          <li>“O ar pesar não está errado: está certo.”<span class="src">Pai Neto, sobre quem entra no terreiro pela primeira vez</span></li>
+          <li>“Devagar. Sem grito, sem pressa, sem teatro.”<span class="src">sobre a pedagogia da casa</span></li>
+        </ul>
+
+        <div class="doc-block" style="margin-top: 22px;">
+          <h5>Nota · racismo religioso</h5>
+          <p>Os terreiros afro-brasileiros são, ainda hoje, alvo recorrente de violência simbólica, perseguição e ataques no Brasil. A presença pública de mestres como Pai Neto, e o reconhecimento institucional pelo Estado do Ceará, são parte de uma resposta histórica: a afirmação de que as religiões de matriz africana pertencem, por direito, ao patrimônio cultural brasileiro.</p>
+          <div class="doc-meta"><span>cf. p. 23 · referências</span><span>Tradição afro-brasileira</span></div>
+        </div>
+
+        <p class="pullquote" style="margin-top: 22px; font-size: 24px;">
+          O sagrado afro-brasileiro pertence, por direito, ao patrimônio cultural do Brasil.
+          <cite>refrão da casa</cite>
+        </p>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>14 · Cronologia &amp; oralidade · Pai Neto</span>
+    </div>
+  </section>
+
+  <!-- ============== 15 · MÃE ZIMÁ ============== -->
+  <section class="page" data-screen-label="15 Mestra Mãe Zimá">
+    <div class="profile invert">
+      <div>
+        <div class="profile-head">
+          <p class="index">XIII · Mestra · Medicina tradicional popular de terreiro</p>
+          <h2 class="display">Mestra<br><em>Mãe Zimá</em></h2>
+          <p class="role">Primeira mãe de santo no Brasil reconhecida Mestra da Cultura pela medicina tradicional popular de terreiro</p>
+        </div>
+
+        <div class="profile-body">
+          <p class="lead">
+            Zimá Ferreira da Silva nasceu numa sexta-feira santa de abril de 1947. Desde a infância, sabia o que sua família ainda não podia aceitar: que a fé que herdou dos avós tinha o nome de Umbanda.
+          </p>
+
+          <h3>Vida e fé</h3>
+          <p>Mãe Zimá nasceu em 3 de abril de 1947, numa sexta-feira santa: coincidência que ela mesma toma como sinal. Desde menina identificou-se com a Umbanda, embora tenha cumprido todos os sacramentos da Igreja Católica, porque, em sua época, sua religião não era aceita, nem mesmo pelos próprios familiares. Foi dos <strong>avós</strong> que recebeu, em silêncio e em palavra, a fé que carregaria pela vida inteira.</p>
+
+          <p>A trajetória de uma menina que se torna mãe de santo em um Brasil de matriz colonial é, por si, uma narrativa de coragem. Mãe Zimá atravessou décadas de preconceito, da infância à maturidade, sustentando a chama de uma espiritualidade que era, ao mesmo tempo, herança e travessia.</p>
+
+          <h3>Casa de Ogum Megê</h3>
+          <p>Após perder seu pai de santo, ergueu, pelas próprias mãos e pela própria fé, a <strong>Casa de Ogum Megê</strong>, situada no Grande Bom Jardim, em Fortaleza. A casa tornou-se referência de acolhimento, cura e formação espiritual para gerações de filhas e filhos de santo, e abriu suas portas para a comunidade como espaço de cuidado integral: corpo, alma e território.</p>
+
+          <h3>Medicina tradicional popular de terreiro</h3>
+          <p>Em 2018, Mãe Zimá foi reconhecida <strong>Tesouro Vivo da Cultura do Ceará</strong>, distinção que a tornou a <em>primeira mãe de santo no Brasil</em> a receber o título de Mestra da Cultura por seu saber na <strong>medicina tradicional popular de terreiro</strong>. O reconhecimento institucional alcança, por meio dela, um campo amplo de conhecimento ancestral: o uso de ervas, banhos, defumações, rezas e preceitos do terreiro como prática terapêutica, espiritual e comunitária. É um saber que circula por fora dos consultórios e dos manuais, mas que cura pessoas há séculos.</p>
+
+          <h3>Transmissão</h3>
+          <p>Em sua casa, a transmissão acontece como sempre aconteceu nas tradições afro-brasileiras: pelo convívio, pela observação, pela prática. Há, em torno de Mãe Zimá, uma comunidade inteira que aprende com o exemplo. Sua existência pública, firme, generosa, intransigente quanto à dignidade das religiões de matriz africana, é, em si, um documento histórico da luta por reconhecimento e por liberdade religiosa no Brasil.</p>
+        </div>
+      </div>
+
+      <div>
+        <figure class="profile-img has-photo">
+            <img src="assets/mae-zima.png" alt="Retrato da Mestra Mãe Zimá, na Casa de Ogum Megê">
+          </figure>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="num">1947</div><div class="lbl">Nascimento<br>03 · abril</div></div>
+          <div class="stat"><div class="num">2018</div><div class="lbl">Reconhecida<br>Tesouro Vivo</div></div>
+          <div class="stat"><div class="num">1ª</div><div class="lbl">Mãe de santo<br>no Brasil</div></div>
+        </div>
+        <div class="profile-interview">
+          <h4>Entrevista <span>04 / 04</span></h4>
+          <p class="q">O que a senhora aprendeu com seus avós que segue ensinando hoje?</p>
+          <p class="a">Aprendi a colher antes do sol forte. A erva que se colhe de tarde não tem o mesmo trabalho. Meus avós não diziam: ensinavam pelo silêncio, pela mão, pelo cesto cheio na volta. A gente acha que aprende com palavra. Aprende-se com o cesto.</p>
+          <p class="q">Como nasceu a Casa de Ogum Megê, e o que ela representa para o Grande Bom Jardim?</p>
+          <p class="a">Levantei tijolo por tijolo. Quando meu pai de santo morreu, fiquei sem chão. Então fui erguer um. A Casa de Ogum Megê não nasceu pra mim; nasceu pras pessoas que ainda iam chegar. E elas chegaram. Cada uma com sua dor, cada uma com sua promessa. A casa abre cedo e fecha tarde. É o ritmo de quem cuida.</p>
+          <p class="q">O que a medicina tradicional popular de terreiro tem a dizer ao Brasil de hoje?</p>
+          <p class="a">Que o cuidado não é mercadoria. Cura é palavra, é cheiro, é toque, é escuta. O Brasil esqueceu de escutar. Nós, do terreiro, nunca esquecemos. Por isso a casa nunca esvazia.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>15 · Mestra Mãe Zimá</span>
+    </div>
+  </section>
+
+  <!-- ============== 16 · MÃE ZIMÁ · CRONOLOGIA & ORALIDADE ============== -->
+  <section class="page" data-screen-label="16 Mãe Zimá · Cronologia e oralidade">
+    <div class="crono-head">
+      <div class="mark">
+        <span class="eyebrow">XIV · CRONOLOGIA &amp; ORALIDADE</span>
+        <p class="who">Mestra<br>Mãe Zimá</p>
+      </div>
+      <div>
+        <h2 class="display">A chama que<br>atravessou <em>décadas</em>.</h2>
+        <p class="lead" style="margin-top: 18px;">Em uma sexta-feira santa de 1947 começa uma história que ainda escreve seus capítulos. A trajetória de Mãe Zimá é também a história do reconhecimento brasileiro de que a medicina tradicional popular de terreiro é, em si, ciência ancestral.</p>
+      </div>
+    </div>
+
+    <div class="crono-grid">
+      <div class="left">
+        <h3>Cronologia · Mãe Zimá</h3>
+        <ol class="timeline">
+          <li><span class="year">1947</span><div><h4>Nascimento</h4><p>Zimá Ferreira da Silva nasce em 3 de abril, sexta-feira santa. Coincidência que ela mesma toma como sinal.</p></div></li>
+          <li><span class="year">Infância</span><div><h4>Herança dos avós</h4><p>Recebe dos avós, em silêncio e em palavra, a fé que carregaria pela vida inteira: a Umbanda. Cumpre, em paralelo, os sacramentos da Igreja Católica, porque sua religião não era aceita pelos familiares.</p></div></li>
+          <li><span class="year">Juventude</span><div><h4>Travessia espiritual</h4><p>Inicia-se formalmente na Umbanda. Atravessa décadas de preconceito, sustentando uma espiritualidade que é, ao mesmo tempo, herança e travessia.</p></div></li>
+          <li><span class="year">Anos 80, 90</span><div><h4>Casa de Ogum Megê</h4><p>Após perder seu pai de santo, ergue, pelas próprias mãos, a Casa de Ogum Megê, no Grande Bom Jardim. <em>Tijolo por tijolo</em>, como costuma lembrar.</p></div></li>
+          <li><span class="year">Anos 2000</span><div><h4>Casa que cuida</h4><p>A Casa de Ogum Megê consolida-se como referência de acolhimento, cura e formação espiritual para gerações de filhas e filhos de santo, e de cuidado integral para a comunidade.</p></div></li>
+          <li><span class="year">2018</span><div><h4>Tesouro Vivo</h4><p>Reconhecida Tesouro Vivo da Cultura do Ceará. Torna-se a <em>primeira mãe de santo do Brasil</em> a receber o título de Mestra da Cultura por seu saber na medicina tradicional popular de terreiro.</p></div></li>
+          <li><span class="year">Hoje</span><div><h4>Patrimônio em vida</h4><p>Continua atendendo, ensinando, plantando, abrindo a casa cedo e fechando tarde. <em>O ritmo de quem cuida.</em></p></div></li>
+        </ol>
+      </div>
+
+      <div class="right">
+        <h3>Oralidade · vozes recolhidas</h3>
+        <ul class="fragments">
+          <li>“Aprende-se com o cesto.”<span class="src">Mãe Zimá · sobre o aprendizado das ervas</span></li>
+          <li>“Levantei tijolo por tijolo.”<span class="src">sobre a construção da Casa de Ogum Megê</span></li>
+          <li>“A casa não nasceu pra mim; nasceu pras pessoas que ainda iam chegar.”<span class="src">Mãe Zimá</span></li>
+          <li>“O cuidado não é mercadoria.”<span class="src">Mãe Zimá · sobre a medicina de terreiro</span></li>
+          <li>“Cura é palavra, é cheiro, é toque, é escuta.”<span class="src">Mãe Zimá · Casa de Ogum Megê</span></li>
+          <li>“O Brasil esqueceu de escutar. Nós, do terreiro, nunca esquecemos.”<span class="src">Mãe Zimá</span></li>
+        </ul>
+
+        <div class="doc-block" style="margin-top: 22px;">
+          <h5>Saber · Medicina tradicional popular de terreiro</h5>
+          <p>Conjunto integrado de práticas terapêuticas, espirituais e comunitárias do terreiro: uso de <em>ervas</em>, <em>banhos</em>, <em>defumações</em>, <em>rezas</em>, escuta atenta, cuidado integral. Conhecimento ancestral que circula por fora dos consultórios e dos manuais, e que cura pessoas há séculos. O reconhecimento da Mãe Zimá como Mestra da Cultura, em 2018, dá ao Brasil um marco institucional para esse saber.</p>
+          <div class="doc-meta"><span>cf. glossário · p. 22</span><span>Tradição afro-brasileira</span></div>
+        </div>
+
+        <p class="pullquote" style="margin-top: 22px; font-size: 24px;">
+          A casa abre cedo e fecha tarde. É o ritmo de quem cuida.
+          <cite>Mãe Zimá · Casa de Ogum Megê</cite>
+        </p>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>16 · Cronologia &amp; oralidade · Mãe Zimá</span>
+    </div>
+  </section>
+
+  <!-- ============== 17 · PONTO DE MEMÓRIA · ABERTURA ============== -->
+  <section class="page" data-screen-label="17 Ponto de Memória · Abertura" style="padding: 0;">
+    <div class="pm-hero">
+      <div class="top">
+        <span><span class="roman">XV</span> · SESSÃO ESPECIAL</span>
+        <span>Avenida General Osório de Paiva, 5623 · Canindezinho</span>
+      </div>
+
+      <div class="mid">
+        <p class="eyebrow" style="margin-bottom: 8px;">Memória territorial · Museologia social</p>
+        <h2>O <em>Ponto de Memória</em><br>do Grande<br>Bom Jardim.</h2>
+        <p class="lead" style="margin-top: 24px;">
+          Na periferia, a memória não cabe nos museus oficiais. Cabe nas casas, nas paredes, nos cadernos, nos quintais, nas paredes dos terreiros, nas fotografias guardadas em caixa de sapato. O Ponto de Memória do Grande Bom Jardim é a forma como o território assume, publicamente, a tarefa de guardar a si mesmo.
+        </p>
+      </div>
+
+      <div class="bot">
+        <div class="b"><strong>O QUÊ</strong><br>Arquivo comunitário de memória territorial; museologia social praticada por moradores, lideranças, mestras e mestres do Grande Bom Jardim.</div>
+        <div class="b"><strong>POR QUÊ</strong><br>Porque há, no território, uma preocupação coletiva com a guarda da própria memória, e porque o direito à memória é parte do direito à cidade.</div>
+        <div class="b"><strong>PARA QUEM</strong><br>Para a comunidade do Grande Bom Jardim, para a escola pública, para o pesquisador e para todo o cearense que ainda precisa entender o que a periferia produz.</div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>17 · Ponto de Memória · abertura</span>
+    </div>
+  </section>
+
+  <!-- ============== 18 · PONTO DE MEMÓRIA · PRINCÍPIOS ============== -->
+  <section class="page" data-screen-label="18 Princípios do Ponto de Memória">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">XVI · MUSEOLOGIA SOCIAL</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Oito princípios<br>
+          Um arquivo vivo<br>
+          Memória de quem fica
+        </p>
+      </div>
+      <div>
+        <h2 class="display">A periferia não<br>é ausência de <em>memória</em>:<br>é produtora dela.</h2>
+        <p class="lead" style="margin-top: 18px;">
+          O Ponto de Memória do Grande Bom Jardim se constitui sobre uma convicção simples e radical: que cabe à própria comunidade a guarda de sua história. Estes são os princípios que organizam esse compromisso.
+        </p>
+      </div>
+    </div>
+
+    <div class="principles">
+      <div class="principle">
+        <div class="n">I.</div>
+        <h4>Direito à memória</h4>
+        <p>A memória é direito coletivo. Comunidades periféricas têm direito de narrar suas próprias trajetórias, em sua própria voz, com seus próprios códigos. Memória é parte do direito à cidade.</p>
+      </div>
+      <div class="principle">
+        <div class="n">II.</div>
+        <h4>Arquivo comunitário</h4>
+        <p>O acervo é construído coletivamente: fotografias de família, cadernos manuscritos, gravações em áudio, objetos rituais, ferramentas de ofício, registros de festas, documentos doados pelas casas. Não há hierarquia entre o documento oficial e o testemunho vivido.</p>
+      </div>
+      <div class="principle">
+        <div class="n">III.</div>
+        <h4>Museologia social</h4>
+        <p>O Ponto de Memória não é réplica de museu institucional. É prática de museologia feita pela comunidade, em diálogo com a Política Nacional de Museus e com a tradição brasileira da Nova Museologia. O território é, ele mesmo, acervo.</p>
+      </div>
+      <div class="principle">
+        <div class="n">IV.</div>
+        <h4>Oralidade como fonte</h4>
+        <p>A palavra falada tem o estatuto de documento. Entrevistas, conversas, rodas de saberes, depoimentos gravados e transcritos formam o núcleo da pesquisa. A oralidade preserva o que nenhum papel guardaria.</p>
+      </div>
+      <div class="principle">
+        <div class="n">V.</div>
+        <h4>Contra o apagamento</h4>
+        <p>O Ponto de Memória responde a uma história longa de silenciamento das culturas populares, negras, indígenas e afro-brasileiras na periferia urbana brasileira. Recusar o apagamento é gesto político.</p>
+      </div>
+      <div class="principle">
+        <div class="n">VI.</div>
+        <h4>Articulação com a escola</h4>
+        <p>O acervo dialoga com a escola pública do território. Estudantes participam da coleta, da curadoria, da exposição. A memória torna-se conteúdo pedagógico vivo, e a escola torna-se parceira da casa de memória.</p>
+      </div>
+      <div class="principle">
+        <div class="n">VII.</div>
+        <h4>Diálogo com mestres e mestras</h4>
+        <p>Os Tesouros Vivos do território são, ao mesmo tempo, fonte e curadoria. O Ponto de Memória existe em estreita articulação com a Associação Zumbi, com o terreiro de São Miguel, com a Casa de Ogum Megê, com o CCBJ e com as casas que sustentam a vida cultural local.</p>
+      </div>
+      <div class="principle">
+        <div class="n">VIII.</div>
+        <h4>Permanência</h4>
+        <p>Memória se guarda no tempo. O Ponto de Memória sustenta-se pela teimosia diária da comunidade e pelo compromisso do poder público em reconhecer arquivos comunitários como patrimônio. Sem essa permanência, não há salvaguarda real do imaterial.</p>
+      </div>
+    </div>
+
+    <div class="pullquote" style="margin-top: 28px;">
+      O Grande Bom Jardim não é ausência de memória; é produtor de memória, patrimônio, espiritualidade, cultura e conhecimento.
+      <cite>Ponto de Memória do Grande Bom Jardim · princípio fundador</cite>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>18 · Princípios do Ponto de Memória</span>
+    </div>
+  </section>
+
+  <!-- ============== 19 · O FESTIVAL ============== -->
+  <section class="page" data-screen-label="19 O Festival">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">XVII · O FESTIVAL</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Edição 2026<br>
+          Cultura · Educação<br>
+          Três escolas
+        </p>
+      </div>
+      <div>
+        <h2 class="display">Levar a <em>escola</em><br>até o terreiro,<br>até a roda.</h2>
+        <p class="lead" style="margin-top: 24px;">
+          O Jardim de Tesouros Vivos elege a aproximação entre estudantes e mestres como o eixo de sua edição 2026: não para musealizar a tradição, mas para reconhecer que o aprendizado também mora nos lugares onde a cultura é, todos os dias, cultivada.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="left">
+        <h3 class="eyebrow" style="display:block;">Objetivos</h3>
+        <p>O Festival celebra os saberes e fazeres dos Mestres e Mestras da Cultura do Grande Bom Jardim como patrimônios vivos do Ceará; promove a aproximação entre comunidade escolar e detentores de saberes tradicionais; fortalece o pertencimento territorial dos estudantes da rede pública; e consolida uma cultura pública de reconhecimento e cuidado para com aqueles que sustentam, pela própria vida, a permanência das tradições. O Grande Bom Jardim é, hoje, o território de Fortaleza com a <strong>maior concentração de Mestres e Mestras da Cultura reconhecidos pelo Estado</strong>.</p>
+
+        <h3 class="eyebrow" style="display:block; margin-top: 28px;">Fase 1 · Vivências no território</h3>
+        <p>Em um primeiro momento, o Festival realiza vivências culturais com estudantes de três instituições públicas de ensino, acolhidos nos espaços geridos pelos próprios Mestres e Mestras da Cultura e em instituições de memória do território. A proposta inverte o roteiro tradicional: em vez de o mestre ir à escola, são os estudantes que vão ao território. Caminham até a Associação Zumbi, até a Casa de Ogum Megê, até o terreiro de Pai Neto, até os pontos de cultura que os formaram. Mais do que atividades culturais, as vivências aproximam estudantes, educadores e comunidades dos patrimônios vivos do território, fortalecendo vínculos entre memória, ancestralidade e pertencimento.</p>
+
+        <div class="schools-list">
+          <div class="school">
+            <span class="n">01</span>
+            <div class="name">Escola Municipal Professora Lireda Facó<small>Educação básica · Grande Bom Jardim, Fortaleza</small></div>
+            <span class="tag">Rede Municipal</span>
+          </div>
+          <div class="school">
+            <span class="n">02</span>
+            <div class="name">EMEIF José Alcides Pinto<small>Educação infantil e ensino fundamental · Grande Bom Jardim, Fortaleza</small></div>
+            <span class="tag">Rede Municipal</span>
+          </div>
+          <div class="school">
+            <span class="n">03</span>
+            <div class="name">IFCE<small>Instituto Federal de Educação, Ciência e Tecnologia do Ceará</small></div>
+            <span class="tag">Rede Federal</span>
+          </div>
+        </div>
+
+        <h3 class="eyebrow" style="display:block; margin-top: 28px;">Fase 2 · Culminância no CCBJ</h3>
+        <p>Como culminância dessa trajetória, o Festival realiza, no CCBJ, o seminário <em>“Jardim de Tesouros Vivos: Mestres da Cultura na Escola”</em>, articulando cultura e educação no território por meio do encontro entre Mestres e Mestras da Cultura, secretarias de educação, gestores escolares, universidades e instituições públicas. O seminário busca construir caminhos concretos para a <strong>inserção contínua dos saberes tradicionais nas práticas pedagógicas</strong> das escolas, reconhecendo os territórios culturais como espaços legítimos de formação, memória e produção de conhecimento.</p>
+
+        <p>A proposta responde, também, a desafios ainda presentes nos ambientes educacionais: o desconhecimento sobre a política dos Tesouros Vivos, o apagamento das culturas populares e afro-brasileiras e os episódios de intolerância religiosa ainda vivenciados nos espaços escolares. O evento reafirma, assim, a escola como espaço de diversidade, memória e diálogo intercultural.</p>
+      </div>
+
+      <div>
+        <ol class="pillars">
+          <li>
+            <span class="n">01</span>
+            <div>
+              <h4>Fase 1 · Vivências nos territórios</h4>
+              <p>Estudantes vão até os espaços dos mestres: terreiros, academias, casas de cultura e pontos de memória do Grande Bom Jardim.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">02</span>
+            <div>
+              <h4>Três instituições convidadas</h4>
+              <p>Escola Lireda Facó, EMEIF José Alcides Pinto e IFCE participam ativamente, criando vínculo direto com mestres e instituições de memória local.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">03</span>
+            <div>
+              <h4>Fase 2 · Seminário no CCBJ</h4>
+              <p>“Jardim de Tesouros Vivos: Mestres da Cultura na Escola”. Encontro com secretarias de educação, gestores escolares, universidades e instituições públicas.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">04</span>
+            <div>
+              <h4>Saberes na sala de aula</h4>
+              <p>O seminário busca construir caminhos concretos para a inserção contínua dos saberes tradicionais nas práticas pedagógicas das redes públicas.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">05</span>
+            <div>
+              <h4>Contra o apagamento</h4>
+              <p>Resposta institucional ao desconhecimento da política dos Tesouros Vivos, ao apagamento das culturas populares e afro-brasileiras, e à intolerância religiosa nas escolas.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">06</span>
+            <div>
+              <h4>Cultura como direito</h4>
+              <p>Reafirmação pública de que o acesso à cultura tradicional é direito do cidadão e responsabilidade do Estado.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>19 · O Festival</span>
+    </div>
+  </section>
+
+  <!-- ============== 20 · A POLÍTICA DOS TESOUROS VIVOS ============== -->
+  <section class="page" data-screen-label="20 Política dos Tesouros Vivos">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">XVIII · POLÍTICA PÚBLICA</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Lei Estadual<br>
+          Tesouros Vivos<br>
+          Patrimônio Imaterial
+        </p>
+      </div>
+      <div>
+        <h2 class="display">O Estado<br>que <em>reconhece</em><br>o que ainda<br>respira.</h2>
+        <p class="lead" style="margin-top: 24px;">
+          O programa Tesouros Vivos da Cultura do Ceará é uma das políticas públicas mais maduras do país para a salvaguarda do patrimônio imaterial, e parte de um princípio simples: a tradição existe porque há pessoas que a sustentam.
+        </p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <p class="dropcap">O <strong>programa Tesouros Vivos da Cultura do Ceará</strong> é instituído por lei estadual e operado pela Secretaria da Cultura do Estado do Ceará (Secult Ceará). Por meio de chamamento público, o Estado reconhece formalmente cidadãs e cidadãos cuja vida foi dedicada à manutenção e à transmissão de saberes tradicionais, da capoeira ao reisado, da umbanda à medicina popular, dos ofícios manuais à literatura oral. Os reconhecidos passam a receber <strong>subsídio mensal</strong> destinado à continuidade de suas atividades culturais.</p>
+
+      <p>O princípio é claro: o patrimônio cultural imaterial não está nos objetos, mas nas pessoas. Reconhecer um mestre é, no mesmo gesto, reconhecer uma casa, uma roda, um terreiro, uma comunidade inteira que naquele corpo encontra continuidade.</p>
+
+      <p>A política dos Tesouros Vivos integra, no Ceará, um campo mais amplo de salvaguarda do <strong>patrimônio imaterial</strong>, que inclui também o reconhecimento de bens registrados, a articulação com pontos de cultura, o apoio a manifestações tradicionais e o financiamento de iniciativas comunitárias. No entanto, é a figura do Tesouro Vivo que humaniza essa política: ela tira o patrimônio do museu e o devolve à rua, ao bairro, à casa onde se ensina.</p>
+
+      <p>O programa tornou-se <strong>referência nacional</strong>: recebeu prêmio do Ministério da Cultura e inspirou políticas semelhantes em outros estados brasileiros. O Ceará firma-se, assim, como pioneiro de um modo brasileiro de cuidar da tradição: pela escuta, pelo reconhecimento e pelo apoio direto a quem detém o saber.</p>
+
+      <p>O Festival Jardim de Tesouros Vivos é uma das janelas mais visíveis dessa política. Ao reunir, na mesma programação, mestres reconhecidos, estudantes da rede pública, lideranças comunitárias e o poder público estadual, o festival reafirma que cultura, no Ceará, é compromisso de Estado, e que o patrimônio cultural cearense não se conta apenas em monumentos, mas em vidas inteiras.</p>
+
+      <p>Há, neste reconhecimento, uma pedagogia silenciosa: ela ensina às novas gerações que ser brasileiro e ser cearense é também herdar tambor, ginga, erva, oração, ponto cantado. Ensina que a memória tem rosto. Ensina, sobretudo, que o cuidado com a tradição é gesto coletivo: do Estado, da escola, da comunidade e de cada um de nós.</p>
+    </div>
+
+    <div class="ornament-row">❦ &nbsp; tesouros vivos &nbsp; ❦</div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>20 · Política pública</span>
+    </div>
+  </section>
+
+  <!-- ============== 21 · VOZES DO TERRITÓRIO (página silenciosa) ============== -->
+  <section class="page" data-screen-label="21 Vozes do território">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">XIX · ORALIDADE</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Página silenciosa<br>
+          Fragmentos de memória<br>
+          1947 · 2026
+        </p>
+      </div>
+      <div>
+        <h2 class="display">Vozes do<br><em>território</em>.</h2>
+        <p class="lead" style="margin-top: 18px;">
+          Esta página recolhe, no formato em que sobrevivem, fragmentos da fala que circula entre as casas do Grande Bom Jardim. Tem o ritmo da memória: o que ficou guardado de uma conversa, o que se ouviu de um mestre, o que se repete na roda.
+        </p>
+      </div>
+    </div>
+
+    <div class="voices-silent">
+      <div class="ornament">❧</div>
+
+      <p class="v">
+        “No jardim do mundo, os mestres são raízes;<br>
+        e por isso seguram tudo.”
+        <cite>refrão recolhido entre as casas do Bom Jardim</cite>
+      </p>
+
+      <p class="v" style="font-size: 30px;">
+        “A casa abre cedo e fecha tarde.<br>
+        É o <span class="em">ritmo</span> de quem cuida.”
+        <cite>Mãe Zimá · Casa de Ogum Megê</cite>
+      </p>
+
+      <p class="v" style="font-size: 30px;">
+        “A casa tem mais gente do que se vê.”
+        <cite>Pai Neto Tranca Rua · AEUSM</cite>
+      </p>
+
+      <p class="v" style="font-size: 30px;">
+        “Quem está na segunda geração não é quem brilha:<br>
+        é quem <span class="em">segura</span>.”
+        <cite>Mestre Lula · Grupo Zumbi</cite>
+      </p>
+
+      <p class="v" style="font-size: 30px;">
+        “Quero que ela entre na roda<br>
+        como quem chega em <span class="em">casa</span>.”
+        <cite>Mestra Carla Mara · AZC</cite>
+      </p>
+
+      <div class="ornament">❧</div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>21 · Vozes do território</span>
+    </div>
+  </section>
+
+  <!-- ============== 22 · GLOSSÁRIO CULTURAL ============== -->
+  <section class="page" data-screen-label="22 Glossário cultural">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">XX · GLOSSÁRIO</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Palavras do<br>
+          terreiro, da roda,<br>
+          do território
+        </p>
+      </div>
+      <div>
+        <h2 class="display">Pequeno léxico<br>de uma <em>cultura</em><br>viva.</h2>
+        <p class="lead" style="margin-top: 18px;">
+          As páginas deste catálogo são atravessadas por palavras que pertencem a tradições específicas. Este glossário oferece chaves de leitura para quem entra no Jardim pela primeira vez.
+        </p>
+      </div>
+    </div>
+
+    <div class="glossary">
+      <div class="entry">
+        <p class="term"><em>Axé</em><span class="pron">[á-shê]</span></p>
+        <p class="def">Energia vital, força sagrada nas tradições de matriz africana. Princípio que circula entre pessoas, objetos rituais, comidas, gestos e palavras. Saúda-se com axé e despede-se com axé.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Berimbau</em></p>
+        <p class="def">Instrumento de corda única, de origem africana, sustentado por uma cabaça. Comanda a roda de capoeira: define o toque, o ritmo, a velocidade do jogo. Nas mãos do mestre, ensina sem falar.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Capoeira angola</em> / <em>regional</em></p>
+        <p class="def">Duas grandes vertentes da capoeira brasileira. A angola, mais lenta e baixa, preserva traços rituais africanos. A regional, mais alta e rápida, foi sistematizada na Bahia no século XX. A AZC trabalha ambas.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Casa</em></p>
+        <p class="def">Designação afetiva para qualquer espaço onde uma tradição se cultiva: o terreiro, a sede de capoeira, a casa do mestre. Não tem hierarquia entre prédio e quintal: o que define é a permanência da prática.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Codó Cearense</em></p>
+        <p class="def">Expressão que reconhece o Grande Bom Jardim como referência da espiritualidade afro-brasileira no Ceará, em analogia a Codó, no Maranhão, célebre pela densidade de seus terreiros.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Contracolonização</em></p>
+        <p class="def">Conceito proposto pelo mestre quilombola Antônio Bispo dos Santos (Nêgo Bispo): a recusa ativa, ancestral e cotidiana, à lógica colonial. Reconhecer culturas afro-indígenas é, por si, ato contracolonizador.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Defumação</em></p>
+        <p class="def">Prática terapêutica e espiritual de terreiro: queima de ervas para limpeza energética de pessoas, casas e ambientes. Parte integrante da medicina tradicional popular de terreiro.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Filho/filha de santo</em></p>
+        <p class="def">Pessoa iniciada em uma casa de Umbanda, Candomblé ou outra religião afro-brasileira, em relação de pertencimento espiritual com seu pai ou mãe de santo.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Ladainha</em> · <em>corrido</em></p>
+        <p class="def">Cantos da capoeira. A ladainha, mais longa e narrativa, abre a roda; o corrido, refrão respondido pelo coro, acompanha o jogo. Conservam, na boca dos mestres, séculos de memória oral.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Mãe de santo</em> / <em>Pai de santo</em></p>
+        <p class="def">Liderança espiritual de uma casa afro-brasileira (terreiro). Conduz iniciações, atendimentos, transmissão de saberes rituais e cuidado integral da comunidade.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Medicina tradicional popular de terreiro</em></p>
+        <p class="def">Conjunto integrado de práticas terapêuticas (ervas, banhos, defumações, rezas, escuta), saberes ancestrais e cuidado espiritual praticados em terreiros afro-brasileiros. Reconhecida em 2018, pela Mestra Mãe Zimá, como saber digno do título de Tesouro Vivo.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Museologia social</em></p>
+        <p class="def">Prática museológica feita pela comunidade, em diálogo com a Política Nacional de Museus. Reconhece o território como acervo e a oralidade como documento. Princípio orientador do Ponto de Memória do Grande Bom Jardim.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Patrimônio imaterial</em></p>
+        <p class="def">Conjunto de práticas, saberes, expressões e celebrações reconhecidas como bens culturais a serem salvaguardados pelo Estado, ainda que não tomem forma material. O programa Tesouros Vivos é instrumento de sua salvaguarda no Ceará.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Ponto cantado</em></p>
+        <p class="def">Canto ritual da Umbanda, geralmente curto, que invoca, saúda ou despede entidades espirituais. Aprende-se decorando, repetindo, escutando o tambor.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Reisado</em></p>
+        <p class="def">Folguedo popular cearense de raízes ibéricas e afro-brasileiras, celebrado entre o Natal e o Dia de Reis. No Bom Jardim, o reisado é uma das tradições mantidas por grupos como os Brincantes Sonoros de Bruno Sodré.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Roda</em></p>
+        <p class="def">Forma circular que organiza a capoeira: berimbau, atabaque, pandeiro, palmas, canto, jogo. É também ética: ninguém é maior do que a roda; nela, todos se vigiam e se cuidam.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Tambor de mina de caboclo</em></p>
+        <p class="def">Vertente da Umbanda originária de tradições afro-indígenas, que articula no mesmo terreiro as forças da mata (caboclos), das águas e dos antepassados. Tradição praticada por Pai Neto Tranca Rua.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Terreiro</em></p>
+        <p class="def">Espaço sagrado das religiões afro-brasileiras. Casa de fé, de cura, de transmissão de saberes e de cuidado comunitário. No Brasil, ainda hoje, alvo recorrente de racismo religioso.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Tesouro Vivo da Cultura</em></p>
+        <p class="def">Título conferido pelo Estado do Ceará a cidadãs e cidadãos cuja vida foi dedicada à manutenção e à transmissão de saberes tradicionais. Vem acompanhado de subsídio mensal para a continuidade das atividades culturais.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Tronco velho</em></p>
+        <p class="def">Em terreiros afro-brasileiros, expressão de reverência ao mais velho da casa, aquele em cujo corpo a memória se firmou e através de quem a tradição segue de pé. Pai Neto é um tronco velho.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Umbanda</em></p>
+        <p class="def">Religião brasileira de matriz afro-indígena, com elementos de tradições africanas, indígenas, católicas e espíritas. Patrimônio cosmológico, terapêutico e estético. Praticada por Pai Neto, Mãe Zimá e tantas outras casas do Grande Bom Jardim.</p>
+      </div>
+      <div class="entry">
+        <p class="term"><em>Vivência</em></p>
+        <p class="def">Encontro pedagógico-cultural que acontece no espaço do mestre, e não na escola. Os estudantes vão ao terreiro, à roda, à casa, à oficina. Forma central do Festival Jardim de Tesouros Vivos.</p>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>22 · Glossário cultural</span>
+    </div>
+  </section>
+
+  <!-- ============== 23 · NOTAS, FONTES & REFERÊNCIAS ============== -->
+  <section class="page" data-screen-label="23 Notas e referências">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">XXI · NOTAS &amp; FONTES</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Legislação<br>
+          Bibliografia<br>
+          Créditos documentais
+        </p>
+      </div>
+      <div>
+        <h2 class="display">Onde<br>esta <em>memória</em><br>se ancora.</h2>
+        <p class="lead" style="margin-top: 18px;">
+          Este aparato documental ancora as páginas anteriores em legislação, pesquisa e oralidade. Cada item registra de onde vem o que aqui foi guardado.
+        </p>
+      </div>
+    </div>
+
+    <div class="notes-grid">
+      <div class="nb">
+        <h4>Legislação &amp; políticas públicas</h4>
+        <ol>
+          <li><em>Tesouros Vivos da Cultura do Ceará.</em> Programa instituído por lei estadual; reconhece mestras e mestres da cultura tradicional cearense e estabelece subsídio mensal para a continuidade de suas atividades culturais. Operado pela Secretaria da Cultura do Estado do Ceará (Secult Ceará).</li>
+          <li><em>Patrimônio Cultural Imaterial.</em> Instrumentos federais de salvaguarda do patrimônio imaterial brasileiro, incluindo o registro de bens culturais imateriais, o inventário nacional de referências culturais e a Política Nacional de Patrimônio Cultural Imaterial.</li>
+          <li><em>Política Nacional de Museus &amp; museologia social.</em> Conjunto de orientações federais que reconhecem o museu social, o ecomuseu, o museu comunitário e o ponto de memória como práticas museológicas legítimas. Ancora o trabalho do Ponto de Memória do Grande Bom Jardim.</li>
+          <li><em>Capoeira como patrimônio cultural imaterial nacional.</em> Reconhecida em registro federal como bem cultural imaterial. Tradição afro-brasileira de matriz africana, gesto de resistência histórica.</li>
+        </ol>
+      </div>
+
+      <div class="nb">
+        <h4>Referências &amp; pensamento</h4>
+        <ol>
+          <li><em>Antônio Bispo dos Santos · Nêgo Bispo.</em> Mestre quilombola, pensador da contracolonização. Suas formulações sobre confluência, biointeração e recusa colonial atravessam a leitura crítica deste catálogo.</li>
+          <li><em>Luiz Rufino.</em> Pesquisador cuja interlocução com o CCBJ deixou ressonâncias entre as casas do Grande Bom Jardim, em particular a frase “Exu quer comer” como provocação política à sustentação real da cultura.</li>
+          <li><em>Tradições do tambor de mina de caboclo.</em> Vertente da Umbanda de matriz afro-indígena, em diálogo histórico com as tradições maranhenses e nordestinas; aqui referenciada a partir da prática de Pai Neto Tranca Rua.</li>
+          <li><em>Medicina tradicional popular de terreiro.</em> Campo de saber afro-brasileiro institucionalizado pela primeira vez, em 2018, com o reconhecimento da Mestra Mãe Zimá como Tesouro Vivo da Cultura do Ceará.</li>
+          <li><em>Nova Museologia.</em> Tradição brasileira e latino-americana de práticas museológicas comunitárias, da qual o Ponto de Memória do Grande Bom Jardim é herdeiro.</li>
+        </ol>
+      </div>
+
+      <div class="nb">
+        <h4>Fontes primárias do catálogo</h4>
+        <ol>
+          <li><em>Oralidade.</em> Falas dos Mestres e Mestras da Cultura do Grande Bom Jardim recolhidas em diagramação preliminar. Estão sujeitas à transcrição final e à revisão dos próprios entrevistados antes do fechamento editorial.</li>
+          <li><em>Documentação institucional.</em> CCBJ, Instituto Dragão do Mar, Secult Ceará, Governo do Estado do Ceará.</li>
+          <li><em>Endereços e localização.</em> Informações cedidas pelas próprias casas: CCBJ, AZC, AEUSM, Casa de Ogum Megê, Ponto de Memória do Grande Bom Jardim.</li>
+          <li><em>Cartografia afetiva.</em> Desenho original elaborado para esta edição; não substitui referência cartográfica oficial. Escala aproximada, leitura simbólica do território.</li>
+        </ol>
+      </div>
+
+      
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>23 · Notas, fontes &amp; referências</span>
+    </div>
+  </section>
+
+  <!-- ============== 24 · EXPEDIENTE ============== -->
+  <section class="page" data-screen-label="24 Expediente">
+    <div class="expediente-head">
+      <div>
+        <span class="eyebrow">XXII · Expediente</span>
+        <p class="ornament" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36px; color: var(--terra); line-height: 1; margin: 0;">❝</p>
+        <p style="margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.18em; color: var(--ink-mute); text-transform: uppercase;">
+          Governo do Estado<br>
+          Secult · IDM<br>
+          Equipe CCBJ
+        </p>
+      </div>
+      <div>
+        <h2 class="display">As mãos<br>que <em>fizeram</em><br>este Festival.</h2>
+        <p class="lead" style="margin-top: 22px;">
+          O Festival Jardim de Tesouros Vivos da Cultura do Ceará e este catálogo são fruto do trabalho conjunto de gestores públicos, profissionais e parceiros institucionais que sustentam, no dia a dia, a casa pública do CCBJ.
+        </p>
+      </div>
+    </div>
+
+    <div class="expediente-grid">
+      <section class="expediente-block">
+        <h4>Governo do Estado do Ceará</h4>
+        <p class="subhead">Poder Executivo Estadual</p>
+        <dl>
+          <dt>Governador</dt><dd>Elmano de Freitas</dd>
+          <dt>Vice-Governadora</dt><dd>Jade Romero</dd>
+        </dl>
+      </section>
+
+      <section class="expediente-block">
+        <h4>Secretaria da Cultura · Secult</h4>
+        <p class="subhead">Gabinete</p>
+        <dl>
+          <dt>Secretária da Cultura</dt><dd><em>Gecíola Fonseca</em></dd>
+          <dt>Secretário Executivo</dt><dd><em>Rafael Felismino</em></dd>
+          <dt>Chefia de Gabinete</dt><dd><em>Viana Júnior</em></dd>
+          <dt>Rede Pública de Equip. Culturais</dt><dd><em>Caio Feitosa</em></dd>
+          <dt>Patrimônio Cultural e Memória</dt><dd><em>Jessica Ohara</em></dd>
+        </dl>
+      </section>
+
+      <section class="expediente-block">
+        <h4>Instituto Dragão do Mar · IDM</h4>
+        <p class="subhead">Diretoria</p>
+        <dl>
+          <dt>Diretora-presidente</dt><dd>Rachel Gadelha</dd>
+          <dt>Diretora de Planejamento e Gestão</dt><dd>Adriana Victorino</dd>
+          <dt>Diretor de Articulação Institucional</dt><dd>Lenildo Gomes</dd>
+          <dt>Diretora de Formação</dt><dd>Bete Jaguaribe</dd>
+        </dl>
+      </section>
+
+      <section class="expediente-block">
+        <h4>Centro Cultural Bom Jardim · CCBJ</h4>
+        <p class="subhead">Núcleo Gestor</p>
+        <dl>
+          <dt>Superintendência</dt><dd>Marcos Levi Nunes</dd>
+          <dt>Assessoria de Gestão</dt><dd>João Paulo Barros</dd>
+          <dt>Psicóloga organizacional</dt><dd>Fernanda Alcântara</dd>
+          <dt>Coord. NArTE</dt><dd>Krisley Delfino</dd>
+          <dt>Coord. Escola de Cultura e Artes</dt><dd>Henrique Gonzaga</dd>
+          <dt>Coord. Ação Cultural</dt><dd>Fernanda Caúla</dd>
+          <dt>Coord. Comunicação</dt><dd>Nerice Carioca</dd>
+          <dt>Coord. Administrativa e Infra</dt><dd>Alexsandra Cruz</dd>
+        </dl>
+      </section>
+
+      <section class="expediente-block team" style="grid-column: 1 / -1;">
+        <h4>Equipe CCBJ</h4>
+        <p class="subhead">Profissionais que sustentam a casa pública, em ordem alfabética por equipe</p>
+
+        <div class="roster">
+          <div class="dept">
+            <h5>Gestão</h5>
+            <p class="count">2 profissionais</p>
+            <ul>
+              <li>Andrea Justino Lima</li>
+              <li>Thaís Freitas dos Santos</li>
+            </ul>
+          </div>
+          <div class="dept">
+            <h5>Administrativo</h5>
+            <p class="count">6 profissionais</p>
+            <ul>
+              <li>Brena Maria dos Santos Coelho</li>
+              <li>Camila Catucha de Souza Cavalcante</li>
+              <li>Débora das Chagas Silva</li>
+              <li>Jeane de Almeida Campos</li>
+              <li>Kamila Bezerra</li>
+              <li>Monique Régia Maia Dantas</li>
+            </ul>
+          </div>
+          <div class="dept">
+            <h5>Comunicação</h5>
+            <p class="count">10 profissionais</p>
+            <ul>
+              <li>Erika Monalisa Bezerra Monte</li>
+              <li>Francisca Edvania Freitas da Silva</li>
+              <li>Gracielly Alves da Costa Queiroz</li>
+              <li>Jordão de Sousa Fernandes Carlos</li>
+              <li>Mar Pereira</li>
+              <li>Paulo Robert Mendes Felix</li>
+              <li>Roberto Negão <em style="color:var(--ink-mute);">(Roberto de Sousa Junior)</em></li>
+              <li>Sophia Teixeira Araújo</li>
+              <li>Vanessa de Assis</li>
+              <li>Xaio Mar Lopes</li>
+            </ul>
+          </div>
+          <div class="dept span-2">
+            <h5>Ação Cultural</h5>
+            <p class="count">12 profissionais</p>
+            <ul>
+              <li>Adrielly de Fátima Rodrigues Lima</li>
+              <li>Ana Paula Sales Araújo</li>
+              <li>Fernanda dos Passos Sobral de Souza</li>
+              <li>Gilson Silva de Sousa</li>
+              <li>Iran Gomes da Silva</li>
+              <li>João Carlos Rodrigues Mourão</li>
+              <li>Júnior <em style="color:var(--ink-mute);">(José Pereira Carlos)</em></li>
+              <li>Luciana Costa Brilhante</li>
+              <li>Monique Maria de Sousa Rocha</li>
+              <li>Raquel Gomes Justino de Siqueira</li>
+              <li>Victória de Sousa Laurentino</li>
+              <li>Vitor Paulo Ferreira Barbosa</li>
+            </ul>
+          </div>
+          <div class="dept">
+            <h5>NArTE</h5>
+            <p class="count">12 profissionais</p>
+            <ul>
+              <li>Amanda Larissa da Silva Freire</li>
+              <li>Aurianderson Amaro de Araújo</li>
+              <li>Bianca Arcanjo dos Santos</li>
+              <li>Cláudio Henrique Lima Carneiro</li>
+              <li>Jackline Marques Magalhães</li>
+              <li>Lara da Silva Rodrigues Santiago</li>
+              <li>Luan Victor Policarpo Martins</li>
+              <li>Maria Micinete</li>
+              <li>Narah Adjane Sales e Sousa</li>
+              <li>Neuza Amirati Uchoa</li>
+              <li>Shirley Barroso Lima</li>
+              <li>Vitoria Ysla Sousa da Silva</li>
+            </ul>
+          </div>
+          <div class="dept span-2">
+            <h5>Escola de Cultura e Artes</h5>
+            <p class="count">22 profissionais</p>
+            <ul>
+              <li>Ana Ísis Porto Loureto</li>
+              <li>Dayana Ferreira de Souza</li>
+              <li>Diêgo de Lima Barros</li>
+              <li>Doroteia <em style="color:var(--ink-mute);">(Jocelia da Silva Ferreira)</em></li>
+              <li>Edivaldo Batista da Silva</li>
+              <li>Elena Meirelles</li>
+              <li>Felipe Martins Moreira</li>
+              <li>Francisca Flávia Solidade de Almeida</li>
+              <li>Gabura <em style="color:var(--ink-mute);">(Rubens Gabriel Mota)</em></li>
+              <li>Heitor Saraiva Bantim</li>
+              <li>João Pedro Rabelo de Souza</li>
+              <li>Karina de Oliveira da Silva</li>
+              <li>Lara Andrade Lima</li>
+              <li>Lis Pereira</li>
+              <li>Lucas Diniz Vaz</li>
+              <li>Mara Raiany do Carmo Araújo</li>
+              <li>Maria Fernanda de Souza Venâncio</li>
+              <li>Maria Zilma Mineiro Vieira</li>
+              <li>Nayana da Cunha Santos</li>
+              <li>Ricardo Henrique Gonzaga Raulino</li>
+              <li>Sara Martins de Lacerda</li>
+              <li>Silvana Marques Filho Medeiros</li>
+            </ul>
+          </div>
+          <div class="dept">
+            <h5>Infraestrutura</h5>
+            <p class="count">10 profissionais</p>
+            <ul>
+              <li>Carlos Cezar Mesquita de Lima</li>
+              <li>Emerson da Costa Nogueira</li>
+              <li>Francisco Agnaldo de Freitas</li>
+              <li>Francisco Antônio Secundo da Conceição</li>
+              <li>Francisco Dhones Silva</li>
+              <li>Hyrum Vinicius de Lima Barbosa</li>
+              <li>Marcos Roberto da Silva Fernandes</li>
+              <li>Natalia Sousa do Nascimento</li>
+              <li>Paulo Márcio Alves da Silva</li>
+              <li>Renan Braz</li>
+            </ul>
+          </div>
+          <div class="dept">
+            <h5>Zeladoria</h5>
+            <p class="count">5 profissionais</p>
+            <ul>
+              <li>Francisca Luana do Nascimento</li>
+              <li>Monica Alves de Sousa</li>
+              <li>Paulo César</li>
+              <li>Raimundo Nonato Castro</li>
+              <li>Sebastião Nonato Magalhães</li>
+            </ul>
+          </div>
+          <div class="dept">
+            <h5>Segurança Patrimonial</h5>
+            <p class="count">6 profissionais</p>
+            <ul>
+              <li>Antonio Felipe de Sousa</li>
+              <li>Cleiton Góes da Silva</li>
+              <li>Francisco Alves Ribeiro Neto</li>
+              <li>Francisco Saboia do Amaral Neto</li>
+              <li>Joel Lima de Melo</li>
+              <li>Luis Carlos Farias</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>24 · Expediente</span>
+    </div>
+  </section>
+
+  <!-- ============== 25 · COLOFÃO ============== -->
+  <section class="page" data-screen-label="25 Colofão">
+    <div class="colophon">
+      <div>
+        <p class="eyebrow">XXIII · Colofão</p>
+        <h2 class="display">Ficha<br>técnica.</h2>
+        <p class="lead" style="margin-top: 22px;">Este catálogo é uma publicação institucional do Centro Cultural Bom Jardim para o Festival Jardim de Tesouros Vivos da Cultura do Bom Jardim, edição 2026. Esta é a sua edição ampliada: aprofunda o gesto original em camadas de cronologia, oralidade, cartografia afetiva, museologia social, glossário e referências.</p>
+
+        <p style="margin-top: 28px;">A ele dedicam-se, em primeiro lugar, as Mestras e Mestres da Cultura do Grande Bom Jardim, sem cuja vida cotidiana o conteúdo destas páginas não existiria. A diagramação editorial deste volume foi pensada para o uso em catálogo institucional, apresentação pública, material gráfico e ações de divulgação cultural.</p>
+        </div>
+
+        <p class="signature" style="margin-top: 36px;">
+          “No jardim do mundo,<br>
+          os mestres são raízes;<br>
+          e por isso seguram tudo.”
+          <span class="small">Festival Jardim de Tesouros Vivos · CCBJ · 2026</span>
+        </p>
+      </div>
+
+      <div class="credits">
+        <p class="eyebrow muted" style="margin-bottom: 12px;">Realização &amp; expediente</p>
+        <div class="row">
+          <dt>Realização</dt>
+          <dd>Centro Cultural Bom Jardim · CCBJ<small>Equipamento da Secretaria da Cultura do Estado do Ceará</small></dd>
+        </div>
+        <div class="row">
+          <dt>Administração</dt>
+          <dd>Instituto Dragão do Mar · IDM</dd>
+        </div>
+        <div class="row">
+          <dt>Vinculação</dt>
+          <dd>Secretaria da Cultura do Estado do Ceará · Secult Ceará<small>Governo do Estado do Ceará</small></dd>
+        </div>
+        <div class="row">
+          <dt>Parceria</dt>
+          <dd>Mestres e Mestras da Cultura do Grande Bom Jardim<small>Rede de mestres reconhecidos pela política Tesouros Vivos</small></dd>
+        </div>
+        <div class="row">
+          <dt>Política pública</dt>
+          <dd>Tesouros Vivos da Cultura do Ceará<small>Programa estadual de salvaguarda do patrimônio imaterial</small></dd>
+        </div>
+        <div class="row">
+          <dt>Edição</dt>
+          <dd>2026 · Festival Jardim de Tesouros Vivos<small>Catálogo institucional · edição ampliada</small></dd>
+        </div>
+        <div class="row">
+          <dt>Cartografia</dt>
+          <dd>Mapa afetivo do Grande Bom Jardim<small>Desenho original elaborado para esta edição. Cartografia simbólica do território.</small></dd>
+        </div>
+        <div class="row">
+          <dt>Sessão especial</dt>
+          <dd>Ponto de Memória do Grande Bom Jardim<small>Museologia social, arquivo comunitário, articulação com a Política Nacional de Museus.</small></dd>
+        </div>
+        <div class="row">
+          <dt>Entrevistas</dt>
+          <dd>Mestras e Mestres da Cultura<small>Respostas em diagramação preliminar, sujeitas à transcrição final e à revisão dos próprios entrevistados antes do fechamento editorial.</small></dd>
+        </div>
+        <div class="row">
+          <dt>Público</dt>
+          <dd>Escolas da rede pública<small>Estudantes participantes das vivências culturais</small></dd>
+        </div>
+
+        <div style="margin-top: 28px;">
+          <p class="eyebrow muted" style="margin-bottom: 10px;">Catálogo institucional · 2026</p>
+          <div class="colophon-logobar">
+            <img src="assets/logos-institucionais.png" alt="Instituto Dragão do Mar · CCBJ · Secult Ceará · Governo do Estado do Ceará">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>25 · Colofão</span>
+    </div>
+  </section>
+
+</main>
+
+<script type="application/json" id="speaker-notes">[]</script>
+
+</body>
+</html>
