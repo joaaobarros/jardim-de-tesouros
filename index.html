@@ -191,6 +191,62 @@
     color: var(--terra);
   }
 
+  /* ── TESOUROS VIVOS CONTEXT ── */
+  .tv-context {
+    padding: 60px 80px;
+    border-top: 1px solid rgba(122,59,30,0.12);
+    border-bottom: 1px solid rgba(122,59,30,0.12);
+    max-width: 1000px;
+    margin: 0 auto 0;
+    display: flex;
+    align-items: center;
+    gap: 56px;
+  }
+
+  .tv-context-logo {
+    flex-shrink: 0;
+    width: 130px;
+  }
+
+  .tv-context-logo img {
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+  }
+
+  .tv-context-text .tv-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--terra-lt);
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .tv-context-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--fumo);
+    font-weight: 300;
+  }
+
+  .tv-context-text p strong {
+    font-weight: 400;
+    color: var(--terra);
+  }
+
+  @media (max-width: 800px) {
+    .tv-context {
+      flex-direction: column;
+      padding: 40px 24px;
+      gap: 32px;
+      text-align: center;
+    }
+    .tv-context-logo { width: 100px; }
+  }
+
   /* ── TESOUROS GRID ── */
   .tesouros {
     padding: 0 40px 120px;
@@ -564,13 +620,39 @@
 
 <!-- ═══ INTRO ═══ -->
 <section class="intro reveal">
-  <span class="section-label">Sobre o projeto</span>
+  <span class="section-label">Sobre o Festival</span>
   <p class="intro-text">
-    O título de <strong>Mestre da Cultura</strong> é o mais alto reconhecimento
-    que o Estado do Ceará oferece a quem guarda e transmite o patrimônio
-    imaterial do povo cearense. São pessoas. São vozes. São casas abertas.
-    São <strong>tesouros que ainda respiram</strong>.
+    O <strong>Festival Jardim de Tesouros Vivos</strong> é uma realização do
+    <strong>Centro Cultural Bom Jardim</strong>, gerido pelo Instituto Dragão do Mar
+    em parceria com a Secult CE. Agora em sua <strong>IV edição</strong>, o festival
+    parte de um entendimento simples: há saberes que não se aprendem em livros.
+    Aprendem-se de mão em mão, no compasso da ginga, no toque do atabaque.
+    Cada edição leva a escola ao território — e o território à cidade — celebrando
+    publicamente os Mestres e Mestras que sustentam, pela própria vida,
+    a <strong>cultura do Grande Bom Jardim</strong>.
   </p>
+</section>
+
+<!-- ═══ CONTEXTO: TESOUROS VIVOS ═══ -->
+<section class="tv-context reveal">
+  <div class="tv-context-logo">
+    <img src="image/tesouros-vivos.png"
+         alt="Logomarca do Programa Tesouros Vivos da Cultura do Estado do Ceará — Secult CE">
+  </div>
+  <div class="tv-context-text">
+    <span class="tv-label">Política pública · Secult CE · Lei estadual 13.842/2006</span>
+    <p>
+      O <strong>Programa Tesouros Vivos da Cultura</strong>, instituído por lei estadual
+      e operado pela Secretaria da Cultura do Ceará, reconhece pessoas que dedicaram
+      a vida à transmissão de saberes tradicionais — da capoeira à umbanda, da medicina
+      popular à literatura oral. Os reconhecidos recebem subsídio mensal do Estado para
+      manter suas casas, terreiros e rodas vivas. Referência nacional premiada pelo
+      Ministério da Cultura, a política humaniza a noção de patrimônio imaterial: tira-o
+      do museu e o devolve à rua, ao bairro, à casa onde o saber mora. O Grande Bom Jardim
+      é o território de Fortaleza com a <strong>maior concentração de Mestres e Mestras
+      reconhecidos pelo Estado</strong>.
+    </p>
+  </div>
 </section>
 
 <div class="divider reveal">
