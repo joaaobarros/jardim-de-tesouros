@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Cartografia Afetiva do Território · Jardim de Tesouros Vivos · IV Edição 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<nav class="nav-retorno" aria-label="Navegação principal">
+  <a href="../index.html">← Início</a>
+  <span class="nav-title"><a href="../catálogo.html" style="color:inherit;text-decoration:none"><strong>Catálogo</strong> · IV Edição 2026</a></span>
+</nav>
+
+<nav class="nav-secao" aria-label="Entre seções">
+  <a href="especiais.html" class="nav-prev">← Especiais · 20 anos CCBJ · 60 anos Secult</a>
+  <span class="nav-parte">PARTE II · Cartografia afetiva</span>
+  <a href="carla-mara.html" class="nav-next">Mestra Carla Mara →</a>
+</nav>
+
+<main class="book">
+  <!-- ============== 07 · MAPA AFETIVO ============== -->
+  <section class="page" data-screen-label="07 Mapa Afetivo do Território">
+    <div class="map-head">
+      <div>
+        <span class="eyebrow">V · CARTOGRAFIA AFETIVA</span>
+        <h2 class="display" style="margin-top: 14px;">Um mapa<br>desenhado <em>dentro</em><br>do território.</h2>
+      </div>
+      <div class="meta-block">
+        <strong>Grande Bom Jardim</strong><br>
+        Periferia sudoeste · Fortaleza, CE<br>
+        Cinco bairros · um único território<br>
+        <strong>Granja Lisboa · Granja Portugal</strong><br>
+        <strong>Siqueira · Canindezinho · Bom Jardim</strong><br>
+        <br>
+        Cinco pontos vivos · cinco casas-mestras<br>
+        Cartografia afetiva · não cartográfica
+      </div>
+    </div>
+
+    <div class="map-canvas">
+      <svg viewBox="0 0 1200 820" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="Mapa afetivo do Grande Bom Jardim">
+        <defs>
+          <pattern id="hatch-terra" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#a8401e" stroke-width="0.6" opacity="0.55"></line>
+          </pattern>
+          <pattern id="hatch-verde" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(135)">
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#4a5a32" stroke-width="0.6" opacity="0.45"></line>
+          </pattern>
+          <pattern id="hatch-ocre" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(0)">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="#b9802a" stroke-width="0.5" opacity="0.35"></line>
+          </pattern>
+          <pattern id="hatch-azul" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(90)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#2f4e5a" stroke-width="0.5" opacity="0.3"></line>
+          </pattern>
+          <pattern id="hatch-bg" patternUnits="userSpaceOnUse" width="3" height="3">
+            <circle cx="1.5" cy="1.5" r="0.4" fill="#a8401e" opacity="0.12"></circle>
+          </pattern>
+        </defs>
+
+        <!-- fundo papel -->
+        <rect x="0" y="0" width="1200" height="820" fill="#ece2cf"></rect>
+        <rect x="0" y="0" width="1200" height="820" fill="url(#hatch-bg)"></rect>
+
+        <!-- silhueta do território (Grande Bom Jardim) -->
+        <path d="M 80 160
+                 C 160 100, 320 100, 460 110
+                 C 580 120, 700 130, 820 130
+                 C 940 130, 1060 150, 1130 220
+                 C 1170 290, 1140 380, 1100 460
+                 C 1080 540, 1090 620, 1040 700
+                 C 980 760, 820 750, 700 740
+                 C 540 730, 360 720, 240 700
+                 C 140 680, 90 600, 70 480
+                 C 50 360, 70 240, 80 160 Z"
+              fill="#f3ece0" stroke="#1d1815" stroke-width="1.4" opacity="0.95"></path>
+
+        <!-- contorno duplo (efeito papel) -->
+        <path d="M 80 160
+                 C 160 100, 320 100, 460 110
+                 C 580 120, 700 130, 820 130
+                 C 940 130, 1060 150, 1130 220
+                 C 1170 290, 1140 380, 1100 460
+                 C 1080 540, 1090 620, 1040 700
+                 C 980 760, 820 750, 700 740
+                 C 540 730, 360 720, 240 700
+                 C 140 680, 90 600, 70 480
+                 C 50 360, 70 240, 80 160 Z"
+              fill="none" stroke="#6b5f53" stroke-width="0.6" stroke-dasharray="2 4" transform="translate(6 6)"></path>
+
+        <!-- ====== BAIRROS ====== -->
+
+        <!-- Granja Lisboa · ocupa porção central-norte (os 3 pontos AZC, CCBJ, AEUSM ficam aqui) -->
+        <path d="M 380 200
+                 C 540 180, 720 180, 820 230
+                 C 880 280, 880 360, 800 400
+                 C 720 440, 580 440, 460 420
+                 C 380 400, 320 340, 340 270
+                 C 350 230, 365 210, 380 200 Z"
+              fill="url(#hatch-terra)" stroke="#a8401e" stroke-width="0.9" opacity="0.7"></path>
+
+        <!-- Siqueira · sudoeste (Casa de Ogum Megê fica aqui) -->
+        <path d="M 200 380
+                 C 290 380, 380 420, 400 500
+                 C 410 580, 340 640, 250 620
+                 C 160 600, 110 520, 130 440
+                 C 140 410, 170 385, 200 380 Z"
+              fill="url(#hatch-verde)" stroke="#4a5a32" stroke-width="0.9" opacity="0.7"></path>
+
+        <!-- Canindezinho · leste, ao longo da Av. Osório de Paiva (Ponto de Memória) -->
+        <path d="M 880 300
+                 C 980 300, 1060 340, 1080 420
+                 C 1090 500, 1040 580, 950 620
+                 C 870 650, 810 620, 800 540
+                 C 790 460, 810 380, 850 330
+                 C 860 315, 870 305, 880 300 Z"
+              fill="url(#hatch-ocre)" stroke="#b9802a" stroke-width="0.9" opacity="0.7"></path>
+
+        <!-- Bom Jardim (núcleo histórico do bairro) · sul-central -->
+        <path d="M 460 480
+                 C 580 470, 700 490, 740 560
+                 C 760 620, 680 680, 580 680
+                 C 480 680, 400 620, 410 550
+                 C 420 510, 440 485, 460 480 Z"
+              fill="url(#hatch-terra)" stroke="#a8401e" stroke-width="0.8" opacity="0.5"></path>
+
+        <!-- Granja Portugal · noroeste -->
+        <path d="M 140 200
+                 C 220 190, 320 200, 350 260
+                 C 360 320, 290 360, 200 360
+                 C 130 350, 90 290, 110 240
+                 C 120 220, 130 205, 140 200 Z"
+              fill="url(#hatch-ocre)" stroke="#b9802a" stroke-width="0.8" opacity="0.5"></path>
+
+        <!-- ====== AV. GENERAL OSÓRIO DE PAIVA (rio simbólico) ======
+             Atravessa Canindezinho, segue em direção ao centro da cidade -->
+        <path id="rio" d="M 1170 700 C 1080 660, 1020 600, 970 540 C 920 480, 880 430, 850 380 C 820 330, 790 290, 740 270 C 660 230, 540 240, 420 260 C 320 280, 230 320, 160 360"
+              fill="none" stroke="#2f4e5a" stroke-width="14" stroke-linecap="round" opacity="0.16"></path>
+        <path d="M 1170 700 C 1080 660, 1020 600, 970 540 C 920 480, 880 430, 850 380 C 820 330, 790 290, 740 270 C 660 230, 540 240, 420 260 C 320 280, 230 320, 160 360"
+              fill="none" stroke="#2f4e5a" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 7" opacity="0.55"></path>
+
+        <!-- linhas de circulação cultural -->
+        <g stroke="#a8401e" stroke-width="1.4" fill="none" opacity="0.55" stroke-linecap="round">
+          <!-- entre os 3 pontos da Granja Lisboa -->
+          <path d="M 540 290 C 580 305, 620 305, 660 295" stroke-dasharray="1 5"></path>
+          <path d="M 660 295 C 700 305, 720 320, 720 340" stroke-dasharray="1 5"></path>
+          <path d="M 540 290 C 500 320, 480 360, 480 390" stroke-dasharray="1 5"></path>
+          <!-- Granja Lisboa até Siqueira (Ogum Megê) -->
+          <path d="M 540 290 C 420 380, 310 460, 260 510" stroke-dasharray="1 5"></path>
+          <!-- Granja Lisboa até Canindezinho (Ponto de Memória) -->
+          <path d="M 720 340 C 800 380, 880 430, 940 470" stroke-dasharray="1 5"></path>
+          <!-- Siqueira até Canindezinho passando por Bom Jardim -->
+          <path d="M 260 510 C 380 560, 520 600, 700 600 C 800 600, 880 540, 940 470" stroke-dasharray="1 5"></path>
+        </g>
+
+        <!-- vegetação simbólica (árvores que dão nome ao território) -->
+        <g fill="#4a5a32" opacity="0.6" stroke="#4a5a32" stroke-width="0.6">
+          <g transform="translate(180 150)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(1000 200)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(1080 620)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(140 690)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(400 700)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+          <g transform="translate(900 720)"><path d="M 0 0 C -10 -22, 10 -22, 0 0 Z M -3 0 L -3 14 L 3 14 L 3 0"></path></g>
+        </g>
+
+        <!-- grafismos afro-brasileiros pontuais -->
+        <g fill="#a8401e" opacity="0.45">
+          <path d="M 230 240 l 6 -10 l 6 10 l -6 10 z"></path>
+          <path d="M 1050 360 l 6 -10 l 6 10 l -6 10 z"></path>
+          <path d="M 320 670 l 6 -10 l 6 10 l -6 10 z"></path>
+          <path d="M 770 720 l 6 -10 l 6 10 l -6 10 z"></path>
+        </g>
+
+        <!-- rosa-dos-ventos -->
+        <g transform="translate(1080 180)" opacity="0.78">
+          <circle cx="0" cy="0" r="36" fill="none" stroke="#1d1815" stroke-width="0.8"></circle>
+          <circle cx="0" cy="0" r="22" fill="none" stroke="#1d1815" stroke-width="0.4" stroke-dasharray="1 3"></circle>
+          <path d="M 0 -32 L 4 0 L 0 32 L -4 0 Z" fill="#a8401e"></path>
+          <path d="M -32 0 L 0 -4 L 32 0 L 0 4 Z" fill="#1d1815" opacity="0.6"></path>
+          <text x="0" y="-44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#6b5f53">N</text>
+          <text x="0" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#6b5f53">S</text>
+          <text x="-48" y="3" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#6b5f53">O</text>
+          <text x="48" y="3" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="#6b5f53">L</text>
+        </g>
+
+        <!-- escala -->
+        <g transform="translate(120 750)" font-family="JetBrains Mono, monospace" font-size="9" fill="#6b5f53" letter-spacing="2">
+          <line x1="0" y1="0" x2="120" y2="0" stroke="#1d1815" stroke-width="1"></line>
+          <line x1="0" y1="-4" x2="0" y2="4" stroke="#1d1815" stroke-width="1"></line>
+          <line x1="60" y1="-3" x2="60" y2="3" stroke="#1d1815" stroke-width="0.8"></line>
+          <line x1="120" y1="-4" x2="120" y2="4" stroke="#1d1815" stroke-width="1"></line>
+          <text x="0" y="18">0</text>
+          <text x="60" y="18" text-anchor="middle">0,5</text>
+          <text x="120" y="18" text-anchor="middle">1 KM</text>
+          <text x="0" y="32" letter-spacing="3">ESCALA APROXIMADA · CARTOGRAFIA AFETIVA</text>
+        </g>
+
+        <!-- indicação direcional · Centro de Fortaleza -->
+        <g transform="translate(1140 720)" opacity="0.78">
+          <circle cx="0" cy="0" r="3" fill="#2f4e5a"></circle>
+          <!-- pequeno chevron (direção sudeste, em direção ao centro) -->
+          <path d="M -8 -4 L 0 0 L -8 4" fill="none" stroke="#2f4e5a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(6 0)"></path>
+          <text x="-12" y="-12" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="1.8" fill="#2f4e5a">CENTRO DE</text>
+          <text x="-12" y="-2" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="1.8" fill="#2f4e5a">FORTALEZA</text>
+          <text x="-12" y="10" text-anchor="end" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#2f4e5a">pela Osório de Paiva</text>
+        </g>
+
+        <!-- nomes dos bairros · letrado à mão -->
+        <g font-family="Cormorant Garamond, serif" font-style="italic" fill="#3a322c">
+          <text x="600" y="180" text-anchor="middle" font-size="24" letter-spacing="3">Granja Lisboa</text>
+          <text x="260" y="500" text-anchor="middle" font-size="20" letter-spacing="3">Siqueira</text>
+          <text x="960" y="350" text-anchor="middle" font-size="20" letter-spacing="3">Canindezinho</text>
+          <text x="220" y="280" text-anchor="middle" font-size="16" letter-spacing="2" fill="#6b5f53">Granja Portugal</text>
+          <text x="580" y="600" text-anchor="middle" font-size="18" letter-spacing="3" fill="#6b5f53">Bom Jardim</text>
+        </g>
+
+        <!-- nome do território · cabeçalho cartográfico -->
+        <g transform="translate(600 60)" text-anchor="middle">
+          <text font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="6" fill="#6b5f53">GRANDE BOM JARDIM</text>
+          <text y="22" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#a8401e">cinco bairros, cinco casas, um território</text>
+        </g>
+
+        <!-- ============ 5 PONTOS VIVOS ============ -->
+
+        <!-- Os 3 pontos da GRANJA LISBOA ficam próximos: -->
+
+        <!-- A · CCBJ · referência institucional do território -->
+        <g transform="translate(660 295)">
+          <circle r="22" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="14" fill="#a8401e"></circle>
+          <text y="5" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="18" fill="#f3ece0">A</text>
+          <text y="-32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2.5" fill="#1d1815">CCBJ</text>
+          <text y="44" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Centro Cultural</text>
+          <text y="58" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Bom Jardim</text>
+          <text y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">R. TRÊS CORAÇÕES</text>
+        </g>
+
+        <!-- B · AZC / Mestres Carla & Lula -->
+        <g transform="translate(540 290)">
+          <circle r="20" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="13" fill="#b9802a"></circle>
+          <text y="4" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="16" fill="#f3ece0">B</text>
+          <text y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2" fill="#1d1815">AZC</text>
+          <text y="-72" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Associação Zumbi</text>
+          <text y="-58" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Capoeira</text>
+          <text y="-46" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">R. DESCARTES BRAGA</text>
+        </g>
+
+        <!-- C · AEUSM / Pai Neto -->
+        <g transform="translate(740 360)">
+          <circle r="20" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="13" fill="#4a5a32"></circle>
+          <text y="4" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="16" fill="#f3ece0">C</text>
+          <text y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2" fill="#1d1815">AEUSM</text>
+          <text y="40" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Terreiro de</text>
+          <text y="54" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">São Miguel</text>
+          <text y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">R. MEDELLÍN</text>
+        </g>
+
+        <!-- D · Ogum Megê / Mãe Zimá · em Siqueira -->
+        <g transform="translate(260 510)">
+          <circle r="20" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="13" fill="#a8401e"></circle>
+          <text y="4" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="16" fill="#f3ece0">D</text>
+          <text y="-30" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2" fill="#1d1815">OGUM MEGÊ</text>
+          <text y="40" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Casa de</text>
+          <text y="54" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Ogum Megê</text>
+          <text y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">R. JOSÉ MAURÍCIO</text>
+        </g>
+
+        <!-- E · Ponto de Memória · em Canindezinho, sobre a Av. Osório de Paiva -->
+        <g transform="translate(960 470)">
+          <circle r="22" fill="#f3ece0" stroke="#1d1815" stroke-width="2"></circle>
+          <circle r="14" fill="#1d1815"></circle>
+          <text y="5" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500" font-size="18" fill="#f3ece0">E</text>
+          <text y="-32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2.5" fill="#1d1815">PONTO DE MEMÓRIA</text>
+          <text y="44" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Ponto de Memória do</text>
+          <text y="58" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#3a322c">Grande Bom Jardim</text>
+          <text y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="1.5" fill="#6b5f53">AV. OSÓRIO DE PAIVA</text>
+        </g>
+
+        <!-- rótulo da avenida (rio simbólico) -->
+        <text font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#2f4e5a" opacity="0.75" letter-spacing="3" transform="translate(530 250) rotate(-8)">av. general osório de paiva</text>
+        <text font-family="Cormorant Garamond, serif" font-style="italic" font-size="11" fill="#2f4e5a" opacity="0.55" letter-spacing="3" transform="translate(530 268) rotate(-8)">o rio do território</text>
+
+        <!-- carimbo no canto -->
+        <g transform="translate(150 180)" opacity="0.72">
+          <circle r="50" fill="none" stroke="#a8401e" stroke-width="1.4" stroke-dasharray="2 3"></circle>
+          <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="2.5" fill="#a8401e">CARTOGRAFIA</text>
+          <text x="0" y="8" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" fill="#a8401e">afetiva</text>
+          <text x="0" y="26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="6.5" letter-spacing="2" fill="#6b5f53">CCBJ · 2026</text>
+        </g>
+
+        <!-- assinatura -->
+        <text x="1080" y="790" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="2" fill="#6b5f53">DESENHO ORIGINAL · CCBJ · IV ED. · 2026</text>
+      </svg>
+    </div>
+
+    <div class="map-legend">
+      <div class="item">
+        <div class="key">A</div>
+        <div class="nm">Centro Cultural Bom Jardim<small>Granja Lisboa · casa pública</small></div>
+      </div>
+      <div class="item">
+        <div class="key">B</div>
+        <div class="nm">Associação Zumbi Capoeira<small>Mestre Lula · Mestra Carla Mara</small></div>
+      </div>
+      <div class="item">
+        <div class="key">C</div>
+        <div class="nm">AEUSM · Terreiro de São Miguel<small>Pai Neto Tranca Rua · Umbanda</small></div>
+      </div>
+      <div class="item">
+        <div class="key">D</div>
+        <div class="nm">Casa de Ogum Megê<small>Mestra Mãe Zimá · medicina de terreiro</small></div>
+      </div>
+      <div class="item">
+        <div class="key">E</div>
+        <div class="nm">Ponto de Memória<small>Canindezinho · museologia social</small></div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>07, Mapa afetivo do território</span>
+    </div>
+  </section>
+
+
+  <!-- ============== 08 · CARTOGRAFIA DAS CASAS ============== -->
+  <section class="page" data-screen-label="08 Cartografia das Casas">
+    <div class="section-head">
+      <div class="meta">
+        <span class="eyebrow">VI · CARTOGRAFIA</span>
+        <p class="ornament">❧</p>
+        <p class="stamp">
+          Cinco endereços<br>
+          Cinco casas-mestras<br>
+          Um território
+        </p>
+      </div>
+      <div>
+        <h2 class="display">Cinco lugares<br>onde a <em>cultura</em><br>tem chave da porta.</h2>
+        <p class="lead" style="margin-top: 24px;">
+          O território do Grande Bom Jardim é uma constelação de casas. Não monumentos, casas. Endereços onde, no contracampo da grande cidade, alguém abre a porta de manhã, varre o terreiro, afina o tambor, esquenta a água do banho de ervas, prepara a roda. Esta cartografia recolhe cinco delas.
+        </p>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="place-card">
+        <div class="pc-head">
+          <span class="pc-key">A · 01</span>
+          <span class="pc-cat">Equipamento público · Cultura</span>
+        </div>
+        <h4>Centro Cultural<br><em>Bom Jardim</em> · CCBJ</h4>
+        <p class="addr">Rua Três Corações, 400<br>Granja Lisboa · Fortaleza, CE<br>CEP 60540-441</p>
+        <p class="desc">Equipamento da Secult Ceará, administrado pelo Instituto Dragão do Mar. Casa pública da cultura no Grande Bom Jardim, formação, programação artística, articulação de políticas públicas e ponto de encontro entre mestres, artistas, educadores e comunidade. Em 2026, completa vinte anos.</p>
+        <div class="pc-foot">
+          <span class="who">desde <em>2006</em></span>
+          <span>Casa pública</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="pc-head">
+          <span class="pc-key">B · 02</span>
+          <span class="pc-cat">Capoeira · Educação popular</span>
+        </div>
+        <h4>Associação<br><em>Zumbi Capoeira</em> · AZC</h4>
+        <p class="addr">Rua Descartes Braga, 2860<br>Granja Lisboa · Fortaleza, CE</p>
+        <p class="desc">Casa sede da capoeira angola e regional no Grande Bom Jardim. Reúne Mestre Lula, Mestra Carla Mara e gerações inteiras de capoeiristas. Mantém coletivo feminino e coletivo LGBTQIA+, oferta projetos sociais e estende o ofício da roda à formação política dos corpos historicamente expulsos dela.</p>
+        <div class="pc-foot">
+          <span class="who">linhagem <em>Mestre Everaldo Ema</em></span>
+          <span>desde 1980 · Grupo Zumbi</span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="pc-head">
+          <span class="pc-key">C · 03</span>
+          <span class="pc-cat">Umbanda · Tambor de mina de caboclo</span>
+        </div>
+        <h4>AEUSM ·<br>Terreiro <em>São Miguel</em></h4>
+        <p class="addr">Rua Medellín, 2914<br>Granja Lisboa · Fortaleza, CE</p>
+        <p class="desc">Associação Espírita de Umbanda São Miguel, casa de Pai Neto Tranca Rua, tronco velho da tradição tambor de mina de caboclo. Centro de transmissão de saberes religiosos, espirituais e comunitários, sustenta a vida religiosa afro-brasileira no território e oferece cuidado integral à comunidade.</p>
+        <div class="pc-foot">
+          <span class="who">guardião <em>Pai Neto Tranca Rua</em></span>
+          <span>tronco velho · 1959, </span>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <div class="pc-head">
+          <span class="pc-key">D · 04</span>
+          <span class="pc-cat">Umbanda · Medicina tradicional popular</span>
+        </div>
+        <h4>Terreiro de<br><em>Ogum Megê</em></h4>
+        <p class="addr">Rua José Maurício, 800<br>Siqueira · Fortaleza, CE<br>CEP 60736-140</p>
+        <p class="desc">Casa erguida pelas próprias mãos da Mestra Mãe Zimá após a partida de seu pai de santo. Referência de acolhimento, cura e formação espiritual; espaço da medicina tradicional popular de terreiro, ervas, banhos, defumações, rezas, pelo qual Mãe Zimá tornou-se, em 2018, a primeira mãe de santo do Brasil reconhecida Mestra da Cultura.</p>
+        <div class="pc-foot">
+          <span class="who">guardiã <em>Mestra Mãe Zimá</em></span>
+          <span>desde antes de 2018</span>
+        </div>
+      </div>
+
+      <div class="place-card" style="grid-column: 1 / -1;">
+        <div class="pc-head">
+          <span class="pc-key">E · 05</span>
+          <span class="pc-cat">Memória · Museologia social · Arquivo comunitário</span>
+        </div>
+        <h4>Ponto de Memória<br>do <em>Grande Bom Jardim</em></h4>
+        <p class="addr">Avenida General Osório de Paiva, 5623 · Canindezinho · Fortaleza, CE</p>
+        <p class="desc">Iniciativa de museologia social que constitui, no próprio território, um arquivo comunitário do Grande Bom Jardim. Reúne narrativas populares, documentação fotográfica, registros orais e acervos doados pelas famílias, operando segundo a lógica de que a periferia não é ausência de memória, mas produtora dela. O Ponto de Memória articula o direito coletivo à memória com a luta pela permanência cultural do território, em diálogo com a Política Nacional de Museus.</p>
+        <div class="pc-foot">
+          <span class="who">articulação <em>comunitária</em></span>
+          <span>museologia social · território</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="folio">
+      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
+      <span>08, Cartografia das casas</span>
+    </div>
+  </section>
+
+
+</main>
+
+<nav class="nav-secao" style="border-top:1px solid var(--rule); border-bottom:none; margin-top:0;" aria-label="Paginação inferior">
+  <a href="especiais.html">← Especiais · 20 anos CCBJ · 60 anos Secult</a>
+  <span class="nav-parte">PARTE II · Cartografia afetiva</span>
+  <a href="carla-mara.html">Mestra Carla Mara →</a>
+</nav>
+
+</body>
+</html>
