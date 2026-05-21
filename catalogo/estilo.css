@@ -42,20 +42,20 @@
 
   /* ---------- paginação editorial ---------- */
   .book{
-    max-width: 1180px;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 56px 24px 96px;
+    padding: 48px 24px 96px;
   }
   .page{
     background: var(--paper);
     background-image:
       radial-gradient(1200px 600px at 20% 0%, rgba(168,64,30,0.05), transparent 60%),
       radial-gradient(900px 600px at 100% 100%, rgba(74,90,50,0.04), transparent 60%);
-    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.55), 0 1px 0 rgba(0,0,0,0.05);
-    padding: 84px 88px 96px;
-    margin-bottom: 48px;
+    box-shadow: 0 24px 48px -20px rgba(0,0,0,0.5), 0 1px 0 rgba(0,0,0,0.05);
+    padding: 72px 80px 80px;
+    margin-bottom: 40px;
     position: relative;
-    overflow: hidden;
+    border-radius: 2px;
   }
   .page::before{
     content:"";
@@ -70,14 +70,15 @@
   .page.spread{ padding-left: 64px; padding-right: 64px; }
 
   .folio{
-    position:absolute;
-    bottom: 36px; left: 88px; right: 88px;
     display:flex; justify-content: space-between; align-items: baseline;
     font-family: "JetBrains Mono", monospace;
     font-size: 10.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-mute);
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule-soft);
   }
   .folio .dot{ color: var(--terra); }
 
@@ -1325,14 +1326,30 @@
 
   /* responsivo */
   @media (max-width: 900px){
-    .page{ padding: 56px 28px 80px; }
-    .folio{ left: 28px; right: 28px; }
-    .section-head .profile .profile.invert .feature .colophon
-    .map-head .anniv-head .anniv-body .crono-head .crono-grid
-    .expediente-head .expediente-grid .cards-grid .glossary
-    .notes-grid .principles .pm-hero .bot{
-      grid-template-columns: 1fr;
+    .page{ padding: 40px 24px 56px; }
+    .section-head,
+    .profile,
+    .profile.invert,
+    .feature,
+    .colophon,
+    .map-head,
+    .anniv-head,
+    .anniv-body,
+    .crono-head,
+    .crono-grid,
+    .expediente-head,
+    .expediente-grid,
+    .cards-grid,
+    .glossary,
+    .notes-grid,
+    .principles,
+    .toc{
+      grid-template-columns: 1fr !important;
       gap: 28px;
+    }
+    .pm-hero .bot{
+      grid-template-columns: 1fr;
+      gap: 18px;
     }
     .two-col{ column-count: 1; }
     .cover{ min-height: auto; }
@@ -1342,29 +1359,14 @@
     .roster .dept.span-2 ul{ columns: 1; }
     .roster .dept.span-2{ grid-column: span 1; }
     .map-legend{ grid-template-columns: 1fr 1fr; }
+    .anniv-numerals .two{ font-size: clamp(100px, 22vw, 200px); }
+    .toc-list li{ grid-template-columns: 36px 1fr auto; gap: 12px; }
   }
 
   /* ====== PRINT (21 × 28 cm · sangria 3 mm · marcas de corte) ====== */
   @page{
     size: 210mm 280mm;
     margin: 0;
-  }
-  /* ====== AUTO-FIT · estabilidade A4/210×280 (preserva layout) ====== */
-  .page-fit{
-    transform-origin: top left;
-    width: 100%;
-    will-change: transform;
-  }
-  /* Tela e impressão: geometria fixa 210×280 mm (≈794×1058 px).
-     Conteúdo extra é dividido em novas páginas, nunca alterando
-     a altura ou largura do gabarito editorial. */
-  @media screen{
-    .page{
-      width: 794px;
-      height: 1058px;
-      min-height: 1058px;
-      overflow: hidden;
-    }
   }
   /* Respiros editoriais — espaço entre tópicos textuais */
   .page p{ margin: 0 0 1.15em; }
@@ -1450,7 +1452,7 @@
       pointer-events: none;
       opacity: 0.45;
     }
-    .folio{ left: 20mm; right: 20mm; bottom: 12mm; }
+    .folio{ position: absolute; left: 20mm; right: 20mm; bottom: 12mm; margin-top: 0; padding-top: 0; border-top: none; }
     .cover{ min-height: 280mm; padding: 0; }
     .cover-head, .cover-body, .cover-foot{ padding: 18mm 16mm; }
   }

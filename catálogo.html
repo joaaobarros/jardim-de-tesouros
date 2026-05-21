@@ -7,21 +7,346 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="catalogo/estilo.css">
 
 <style>
-  /* catálogo.html – estilos locais */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper:       #f3ece0;
+    --paper-deep:  #ece2cf;
+    --ink:         #1d1815;
+    --ink-soft:    #3a322c;
+    --ink-mute:    #6b5f53;
+    --rule:        #b9a98f;
+    --rule-soft:   #d4c4a6;
+    --terra:       #a8401e;
+    --terra-deep:  #8a3014;
+    --ocre:        #b9802a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Source Serif 4", Georgia, serif;
+    background: #2a241e;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── BARRA DE RETORNO ── */
+  .nav-retorno {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1d1815;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px;
+    border-bottom: 1px solid rgba(168,64,30,0.3);
+  }
+  .nav-retorno a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rule);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .nav-retorno a:hover { color: var(--terra); }
+  .nav-retorno .nav-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .nav-retorno .nav-title strong { color: var(--terra); font-weight: 500; }
+
+  /* ── HERO DA CAPA ── */
+  .cover-hero {
+    background:
+      radial-gradient(900px 600px at 15% 10%, rgba(168,64,30,0.18), transparent 65%),
+      radial-gradient(700px 500px at 90% 90%, rgba(74,90,50,0.16), transparent 60%),
+      linear-gradient(180deg, #efe5d1 0%, #e7d8bd 100%);
+    padding: 72px 80px 56px;
+    max-width: 960px;
+    margin: 48px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 24px 48px -20px rgba(0,0,0,0.5);
+  }
+
+  .cover-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(0,0,0,0.18);
+    padding-bottom: 22px;
+    margin-bottom: 48px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .crest {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+  .crest strong { color: var(--terra); font-weight: 500; }
+
+  .edition {
+    text-align: right;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+  .edition .roman {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 28px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    margin-top: 6px;
+  }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terra);
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: clamp(56px, 8vw, 104px);
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .cover-title .ital { font-style: italic; color: var(--terra); }
+  .cover-title .sm {
+    font-size: 0.4em;
+    font-style: italic;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 12px;
+    letter-spacing: -0.005em;
+  }
+
+  .cover-sub {
+    max-width: 580px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 19px;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+  }
+
+  /* ── LOGOBAR ── */
+  .cover-logobar {
+    border-top: 1px solid rgba(0,0,0,0.14);
+    padding-top: 18px;
+    margin-top: 4px;
+  }
+  .cover-logobar img {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* ── SUMÁRIO ── */
+  .toc-wrapper {
+    max-width: 960px;
+    margin: 0 auto 48px;
+    background: var(--paper);
+    background-image:
+      radial-gradient(1200px 600px at 20% 0%, rgba(168,64,30,0.04), transparent 60%),
+      radial-gradient(900px 600px at 100% 100%, rgba(74,90,50,0.03), transparent 60%);
+    box-shadow: 0 24px 48px -20px rgba(0,0,0,0.5);
+    padding: 72px 80px 80px;
+    border-radius: 2px;
+  }
+
+  .toc-header {
+    display: grid;
+    grid-template-columns: 1.1fr 2fr;
+    gap: 56px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 36px;
+  }
+
+  .toc-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(52px, 7vw, 78px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .toc-header h2 em { color: var(--terra); }
+
+  .toc-intro {
+    align-self: end;
+  }
+  .toc-intro p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 19px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .toc-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+
+  /* ── LISTA DO SUMÁRIO ── */
+  .toc-list {
+    list-style: none;
+    border-top: 1px solid var(--rule);
+  }
+
+  .toc-list li {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: baseline;
+    gap: 20px 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    transition: background 0.15s ease;
+  }
+  .toc-list li:hover { background: rgba(168,64,30,0.03); }
+
+  .toc-list li.part {
+    grid-template-columns: 1fr;
+    padding: 24px 0 10px;
+    border-bottom: 2px solid var(--ink);
+    background: none !important;
+    cursor: default;
+  }
+
+  .toc-list .part-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--terra);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .toc-list .part-name {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+  }
+
+  .toc-list .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--terra);
+    padding-top: 3px;
+  }
+
+  .toc-list .title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 21px;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .toc-list .title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .toc-list .title a:hover { color: var(--terra); }
+
+  .toc-list .title small {
+    display: block;
+    font-family: "Source Serif 4", serif;
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin-top: 3px;
+  }
+
   .toc-link {
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     letter-spacing: 0.14em;
-    color: var(--terra) !important;
+    color: var(--terra);
     text-decoration: none;
     white-space: nowrap;
+    transition: color 0.2s;
   }
-  .toc-link:hover { text-decoration: underline; }
-</style>
+  .toc-link:hover { color: var(--terra-deep); text-decoration: underline; }
 
+  /* ── FOOTER ── */
+  footer {
+    background: #1d1815;
+    padding: 60px 60px 48px;
+    text-align: center;
+    margin-top: 0;
+  }
+  footer img {
+    height: 28px;
+    filter: brightness(0) invert(1) opacity(0.35);
+    margin-bottom: 28px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    font-style: italic;
+    color: var(--ocre);
+    margin-bottom: 10px;
+  }
+  .footer-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.25);
+    line-height: 2;
+  }
+
+  /* ── RESPONSIVO ── */
+  @media (max-width: 800px) {
+    .cover-hero, .toc-wrapper { padding: 40px 24px 48px; }
+    .cover-head { flex-direction: column; gap: 16px; }
+    .edition { text-align: left; }
+    .toc-header { grid-template-columns: 1fr; gap: 24px; }
+    .toc-list li { grid-template-columns: 40px 1fr; }
+    .toc-list li .toc-link { display: none; }
+    footer { padding: 40px 24px 32px; }
+  }
+</style>
 </head>
 <body>
 
@@ -30,152 +355,212 @@
   <span class="nav-title"><strong>Jardim de Tesouros Vivos</strong> · Catálogo · IV Edição · 2026</span>
 </nav>
 
-<main class="book">
-  <!-- ============== 01 · CAPA ============== -->
-  <section class="page cover" data-screen-label="01 Capa">
-    <header class="cover-head">
-      <div class="crest">
-        <strong>Centro Cultural Bom Jardim</strong><br>
-        Instituto Dragão do Mar<br>
-        Secretaria da Cultura do Estado do Ceará
-      </div>
-      <div class="edition">
-        Primeiro catálogo · edição ampliada
-        <span class="roman">IV ed.</span>
-        Festival Jardim de Tesouros Vivos<br>
-        Catálogo institucional · 2026
-      </div>
-    </header>
-
-    <div class="cover-body">
-      <p class="eyebrow">Memória viva · Grande Bom Jardim · Fortaleza, Ceará</p>
-      <h1 class="display">
-        Jardim de<br>
-        <span class="ital">Tesouros</span><br>
-        Vivos
-        <span class="sm">da cultura do Bom Jardim</span>
-      </h1>
-      <p class="cover-sub">
-        Sobre os saberes que se cultivam no chão, na roda, no terreiro e na boca dos mais velhos, e que florescem, geração após geração, no território do Grande Bom Jardim.
-      </p>
+<!-- ── CAPA ── -->
+<div class="cover-hero">
+  <div class="cover-head">
+    <div class="crest">
+      <strong>Centro Cultural Bom Jardim</strong><br>
+      Instituto Dragão do Mar<br>
+      Secretaria da Cultura do Estado do Ceará
     </div>
-
-    <footer class="cover-foot">
-      <div class="cols">
-        <div class="col">
-          <h4>Realização</h4>
-          <p>
-            Centro Cultural Bom Jardim (CCBJ), equipamento da Secult Ceará,
-            administrado pelo Instituto Dragão do Mar, em parceria com os
-            Mestres e Mestras da Cultura do Grande Bom Jardim.
-          </p>
-        </div>
-        <div class="col">
-          <h4>Mestres &amp; Mestras</h4>
-          <p>
-            Mestra Carla Mara<br>
-            Mestre Lula<br>
-            Mestre Pai Neto Tranca Rua<br>
-            Mestra Mãe Zimá
-          </p>
-        </div>
-        <div class="col">
-          <h4>Política Pública</h4>
-          <p>
-            Tesouros Vivos da Cultura do Ceará, programa estadual de reconhecimento
-            e salvaguarda do patrimônio imaterial cearense.
-          </p>
-        </div>
-      </div>
-
-      <div class="cover-logobar" aria-label="Logos institucionais">
-        <img src="image/logos-institucionais.png" alt="Instituto Dragão do Mar · CCBJ · Secult Ceará · Governo do Estado do Ceará">
-      </div>
-
-      <div class="cover-stamp">
-        <span>Edição ampliada · 2026 · historiografia viva do território</span>
-        <span class="iss">21 × 28 cm · 25 pp.</span>
-      </div>
-    </footer>
-  </section>
-
-
-  <!-- ============== 02 · SUMÁRIO ============== -->
-  <section class="page" data-screen-label="02 Sumário">
-    <div class="toc">
-      <div>
-        <p class="eyebrow">Sumário</p>
-        <h2 class="display">Sobre o<br><em>que se</em><br>guarda.</h2>
-        <p style="margin-top: 28px; color: var(--ink-mute); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.45;">
-          Um catálogo das vidas, dos ofícios, dos terreiros e dos territórios que sustentam a cultura tradicional no Grande Bom Jardim. Esta edição ampliada aprofunda a publicação original em camadas de cronologia, oralidade, cartografia afetiva e museologia social.
-        </p>
-        <p style="margin-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--ink-mute); text-transform: uppercase;">
-          25 páginas · 6 seções · 4 mestres &amp; mestras · 1 cartografia afetiva · 1 ponto de memória
-        </p>
-      </div>
-      <ol class="toc-list">
-        <li class="part">
-          <span class="part-label">PARTE I · Abertura</span>
-          <span class="part-name">A casa pública, a história, a chegada.</span>
-        </li>
-        <li><span class="num">I.</span><span class="title"><a href="catalogo/apresentacao.html" style="color:inherit;text-decoration:none;">Apresentação<small>O Festival, o CCBJ e os caminhos da política pública dos Tesouros Vivos.</small></a></span><a href="catalogo/apresentacao.html" class="toc-link">p.&nbsp;03 →</a></li>
-        <li><span class="num">II.</span><span class="title"><a href="catalogo/apresentacao.html" style="color:inherit;text-decoration:none;">Carta do Superintendente<small>Marcos Levi Nunes · Centro Cultural Bom Jardim</small></a></span><a href="catalogo/apresentacao.html" class="toc-link">p.&nbsp;04 →</a></li>
-        <li><span class="num">III.</span><span class="title"><a href="catalogo/especiais.html" style="color:inherit;text-decoration:none;">Especial · Vinte anos do CCBJ<small>Duas décadas de cultura, comunidade e território no Grande Bom Jardim.</small></a></span><a href="catalogo/especiais.html" class="toc-link">p.&nbsp;05 →</a></li>
-        <li><span class="num">IV.</span><span class="title"><a href="catalogo/especiais.html" style="color:inherit;text-decoration:none;">Especial · Sessenta anos da Secult Ceará<small>1966 · 2026 · Articulação com o CCBJ e o Jardim de Tesouros Vivos.</small></a></span><a href="catalogo/especiais.html" class="toc-link">p.&nbsp;06 →</a></li>
-
-        <li class="part">
-          <span class="part-label">PARTE II · Cartografia afetiva</span>
-          <span class="part-name">Um mapa desenhado dentro do território.</span>
-        </li>
-        <li><span class="num">V.</span><span class="title"><a href="catalogo/cartografia.html" style="color:inherit;text-decoration:none;">Mapa afetivo do Grande Bom Jardim<small>Cartografia desenhada do território, terreiros, rodas, casas, rios simbólicos.</small></a></span><a href="catalogo/cartografia.html" class="toc-link">p.&nbsp;07 →</a></li>
-        <li><span class="num">VI.</span><span class="title"><a href="catalogo/cartografia.html" style="color:inherit;text-decoration:none;">Cartografia das casas<small>Endereços, descrições e geografia afetiva dos cinco lugares.</small></a></span><a href="catalogo/cartografia.html" class="toc-link">p.&nbsp;08 →</a></li>
-
-        <li class="part">
-          <span class="part-label">PARTE III · Mestres &amp; Mestras da Cultura</span>
-          <span class="part-name">Vidas que sustentam a tradição, perfil, cronologia e oralidade.</span>
-        </li>
-        <li><span class="num">VII.</span><span class="title"><a href="catalogo/carla-mara.html" style="color:inherit;text-decoration:none;">Mestra Carla Mara<small>Mestra da Cultura em Capoeira · Associação Zumbi Capoeira</small></a></span><a href="catalogo/carla-mara.html" class="toc-link">p.&nbsp;09 →</a></li>
-        <li><span class="num">VIII.</span><span class="title"><a href="catalogo/carla-mara.html" style="color:inherit;text-decoration:none;">Mestra Carla Mara · Cronologia &amp; oralidade<small>Quatro décadas de roda · vozes recolhidas no território.</small></a></span><a href="catalogo/carla-mara.html" class="toc-link">p.&nbsp;10 →</a></li>
-        <li><span class="num">IX.</span><span class="title"><a href="catalogo/mestre-lula.html" style="color:inherit;text-decoration:none;">Mestre Lula<small>Mestre da Cultura em Capoeira · Conselho de Mestres do Ceará</small></a></span><a href="catalogo/mestre-lula.html" class="toc-link">p.&nbsp;11 →</a></li>
-        <li><span class="num">X.</span><span class="title"><a href="catalogo/mestre-lula.html" style="color:inherit;text-decoration:none;">Mestre Lula · Cronologia &amp; oralidade<small>Linhagem, palavra dada e o caderno que segura.</small></a></span><a href="catalogo/mestre-lula.html" class="toc-link">p.&nbsp;12 →</a></li>
-        <li><span class="num">XI.</span><span class="title"><a href="catalogo/pai-neto.html" style="color:inherit;text-decoration:none;">Mestre Pai Neto Tranca Rua<small>Mestre da Cultura em Umbanda · Tambor de Mina de Caboclo</small></a></span><a href="catalogo/pai-neto.html" class="toc-link">p.&nbsp;13 →</a></li>
-        <li><span class="num">XII.</span><span class="title"><a href="catalogo/pai-neto.html" style="color:inherit;text-decoration:none;">Mestre Pai Neto · Cronologia &amp; oralidade<small>Tronco velho · fragmentos do terreiro de São Miguel.</small></a></span><a href="catalogo/pai-neto.html" class="toc-link">p.&nbsp;14 →</a></li>
-        <li><span class="num">XIII.</span><span class="title"><a href="catalogo/mae-zima.html" style="color:inherit;text-decoration:none;">Mestra Mãe Zimá<small>Mestra da Cultura em Medicina Tradicional Popular de Terreiro</small></a></span><a href="catalogo/mae-zima.html" class="toc-link">p.&nbsp;15 →</a></li>
-        <li><span class="num">XIV.</span><span class="title"><a href="catalogo/mae-zima.html" style="color:inherit;text-decoration:none;">Mestra Mãe Zimá · Cronologia &amp; oralidade<small>Casa de Ogum Megê · a chama que atravessou décadas.</small></a></span><a href="catalogo/mae-zima.html" class="toc-link">p.&nbsp;16 →</a></li>
-
-        <li class="part">
-          <span class="part-label">PARTE IV · Memória territorial</span>
-          <span class="part-name">O direito à memória nas periferias.</span>
-        </li>
-        <li><span class="num">XV.</span><span class="title"><a href="catalogo/ponto-de-memoria.html" style="color:inherit;text-decoration:none;">Ponto de Memória do Grande Bom Jardim<small>Museologia social, arquivo comunitário e narrativas populares.</small></a></span><a href="catalogo/ponto-de-memoria.html" class="toc-link">p.&nbsp;17 →</a></li>
-        <li><span class="num">XVI.</span><span class="title"><a href="catalogo/ponto-de-memoria.html" style="color:inherit;text-decoration:none;">Princípios do Ponto de Memória<small>Oito princípios de uma museologia feita pela comunidade.</small></a></span><a href="catalogo/ponto-de-memoria.html" class="toc-link">p.&nbsp;18 →</a></li>
-
-        <li class="part">
-          <span class="part-label">PARTE V · Festival e Política</span>
-          <span class="part-name">A travessia entre território, escola e Estado.</span>
-        </li>
-        <li><span class="num">XVII.</span><span class="title"><a href="catalogo/festival.html" style="color:inherit;text-decoration:none;">O Festival<small>Duas fases: vivências no território e seminário “Mestres da Cultura na Escola”.</small></a></span><a href="catalogo/festival.html" class="toc-link">p.&nbsp;19 →</a></li>
-        <li><span class="num">XVIII.</span><span class="title"><a href="catalogo/festival.html" style="color:inherit;text-decoration:none;">A política dos Tesouros Vivos<small>Lei estadual, reconhecimento e patrimônio imaterial.</small></a></span><a href="catalogo/festival.html" class="toc-link">p.&nbsp;20 →</a></li>
-
-        <li class="part">
-          <span class="part-label">PARTE VI · Documento &amp; arquivo</span>
-          <span class="part-name">Oralidade, glossário, notas e expediente.</span>
-        </li>
-        <li><span class="num">XIX.</span><span class="title"><a href="catalogo/arquivo.html" style="color:inherit;text-decoration:none;">Vozes do território<small>Página silenciosa, fragmentos recolhidos entre 1980 e hoje.</small></a></span><a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;21 →</a></li>
-        <li><span class="num">XX.</span><span class="title"><a href="catalogo/arquivo.html" style="color:inherit;text-decoration:none;">Glossário cultural<small>Palavras do terreiro, da roda, da medicina popular e do território.</small></a></span><a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;22 →</a></li>
-        <li><span class="num">XXI.</span><span class="title"><a href="catalogo/arquivo.html" style="color:inherit;text-decoration:none;">Notas, fontes e referências<small>Legislação, pesquisas, bibliografia e créditos documentais.</small></a></span><a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;23 →</a></li>
-        <li><span class="num">XXII.</span><span class="title"><a href="catalogo/arquivo.html" style="color:inherit;text-decoration:none;">Expediente<small>Governo do Estado, Secult, IDM e equipe do CCBJ.</small></a></span><a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;24 →</a></li>
-        <li><span class="num">XXIII.</span><span class="title"><a href="catalogo/arquivo.html" style="color:inherit;text-decoration:none;">Colofão<small>Ficha técnica, créditos e marcações editoriais.</small></a></span><a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;25 →</a></li>
-      </ol>
+    <div class="edition">
+      Primeiro catálogo · edição ampliada
+      <span class="roman">IV ed.</span>
+      Festival Jardim de Tesouros Vivos<br>
+      Catálogo institucional · 2026
     </div>
-    <div class="folio">
-      <span>Jardim de Tesouros Vivos <span class="dot">·</span>&nbsp;IV EDIÇÃO · AMPLIADA</span>
-      <span>02, Sumário</span>
+  </div>
+
+  <span class="eyebrow">Memória viva · Grande Bom Jardim · Fortaleza, Ceará</span>
+
+  <h1 class="cover-title">
+    Jardim de<br>
+    <span class="ital">Tesouros</span><br>
+    Vivos
+    <span class="sm">da cultura do Bom Jardim</span>
+  </h1>
+
+  <p class="cover-sub">
+    Sobre os saberes que se cultivam no chão, na roda, no terreiro e na boca dos mais velhos, e que florescem, geração após geração, no território do Grande Bom Jardim.
+  </p>
+
+  <div class="cover-logobar">
+    <img src="image/logos-institucionais.png" alt="Instituto Dragão do Mar · CCBJ · Secult Ceará · Governo do Estado do Ceará">
+  </div>
+</div>
+
+<!-- ── SUMÁRIO ── -->
+<div class="toc-wrapper">
+  <div class="toc-header">
+    <div>
+      <span class="eyebrow">Sumário</span>
+      <h2>Sobre o<br><em>que se</em><br>guarda.</h2>
     </div>
-  </section>
+    <div class="toc-intro">
+      <p>Um catálogo das vidas, dos ofícios, dos terreiros e dos territórios que sustentam a cultura tradicional no Grande Bom Jardim. Esta edição ampliada aprofunda a publicação original em camadas de cronologia, oralidade, cartografia afetiva e museologia social.</p>
+      <span class="toc-meta">25 páginas · 6 seções · 4 mestres &amp; mestras · 1 cartografia afetiva · 1 ponto de memória</span>
+    </div>
+  </div>
 
+  <ol class="toc-list">
 
-</main>
+    <li class="part">
+      <span class="part-label">PARTE I · Abertura</span>
+      <span class="part-name">A casa pública, a história, a chegada.</span>
+    </li>
+    <li>
+      <span class="num">I.</span>
+      <span class="title"><a href="catalogo/apresentacao.html">Apresentação<small>O Festival, o CCBJ e os caminhos da política pública dos Tesouros Vivos.</small></a></span>
+      <a href="catalogo/apresentacao.html" class="toc-link">p.&nbsp;03 →</a>
+    </li>
+    <li>
+      <span class="num">II.</span>
+      <span class="title"><a href="catalogo/apresentacao.html">Carta do Superintendente<small>Marcos Levi Nunes · Centro Cultural Bom Jardim</small></a></span>
+      <a href="catalogo/apresentacao.html" class="toc-link">p.&nbsp;04 →</a>
+    </li>
+    <li>
+      <span class="num">III.</span>
+      <span class="title"><a href="catalogo/especiais.html">Especial · Vinte anos do CCBJ<small>Duas décadas de cultura, comunidade e território no Grande Bom Jardim.</small></a></span>
+      <a href="catalogo/especiais.html" class="toc-link">p.&nbsp;05 →</a>
+    </li>
+    <li>
+      <span class="num">IV.</span>
+      <span class="title"><a href="catalogo/especiais.html">Especial · Sessenta anos da Secult Ceará<small>1966 · 2026 · Articulação com o CCBJ e o Jardim de Tesouros Vivos.</small></a></span>
+      <a href="catalogo/especiais.html" class="toc-link">p.&nbsp;06 →</a>
+    </li>
+
+    <li class="part">
+      <span class="part-label">PARTE II · Cartografia afetiva</span>
+      <span class="part-name">Um mapa desenhado dentro do território.</span>
+    </li>
+    <li>
+      <span class="num">V.</span>
+      <span class="title"><a href="catalogo/cartografia.html">Mapa afetivo do Grande Bom Jardim<small>Cartografia desenhada do território, terreiros, rodas, casas, rios simbólicos.</small></a></span>
+      <a href="catalogo/cartografia.html" class="toc-link">p.&nbsp;07 →</a>
+    </li>
+    <li>
+      <span class="num">VI.</span>
+      <span class="title"><a href="catalogo/cartografia.html">Cartografia das casas<small>Endereços, descrições e geografia afetiva dos cinco lugares.</small></a></span>
+      <a href="catalogo/cartografia.html" class="toc-link">p.&nbsp;08 →</a>
+    </li>
+
+    <li class="part">
+      <span class="part-label">PARTE III · Mestres &amp; Mestras da Cultura</span>
+      <span class="part-name">Vidas que sustentam a tradição, perfil, cronologia e oralidade.</span>
+    </li>
+    <li>
+      <span class="num">VII.</span>
+      <span class="title"><a href="catalogo/carla-mara.html">Mestra Carla Mara<small>Mestra da Cultura em Capoeira · Associação Zumbi Capoeira</small></a></span>
+      <a href="catalogo/carla-mara.html" class="toc-link">p.&nbsp;09 →</a>
+    </li>
+    <li>
+      <span class="num">VIII.</span>
+      <span class="title"><a href="catalogo/carla-mara.html">Mestra Carla Mara · Cronologia &amp; oralidade<small>Quatro décadas de roda · vozes recolhidas no território.</small></a></span>
+      <a href="catalogo/carla-mara.html" class="toc-link">p.&nbsp;10 →</a>
+    </li>
+    <li>
+      <span class="num">IX.</span>
+      <span class="title"><a href="catalogo/mestre-lula.html">Mestre Lula<small>Mestre da Cultura em Capoeira · Conselho de Mestres do Ceará</small></a></span>
+      <a href="catalogo/mestre-lula.html" class="toc-link">p.&nbsp;11 →</a>
+    </li>
+    <li>
+      <span class="num">X.</span>
+      <span class="title"><a href="catalogo/mestre-lula.html">Mestre Lula · Cronologia &amp; oralidade<small>Linhagem, palavra dada e o caderno que segura.</small></a></span>
+      <a href="catalogo/mestre-lula.html" class="toc-link">p.&nbsp;12 →</a>
+    </li>
+    <li>
+      <span class="num">XI.</span>
+      <span class="title"><a href="catalogo/pai-neto.html">Mestre Pai Neto Tranca Rua<small>Mestre da Cultura em Umbanda · Tambor de Mina de Caboclo</small></a></span>
+      <a href="catalogo/pai-neto.html" class="toc-link">p.&nbsp;13 →</a>
+    </li>
+    <li>
+      <span class="num">XII.</span>
+      <span class="title"><a href="catalogo/pai-neto.html">Mestre Pai Neto · Cronologia &amp; oralidade<small>Tronco velho · fragmentos do terreiro de São Miguel.</small></a></span>
+      <a href="catalogo/pai-neto.html" class="toc-link">p.&nbsp;14 →</a>
+    </li>
+    <li>
+      <span class="num">XIII.</span>
+      <span class="title"><a href="catalogo/mae-zima.html">Mestra Mãe Zimá<small>Mestra da Cultura em Medicina Tradicional Popular de Terreiro</small></a></span>
+      <a href="catalogo/mae-zima.html" class="toc-link">p.&nbsp;15 →</a>
+    </li>
+    <li>
+      <span class="num">XIV.</span>
+      <span class="title"><a href="catalogo/mae-zima.html">Mestra Mãe Zimá · Cronologia &amp; oralidade<small>Casa de Ogum Megê · a chama que atravessou décadas.</small></a></span>
+      <a href="catalogo/mae-zima.html" class="toc-link">p.&nbsp;16 →</a>
+    </li>
+
+    <li class="part">
+      <span class="part-label">PARTE IV · Memória territorial</span>
+      <span class="part-name">O direito à memória nas periferias.</span>
+    </li>
+    <li>
+      <span class="num">XV.</span>
+      <span class="title"><a href="catalogo/ponto-de-memoria.html">Ponto de Memória do Grande Bom Jardim<small>Museologia social, arquivo comunitário e narrativas populares.</small></a></span>
+      <a href="catalogo/ponto-de-memoria.html" class="toc-link">p.&nbsp;17 →</a>
+    </li>
+    <li>
+      <span class="num">XVI.</span>
+      <span class="title"><a href="catalogo/ponto-de-memoria.html">Princípios do Ponto de Memória<small>Oito princípios de uma museologia feita pela comunidade.</small></a></span>
+      <a href="catalogo/ponto-de-memoria.html" class="toc-link">p.&nbsp;18 →</a>
+    </li>
+
+    <li class="part">
+      <span class="part-label">PARTE V · Festival e Política</span>
+      <span class="part-name">A travessia entre território, escola e Estado.</span>
+    </li>
+    <li>
+      <span class="num">XVII.</span>
+      <span class="title"><a href="catalogo/festival.html">O Festival<small>Duas fases: vivências no território e seminário "Mestres da Cultura na Escola".</small></a></span>
+      <a href="catalogo/festival.html" class="toc-link">p.&nbsp;19 →</a>
+    </li>
+    <li>
+      <span class="num">XVIII.</span>
+      <span class="title"><a href="catalogo/festival.html">A política dos Tesouros Vivos<small>Lei estadual, reconhecimento e patrimônio imaterial.</small></a></span>
+      <a href="catalogo/festival.html" class="toc-link">p.&nbsp;20 →</a>
+    </li>
+
+    <li class="part">
+      <span class="part-label">PARTE VI · Documento &amp; arquivo</span>
+      <span class="part-name">Oralidade, glossário, notas e expediente.</span>
+    </li>
+    <li>
+      <span class="num">XIX.</span>
+      <span class="title"><a href="catalogo/arquivo.html">Vozes do território<small>Página silenciosa, fragmentos recolhidos entre 1980 e hoje.</small></a></span>
+      <a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;21 →</a>
+    </li>
+    <li>
+      <span class="num">XX.</span>
+      <span class="title"><a href="catalogo/arquivo.html">Glossário cultural<small>Palavras do terreiro, da roda, da medicina popular e do território.</small></a></span>
+      <a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;22 →</a>
+    </li>
+    <li>
+      <span class="num">XXI.</span>
+      <span class="title"><a href="catalogo/arquivo.html">Notas, fontes e referências<small>Legislação, pesquisas, bibliografia e créditos documentais.</small></a></span>
+      <a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;23 →</a>
+    </li>
+    <li>
+      <span class="num">XXII.</span>
+      <span class="title"><a href="catalogo/arquivo.html">Expediente<small>Governo do Estado, Secult, IDM e equipe do CCBJ.</small></a></span>
+      <a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;24 →</a>
+    </li>
+    <li>
+      <span class="num">XXIII.</span>
+      <span class="title"><a href="catalogo/arquivo.html">Colofão<small>Ficha técnica, créditos e marcações editoriais.</small></a></span>
+      <a href="catalogo/arquivo.html" class="toc-link">p.&nbsp;25 →</a>
+    </li>
+
+  </ol>
+</div>
+
+<footer>
+  <img src="image/logos-institucionais.png" alt="Logos institucionais">
+  <p class="footer-title">Jardim de Tesouros Vivos</p>
+  <div class="footer-meta">
+    Festival · IV Edição · Catálogo ampliado 2026<br>
+    Grande Bom Jardim · Fortaleza · Ceará · Brasil<br>
+    Centro Cultural Bom Jardim · Instituto Dragão do Mar · Secult CE
+  </div>
+</footer>
 
 </body>
 </html>

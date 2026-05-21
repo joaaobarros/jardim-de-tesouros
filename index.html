@@ -38,7 +38,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 80px 40px 60px;
+    padding: 100px 40px 100px;
     overflow: hidden;
     background: var(--tinta);
   }
@@ -65,8 +65,10 @@
   }
 
   .logos-bar img {
-    height: 38px;
-    filter: brightness(0) invert(1) opacity(0.6);
+    height: 72px;
+    max-width: 90vw;
+    object-fit: contain;
+    filter: brightness(0) invert(1) opacity(0.72);
   }
 
   .hero-eyebrow {
@@ -124,8 +126,8 @@
 
   .hero-scroll {
     position: absolute;
-    bottom: 36px; left: 50%;
-    transform: translateX(-50%);
+    bottom: 40px;
+    left: 0; right: 0;
     display: flex; flex-direction: column; align-items: center; gap: 8px;
     opacity: 0;
     animation: fadeUp 1s ease 1.4s forwards;
@@ -443,8 +445,10 @@
   }
 
   .footer-logos img {
-    height: 32px;
-    filter: brightness(0) invert(1) opacity(0.45);
+    height: 56px;
+    max-width: 80vw;
+    object-fit: contain;
+    filter: brightness(0) invert(1) opacity(0.5);
   }
 
   .footer-title {
@@ -572,18 +576,79 @@
     transform: none;
   }
 
-  @media (max-width: 800px) {
+  /* ── LARGE DESKTOP (≥ 1440px) ── */
+  @media (min-width: 1440px) {
+    .logos-bar img { height: 84px; }
+    .hero-desc { max-width: 640px; font-size: 18px; }
+    .intro { padding: 120px 80px 100px; }
+    .tv-context { padding: 80px 100px; gap: 72px; }
+    .tv-context-logo { width: 150px; }
+    .tesouros { padding: 0 60px 140px; }
+  }
+
+  /* ── TABLET (769px – 1024px) ── */
+  @media (max-width: 1024px) {
+    .logos-bar img { height: 60px; }
+    .grid { grid-template-columns: 1fr; }
+    .card-inner { grid-template-columns: 1fr 1.3fr; }
+    .card-inner, .card.reverse .card-inner { min-height: 420px; }
+    .intro { padding: 80px 40px 60px; }
+    .tv-context { padding: 50px 40px; gap: 40px; }
+    .tesouros { padding: 0 32px 100px; }
+    .cta-catalogo { padding: 60px 40px 50px; }
+    footer { padding: 60px 40px 48px; }
+  }
+
+  /* ── MOBILE (≤ 768px) ── */
+  @media (max-width: 768px) {
+    .logos-bar { margin-bottom: 48px; }
+    .logos-bar img { height: 52px; }
+    .hero { padding: 90px 24px 100px; }
+    .hero-scroll { bottom: 32px; }
+    .hero-eyebrow { font-size: 9px; letter-spacing: 0.25em; }
     .grid { grid-template-columns: 1fr; }
     .card-inner, .card.reverse .card-inner { grid-template-columns: 1fr; direction: ltr; }
-    .card-photo { height: 360px; }
+    .card-photo { height: 340px; }
     .card-photo::after, .card.reverse .card-photo::after {
       background: linear-gradient(to top, var(--creme) 5%, transparent 50%);
     }
-    .card-body, .card.reverse .card-body { padding: 32px 28px; }
-    .hero { padding: 80px 24px 80px; }
-    .intro { padding: 60px 24px; }
+    .card-body, .card.reverse .card-body { padding: 32px 24px 36px; }
+    .card-name { font-size: clamp(28px, 7vw, 40px); }
+    .intro { padding: 60px 24px 48px; }
+    .intro-text { font-size: clamp(20px, 4.5vw, 28px); }
+    .tv-context {
+      flex-direction: column;
+      padding: 40px 24px;
+      gap: 28px;
+      text-align: center;
+    }
+    .tv-context-logo { width: 90px; }
     .tesouros { padding: 0 16px 80px; }
-    .divider { padding: 0 24px; }
+    .divider { padding: 0 20px; margin: 40px 0; }
+    .section-header { margin-bottom: 40px; }
+    .cta-catalogo { padding: 56px 24px 48px; }
+    footer { padding: 56px 24px 44px; }
+    .footer-logos img { height: 46px; }
+  }
+
+  /* ── MOBILE PEQUENO (≤ 420px) ── */
+  @media (max-width: 420px) {
+    .logos-bar img { height: 44px; }
+    .hero { padding: 80px 20px 96px; }
+    .hero-subtitle { font-size: 17px; margin-bottom: 36px; }
+    .hero-desc { font-size: 15px; }
+    .scroll-line { height: 36px; }
+    .card-photo { height: 280px; }
+    .card-body, .card.reverse .card-body { padding: 24px 20px 28px; }
+    .card-stats { gap: 16px; }
+    .intro { padding: 48px 20px 40px; }
+    .tv-context { padding: 36px 20px; }
+    .divider-glyph { font-size: 8px; }
+    .tesouros { padding: 0 12px 64px; }
+    .btn-catalogo { padding: 16px 28px; font-size: 10px; }
+    footer { padding: 48px 20px 36px; }
+    .footer-logos img { height: 40px; }
+    .footer-title { font-size: 22px; }
   }
 </style>
 </head>
@@ -624,12 +689,12 @@
   <p class="intro-text">
     O <strong>Festival Jardim de Tesouros Vivos</strong> é uma realização do
     <strong>Centro Cultural Bom Jardim</strong>, gerido pelo Instituto Dragão do Mar
-    em parceria com a Secult CE. Agora em sua <strong>IV edição</strong>, o festival
-    parte de um entendimento simples: há saberes que não se aprendem em livros.
-    Aprendem-se de mão em mão, no compasso da ginga, no toque do atabaque.
-    Cada edição leva a escola ao território — e o território à cidade — celebrando
-    publicamente os Mestres e Mestras que sustentam, pela própria vida,
-    a <strong>cultura do Grande Bom Jardim</strong>.
+    em parceria com a Secult CE. A cada edição, o festival parte de um entendimento
+    simples: há saberes que não se aprendem em livros. Aprendem-se de mão em mão,
+    no compasso da ginga, no toque do atabaque, na oralidade que atravessa gerações.
+    O festival celebra publicamente os Mestres e Mestras que sustentam, pela própria vida,
+    a <strong>cultura do Grande Bom Jardim</strong>, levando a escola ao território
+    e o território a toda a cidade.
   </p>
 </section>
 
