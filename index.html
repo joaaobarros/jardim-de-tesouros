@@ -187,17 +187,30 @@
   }
 }
 
-.scroll-line {
-  width: 1px;
-  height: 48px;
+.scroll-ornament {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  line-height: 1;
 
-  background: linear-gradient(
-    to bottom,
-    var(--ouro),
-    transparent
-  );
+  color: var(--ouro);
+
+  text-shadow:
+    0 0 10px rgba(200,144,42,0.45),
+    0 0 24px rgba(200,144,42,0.28);
 
   animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.08);
+  }
 }
 
 
@@ -769,7 +782,7 @@
     .hero { padding: 80px 20px 96px; }
     .hero-subtitle { font-size: 17px; margin-bottom: 36px; }
     .hero-desc { font-size: 17px; }
-    .scroll-line { height: 36px; }
+    .scroll-ornament { font-size: 34px; }
     .card-photo { height: 280px; }
     .card-body, .card.reverse .card-body { padding: 24px 20px 28px; }
     .card-stats { gap: 16px; }
@@ -814,7 +827,7 @@
 
   <div class="hero-scroll" aria-hidden="true">
     <span>Conheça os tesouros</span>
-    <span class="ornament">❧</span>
+    <div class="scroll-ornament">❧</div>
   </div>
 </header>
 
