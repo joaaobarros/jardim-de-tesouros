@@ -1534,3 +1534,102 @@
   flex: 1;
 }
 @media print { .nav-secao { display: none !important; } }
+
+/* ============================================================
+   GALERIA FOTOGRÁFICA · MEMÓRIA VISUAL
+   Espaços de respiro sem texto sobreposto · cores terrosas
+   ============================================================ */
+
+.gallery-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 56px;
+  align-items: end;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 28px;
+  margin-bottom: 0;
+}
+
+.gallery-intro {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.52;
+  color: var(--ink-soft);
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+/* bandas de respiro — estendem até a borda da página */
+.gallery-band {
+  margin: 0 -80px;
+  padding: 38px 80px;
+}
+.gallery-band + .gallery-band {
+  border-top: 1px solid var(--rule-soft);
+}
+.gallery-band--paper  { background: var(--paper); }
+.gallery-band--deep   { background: var(--paper-deep); }
+.gallery-band--shadow { background: var(--paper-shadow); }
+
+/* grids fotográficos */
+.gallery-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gallery-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+/* item da galeria */
+.gal-item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gal-photo {
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--paper-shadow);
+}
+.gal-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.86) contrast(0.96);
+}
+
+/* proporções */
+.gal-photo.port { aspect-ratio: 3/4; }
+.gal-photo.land { aspect-ratio: 4/3; }
+.gal-photo.sq   { aspect-ratio: 1/1; }
+
+/* legenda abaixo da foto — nunca sobreposta */
+.gal-caption {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* responsivo */
+@media (max-width: 900px) {
+  .gallery-header    { grid-template-columns: 1fr; gap: 20px; }
+  .gallery-band      { margin: 0 -24px; padding: 28px 24px; }
+  .gallery-grid-3    { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .gallery-grid-2    { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .gallery-band { margin: 0 -20mm; padding: 22px 20mm; }
+}
